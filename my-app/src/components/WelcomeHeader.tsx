@@ -13,13 +13,13 @@ export default function WelcomeHeader() {
             />
 
             <div className="ml-auto flex space-x-4 pr-8">
-                <Button >
+                <Button variant="neumorphism">
                     Pricing
                 </Button>
-                <Button >
+                <Button variant="neumorphism">
                     About
                 </Button>
-                <Button>
+                <Button variant="neumorphism">
                     Signin
                 </Button>
                 <ModeToggle />
