@@ -40,20 +40,42 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
+  link?: string
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    )
-  }
-)
+export interface ButtonProps
+    extends VariantProps<typeof buttonVariants> {
+    asChild?: boolean;
+    link?: string;
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
+    ({ className, variant, size, asChild = false, link, ...props }, ref) => {
+        const Comp = asChild ? Slot : (link ? "a" : "button");
+
+        if (link) {
+            return (
+                <a
+                    className={cn(buttonVariants({ variant, size, className }))}
+                    ref={ref as React.Ref<HTMLAnchorElement>}
+                    href={link}
+                    {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
+                />
+            );
+        } else {
+            return (
+                <button
+                    className={cn(buttonVariants({ variant, size, className }))}
+                    ref={ref as React.Ref<HTMLButtonElement>}
+                    {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
+                />
+            );
+        }
+    }
+);
+
+
 Button.displayName = "Button"
 
 export { Button, buttonVariants }
