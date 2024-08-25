@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-gray-200 text-gray-900 py-8 shadow-[8px_8px_16px_#d1d9e6,_-8px_-8px_16px_#ffffff] dark:bg-gray-800 dark:text-white dark:shadow-[inset_8px_8px_16px_#2e2e2e,_inset_-8px_-8px_16px_#3f3f3f]">
+    <footer className="bg-gray-200 text-gray-900 py-8 shadow-[8px_8px_16px_#d1d9e6,_-8px_-8px_16px_#ffffff] dark:bg-gray-800 dark:text-white dark:shadow-[inset_1px_1px_2px_#2e2e2e,_inset_-1px_-1px_2px_#3f3f3f]">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap justify-between">
 

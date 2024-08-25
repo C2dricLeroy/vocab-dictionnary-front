@@ -3,12 +3,12 @@ import {Button} from "@/components/ui/button";
 import GoogleButton from "@/components/ui/googleButton";
 
 
-export default function SignupComponent() {
+export default function SigninComponent() {
     return (
         <>
             <div className="max-w-md mx-auto mt-10 my-10 p-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
                 <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-6">
-                    Sign Up
+                    Sign In
                 </h2>
                 <GoogleButton />
                 <br/>
@@ -43,8 +43,8 @@ export default function SignupComponent() {
                         Sign In
                     </Button>
                     <div className="text-center mt-6">
-                        <a>Already have an account ?</a>
-                        <a href="/signin" className="text-blue-500 ml-2">Sign In</a>
+                        <a>Doesn't have an account ?</a>
+                        <a href="/signup" className="text-blue-500 ml-2">Sign Up</a>
                     </div>
                 </form>
             </div>

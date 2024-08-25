@@ -19,8 +19,8 @@ export default function WelcomeHeader() {
                 <Button variant="neumorphism">
                     About
                 </Button>
-                <Button variant="neumorphism" link="/signup">
-                    Signup
+                <Button variant="neumorphism" link="/signin">
+                    Signin
                 </Button>
                 <ModeToggle />
             </div>

@@ -9,7 +9,9 @@ const inputVariants = cva(
         variants: {
             variant: {
                 default: "bg-primary",
-                destructive: "bg-destructive"
+                destructive: "bg-destructive",
+                neumorphism:
+                    "bg-gray-200 shadow-[8px_8px_16px_#d1d9e6,-8px_-8px_16px_#ffffff] dark:bg-gray-800 dark:shadow-[1px_1px_2px_#2e2e2e,-1px_-1px_2px_#010101] dark:text-gray-300",
             },
             variantSize: {
                 default: "h-9 px-4 py-2",
@@ -43,6 +45,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         );
     }
 );
+
 Input.displayName = "Input";
 
 export { Input, inputVariants };

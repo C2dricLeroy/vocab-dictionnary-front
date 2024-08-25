@@ -20,7 +20,7 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         neumorphism:
-          "bg-gray-200 text-gray-700 shadow-[8px_8px_16px_#d1d9e6,_-8px_-8px_16px_#ffffff] hover:shadow-[inset_8px_8px_16px_#d1d9e6,_inset_-8px_-8px_16px_#ffffff] dark:bg-gray-800 dark:text-gray-300 dark:shadow-[8px_8px_16px_#2e2e2e,_-8px_-8px_16px_#010101] dark:hover:bg-[#020817]"
+          "bg-gray-200 text-gray-700 shadow-[8px_8px_16px_#d1d9e6,_-8px_-8px_16px_#ffffff] hover:shadow-[inset_1px_1px_2px_#d1d9e6,_inset_-2px_-2x_4px_#ffffff] dark:bg-gray-800 dark:text-gray-300 dark:shadow-[1px_1px_2px_#2e2e2e,_-1px_-1px_2px_#010101] dark:hover:bg-[#020817]"
       },
       size: {
         default: "h-9 px-4 py-2",
