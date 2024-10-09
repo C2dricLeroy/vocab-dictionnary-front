@@ -18,13 +18,13 @@ export default function Footer() {
                 <a href="#" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">Home</a>
               </li>
               <li className="mb-2">
-                <a href="#" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">About</a>
+                <a href="/about" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">About</a>
               </li>
               <li className="mb-2">
-                <a href="#" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">Pricing</a>
+                <a href="/pricing" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">Pricing</a>
               </li>
               <li className="mb-2">
-                <a href="#" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">Contact</a>
+                <a href="/contact" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">Contact</a>
               </li>
             </ul>
           </div>
