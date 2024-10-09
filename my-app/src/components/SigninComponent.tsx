@@ -1,8 +1,11 @@
+'use client';
+
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
 import GoogleButton from "@/components/ui/googleButton";
 import {useState, FormEvent} from "react";
 import {useRouter} from "next/navigation";
+
 
 export default function SigninComponent() {
     const [password, setPassword] = useState<string>('');

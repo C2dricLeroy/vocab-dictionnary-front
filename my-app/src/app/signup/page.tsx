@@ -4,6 +4,7 @@ import Footer from "@/components/footer";
 import SignupComponent from "@/components/SignupComponent";
 
 export default function Signup() {
+
     return (
         <div className="flex flex-col min-h-screen">
             <header className="bg-gray-100 dark:bg-gray-800 py-4 px-8 flex items-center justify-between shadow-md w-full">
