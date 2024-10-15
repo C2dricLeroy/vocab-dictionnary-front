@@ -15,16 +15,16 @@ export default function Footer() {
             <h2 className="text-lg font-semibold mb-4">Quick Links</h2>
             <ul className="text-gray-600 dark:text-gray-400">
               <li className="mb-2">
-                <a href="#" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">Home</a>
+                <a href="my-app/src/app/[locale]/components#" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">Home</a>
               </li>
               <li className="mb-2">
-                <a href="#" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">About</a>
+                <a href="my-app/src/app/[locale]/components#" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">About</a>
               </li>
               <li className="mb-2">
-                <a href="#" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">Pricing</a>
+                <a href="my-app/src/app/[locale]/components#" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">Pricing</a>
               </li>
               <li className="mb-2">
-                <a href="#" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">Contact</a>
+                <a href="my-app/src/app/[locale]/components#" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">Contact</a>
               </li>
             </ul>
           </div>
@@ -33,16 +33,16 @@ export default function Footer() {
             <h2 className="text-lg font-semibold mb-4">Contact Us</h2>
             <p className="text-gray-600 dark:text-gray-400">Email: contact@lexilearn.eu</p>
             <div className="flex space-x-4 mt-4">
-              <a href="#" className="hover:text-gray-800 dark:hover:text-gray-300">
+              <a href="my-app/src/app/[locale]/components#" className="hover:text-gray-800 dark:hover:text-gray-300">
                 <i className="fab fa-facebook-f"></i>
               </a>
-              <a href="#" className="hover:text-gray-800 dark:hover:text-gray-300">
+              <a href="my-app/src/app/[locale]/components#" className="hover:text-gray-800 dark:hover:text-gray-300">
                 <i className="fab fa-twitter"></i>
               </a>
-              <a href="#" className="hover:text-gray-800 dark:hover:text-gray-300">
+              <a href="my-app/src/app/[locale]/components#" className="hover:text-gray-800 dark:hover:text-gray-300">
                 <i className="fab fa-instagram"></i>
               </a>
-              <a href="#" className="hover:text-gray-800 dark:hover:text-gray-300">
+              <a href="my-app/src/app/[locale]/components#" className="hover:text-gray-800 dark:hover:text-gray-300">
                 <i className="fab fa-linkedin-in"></i>
               </a>
             </div>
