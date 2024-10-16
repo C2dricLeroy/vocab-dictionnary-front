@@ -1,5 +1,10 @@
 {
   "HomePage": {
-    "Hello World": "Bonjour monde!"
+    "title": "Bonjour monde!"
+  },
+  "WelcomeHeader" : {
+    "Pricing": "Tarifs",
+    "About": "A propos",
+    "Login": "Se connecter"
   }
 }
