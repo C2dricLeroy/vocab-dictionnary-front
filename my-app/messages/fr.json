@@ -9,7 +9,7 @@
   },
   "Footer": {
     "About us": "A propos de nous",
-    "Simply learn by cumulating knowledge.": "Apprendre simplement par l'accumulation de connaissance.",
+    "Simply learn by cumulating knowledge": "Apprendre simplement par l'accumulation de connaissances.",
     "Quick Links": "Liens",
     "Home": "Accueil",
     "About": "A propos",
@@ -17,5 +17,36 @@
     "Contact": "Contact",
     "Contact us": "Nous contacter",
     "copyright": "2024 LexiLearn. Tout droits réservés."
+  },
+  "Signin" : {
+    "Enter your email": "Entrez votre email",
+    "Enter your password": "Entrez votre mot de passe",
+    "Sign in": "Se connecter",
+    "Email": "Email",
+    "Password": "Mot de passe",
+    "Sign in with Google": "Se connecter avec Google",
+    "Dont have an account?": "Vous n'avez pas de compte?",
+    "Sign up": "S'inscrire"
+  },
+  "Signup" : {
+    "Enter your email": "Entrez votre email",
+    "Enter your password": "Entrez votre mot de passe",
+    "Sign In": "Se connecter",
+    "Email": "Email",
+    "Password": "Mot de passe",
+    "Sign in with Google": "Se connecter avec Google",
+    "Already have an account?": "Déjà membre?",
+    "Sign up": "S'inscrire",
+    "Sign Up": "S'inscrire",
+    "Confirm your password": "Confirmez votre mot de passe"
+  },
+  "GoogleButton": {
+    "Continue with Google": "Se connecter avec Google"
+  },
+  "ModeToggle": {
+    "Toggle theme": "Changer le thème",
+    "Light": "Clair",
+    "Dark": "Sombre",
+    "System": "Système"
   }
 }

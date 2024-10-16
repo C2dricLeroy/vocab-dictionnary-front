@@ -17,5 +17,36 @@
     "Contact": "Contact",
     "Contact us": "Contact us",
     "copyright": "2024 LexiLearn. All rights reserved."
+  },
+  "Signin" : {
+    "Enter your email": "Enter your email",
+    "Enter your password": "Enter your password",
+    "Sign in": "Sign in",
+    "Email": "Email",
+    "Password": "Password",
+    "Sign in with Google": "Sign in with Google",
+    "Dont have an account?": "Don't have an account?",
+    "Sign up": "Sign up"
+  },
+  "Signup" : {
+    "Enter your email": "Enter your email",
+    "Enter your password": "Enter your password",
+    "Sign In": "Sign In",
+    "Email": "Email",
+    "Password": "Password",
+    "Sign in with Google": "Sign in with Google",
+    "Already have an account?": "Already have an account?",
+    "Sign up": "Sign up",
+    "Sign Up": "Sign Up",
+    "Confirm your password": "Confirm your password"
+  },
+  "GoogleButton": {
+    "Continue with Google": "Continue with Google"
+  },
+  "ModeToggle": {
+    "Toggle theme": "Toggle theme",
+    "Light": "Light",
+    "Dark": "Dark",
+    "System": "System"
   }
 }

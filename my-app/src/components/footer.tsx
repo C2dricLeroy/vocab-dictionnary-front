@@ -1,4 +1,5 @@
 import {useTranslations} from "next-intl";
+import {Link} from "@/i18n/routing";
 
 export default function Footer() {
   const t = useTranslations('Footer');
@@ -10,7 +11,7 @@ export default function Footer() {
           <div className="w-full sm:w-1/2 lg:w-1/3 mb-6">
             <h2 className="text-lg font-semibold mb-4">{t('About us')}</h2>
             <p className="text-gray-600 dark:text-gray-400">
-              {t('Simply learn by cumulating knowledge.')}
+              {t('Simply learn by cumulating knowledge')}
             </p>
           </div>
 

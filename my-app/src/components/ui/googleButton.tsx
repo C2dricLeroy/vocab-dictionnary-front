@@ -1,6 +1,8 @@
 import * as React from "react";
+import {useTranslations} from "next-intl";
 
 export default function GoogleButton() {
+    const t = useTranslations('GoogleButton');
     return (
         <div className="flex items-center justify-center py-4">
             <button
@@ -29,7 +31,7 @@ export default function GoogleButton() {
                         </g>
                     </g>
                 </svg>
-                <span>Continue with Google</span>
+                <span>{t('Continue with Google')}</span>
             </button>
         </div>
     )

@@ -5,9 +5,11 @@ import {Button} from "@/components/ui/button";
 import GoogleButton from "@/components/ui/googleButton";
 import {useState, FormEvent} from "react";
 import {useRouter} from "next/navigation";
+import {useTranslations} from "next-intl";
 
 
 export default function SignupComponent() {
+    const t = useTranslations('Signup');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 
@@ -17,7 +19,7 @@ export default function SignupComponent() {
         <>
             <div className="max-w-md mx-auto mt-10 my-10 p-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
                 <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-6">
-                    Sign Up
+                    {t('Sign up')}
                 </h2>
                 <GoogleButton />
                 <br/>
@@ -26,13 +28,13 @@ export default function SignupComponent() {
                 <form>
                     <div className="mb-4">
                         <label className="block text-gray-700 dark:text-gray-300 mb-2" htmlFor="email">
-                            Email
+                            {t('Email')}
                         </label>
                         <Input
                             variant="neumorphism"
                             type="email"
                             id="email"
-                            placeholder="Enter your email"
+                            placeholder={t('Enter your email')}
                             className="w-full"
                             onChange={(e) => setEmail(e.target.value)}
                             required
@@ -43,7 +45,7 @@ export default function SignupComponent() {
                             variant="neumorphism"
                             type="password"
                             id="password"
-                            placeholder="Confirm your password"
+                            placeholder={t('Enter your password')}
                             className="w-full"
                             onChange={(e) => setPassword(e.target.value)}
                             required
@@ -57,16 +59,16 @@ export default function SignupComponent() {
                             variant="neumorphism"
                             type="password"
                             id="passwordConfirm"
-                            placeholder="Enter your password"
+                            placeholder={t('Confirm your password')}
                             className="w-full"
                         />
                     </div>
                     <Button type="submit" className="w-full" variant="neumorphism">
-                        Sign Up
+                        {t('Sign Up')}
                     </Button>
                     <div className="text-center mt-6">
-                        <a>Already have an account ?</a>
-                        <a href="/signin" className="text-blue-500 ml-2">Sign In</a>
+                        <p>{t('Already have an account?')}</p>
+                        <a href="/signin" className="text-blue-500 ml-2">{t('Sign In')}</a>
                     </div>
                 </form>
             </div>
