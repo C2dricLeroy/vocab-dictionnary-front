@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Slot } from "@radix-ui/react-slot";
 import Image from 'next/image'
+import {Link} from "@/i18n/routing";
 
 
 const logoVariants = cva(
@@ -41,17 +42,19 @@ const Logo = React.forwardRef<HTMLDivElement, LogoProps>(
     ({ className, variant, variantSize, asChild = false, logoSrc, altText = "Logo", ...props }, ref) => {
         const Comp = asChild ? Slot : "div";
         return (
-            <Comp
-                className={cn(logoVariants({ variant, variantSize, className }))}
-                ref={ref}
-                {...props}
-            >
-                <img
-                    src={logoSrc}
-                    alt={altText}
-                    className="h-full w-auto max-w-full"
-                />
-            </Comp>
+            <Link href="/">
+                <Comp
+                    className={cn(logoVariants({ variant, variantSize, className }))}
+                    ref={ref}
+                    {...props}
+                >
+                    <img
+                        src={logoSrc}
+                        alt={altText}
+                        className="h-full w-auto max-w-full"
+                    />
+                </Comp>
+            </Link>
         );
     }
 );
