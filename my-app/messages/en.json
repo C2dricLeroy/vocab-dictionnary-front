@@ -48,5 +48,18 @@
     "Light": "Light",
     "Dark": "Dark",
     "System": "System"
+  },
+  "Contact": {
+    "Failed to send message. Please try again.": "Failed to send message. Please try again.",
+    "Thanks for your message!": "Thanks for your message!",
+    "Contact Us": "Contact Us",
+    "Feel free to contact us":
+            "Have any questions or need assistance? Whether it's about a feature request, technical support, or general inquiries, feel free to contact us.",
+    "Your email": "Your email",
+    "Subject": "Subject",
+    "Let us know how we can help you": "Let us know how we can help you",
+    "Your message": "Your message",
+    "Leave a comment": "Leave a comment...",
+    "Send": "Send"
   }
 }

@@ -48,5 +48,18 @@
     "Light": "Clair",
     "Dark": "Sombre",
     "System": "Système"
+  },
+  "Contact": {
+    "Failed to send message. Please try again.": "Echec de l'envoi du message. Veuillez réessayer.",
+    "Thanks for your message!": "Merci pour votre message!",
+    "Contact Us": "Nous contacter",
+    "Feel free to contact us":
+    "Vous avez des questions ou avez besoin d'aide? que ce soit une demande de fonctionnalité, de support technique ou des questions générales, n'hésitez pas a nous contacter.",
+    "Your email": "Votre email",
+    "Subject": "Sujet",
+    "Let us know how we can help you": "Faites-nous savoir si nous pouvons vous aider",
+    "Your message": "Votre message",
+    "Leave a comment": "Laissez un commentaire...",
+    "Send": "Envoyer"
   }
 }

@@ -19,16 +19,16 @@ export default function Footer() {
             <h2 className="text-lg font-semibold mb-4">{t('Quick Links')}</h2>
             <ul className="text-gray-600 dark:text-gray-400">
               <li className="mb-2">
-                <a href="my-app/src/app/[locale]/components#" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">{t('Home')}</a>
+                <Link href="/" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">{t('Home')}</Link>
               </li>
               <li className="mb-2">
-                <a href="my-app/src/app/[locale]/components#" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">{t('About')}</a>
+                <Link href="/about" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">{t('About')}</Link>
               </li>
               <li className="mb-2">
-                <a href="my-app/src/app/[locale]/components#" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">{t('Pricing')}</a>
+                <Link href="/pricing" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">{t('Pricing')}</Link>
               </li>
               <li className="mb-2">
-                <a href="my-app/src/app/[locale]/components#" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">{t('Contact')}</a>
+                <Link href="/contact" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">{t('Contact')}</Link>
               </li>
             </ul>
           </div>
