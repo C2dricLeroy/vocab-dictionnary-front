@@ -6,5 +6,16 @@
     "Pricing": "Tarifs",
     "About": "A propos",
     "Login": "Se connecter"
+  },
+  "Footer": {
+    "About us": "A propos de nous",
+    "Simply learn by cumulating knowledge.": "Apprendre simplement par l'accumulation de connaissance.",
+    "Quick Links": "Liens",
+    "Home": "Accueil",
+    "About": "A propos",
+    "Pricing": "Tarifs",
+    "Contact": "Contact",
+    "Contact us": "Nous contacter",
+    "copyright": "2024 LexiLearn. Tout droits réservés."
   }
 }
