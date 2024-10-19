@@ -9,7 +9,7 @@
   },
   "Footer": {
     "About us": "About us",
-    "Simply learn by cumulating knowledge.": "Simply learn by cumulating knowledge.",
+    "Simply learn by cumulating knowledge": "Simply learn by cumulating knowledge.",
     "Quick Links": "Quick Links",
     "Home": "Home",
     "About": "About",
@@ -61,5 +61,10 @@
     "Your message": "Your message",
     "Leave a comment": "Leave a comment...",
     "Send": "Send"
+  },
+  "notFound": {
+    "404 - Page Not Found": "404 - Page Not Found",
+    "Sorry, the page you are looking for does not exist": "Sorry, the page you are looking for does not exist.",
+    "Go back home": "Go back home"
   }
 }

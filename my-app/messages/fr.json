@@ -61,5 +61,10 @@
     "Your message": "Votre message",
     "Leave a comment": "Laissez un commentaire...",
     "Send": "Envoyer"
+  },
+  "notFound": {
+    "404 - Page Not Found": "404 - Page introuvable",
+    "Sorry, the page you are looking for does not exist": "Désolé, la page que vous recherchez n'existe pas.",
+    "Go back home": "Retourner sur la page d'accueil"
   }
 }
