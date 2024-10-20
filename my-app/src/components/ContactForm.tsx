@@ -46,7 +46,7 @@ export function ContactForm() {
         if (res.ok) {
             setSubmitted(true);
         } else {
-            setError('Failed to send message. Please try again.');
+            setError('Failed to send message, Please try again');
         }
         } catch (error) {
         console.error('Error while sending form', error);

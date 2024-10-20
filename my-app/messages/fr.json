@@ -38,7 +38,11 @@
     "Already have an account?": "Déjà membre?",
     "Sign up": "S'inscrire",
     "Sign Up": "S'inscrire",
-    "Confirm your password": "Confirmez votre mot de passe"
+    "Confirm your password": "Confirmez votre mot de passe",
+    "Passwords do not match": "Les mots de passe ne correspondent pas",
+    "Username": "Nom d'utilisateur",
+    "Enter your username": "Entrez votre nom d'utilisateur",
+    "Your username can be used for login and will be used throughout the application": "Votre nom d'utilisateur peut être utilisé pour la connexion et sera utilisé partout dans l'application"
   },
   "GoogleButton": {
     "Continue with Google": "Se connecter avec Google"
@@ -50,7 +54,7 @@
     "System": "Système"
   },
   "Contact": {
-    "Failed to send message. Please try again.": "Echec de l'envoi du message. Veuillez réessayer.",
+    "Failed to send message, Please try again": "Echec de l'envoi du message. Veuillez réessayer.",
     "Thanks for your message!": "Merci pour votre message!",
     "Contact Us": "Nous contacter",
     "Feel free to contact us":

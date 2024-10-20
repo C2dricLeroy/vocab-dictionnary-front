@@ -90,7 +90,7 @@ export default function SigninComponent() {
                             required
                         />
                     </div>
-                    <Button type="submit" className="w-full" variant="neumorphism">
+                    <Button type="submit" className="w-full" variant="default">
                         {t('Sign in')}
                     </Button>
                     <div className="text-center mt-6">
