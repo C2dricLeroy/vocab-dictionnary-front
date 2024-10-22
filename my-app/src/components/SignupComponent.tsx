@@ -48,11 +48,11 @@ export default function SignupComponent() {
                 body: JSON.stringify(data),
             });
 
-            if (response.ok) {
-                router.push('/signin');
-            } else {
+            if (!response.ok) {
                 throw new Error(`Signup error: ${response.status}`);
             }
+
+            router.push('/signin');
         } catch (error) {
             console.error('Signup error:', error);
         }

@@ -4,7 +4,7 @@ import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
 import GoogleButton from "@/components/ui/googleButton";
 import {useState, FormEvent} from "react";
-import {useRouter} from "next/navigation";
+import {useRouter} from '@/i18n/routing';
 import {useTranslations} from "next-intl";
 import {Link} from "@/i18n/routing";
 
@@ -19,12 +19,13 @@ export default function SigninComponent() {
     const signinSubmit = async (e: FormEvent) => {
         e.preventDefault()
 
-        const url = '';
+        const url = process.env.NEXT_PUBLIC_BASE_URL + '/api/auth/login/';
 
-        const data = {
-            "email": email,
-            'password': password
-        }
+            const data = {
+                "email": email,
+                'password': password
+            }
+            console.log(data)
 
         try {
             const response = await fetch(url, {
@@ -39,12 +40,6 @@ export default function SigninComponent() {
                 throw new Error(`Erreur HTTP: ${response.status}`);
               }
 
-            const responseData = response.json();
-
-            if (!response.ok) {
-                throw new Error(`Erreur HTTP: ${response.status}`);
-              }
-    
             router.push('/dashboard');
         } catch (error) {
             console.error('Error fetching data:', error);
