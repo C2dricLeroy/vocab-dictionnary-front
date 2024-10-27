@@ -8,9 +8,9 @@ import useAuth from "@/utils/context/AuthContext";
 import {useRouter} from '@/i18n/routing';
 export default function Signin() {
     const router = useRouter();
-    const context = useAuth();
+    const authContext = useAuth();
 
-    if (context.isAuthenticated) {
+    if (authContext.isAuthenticated) {
         router.push('/dashboard');
     }
     return (
