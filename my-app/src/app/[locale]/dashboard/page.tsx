@@ -1,7 +1,10 @@
+'use client';
+
 import {ModeToggle} from "@/components/Modetoggle";
-import SigninComponent from "@/components/SigninComponent";
 import {Logo} from "@/components/ui/logo";
 import Footer from "@/components/footer";
+import WelcomeSection from "@/components/WelcomeSection";
+import SearchBar from "@/components/SearchBar";
 
 export default function Dashboard() {
     return (
@@ -20,7 +23,9 @@ export default function Dashboard() {
             </header>
 
             <main className="flex-grow flex flex-col items-center justify-center px-4">
-                <p>dashboard</p>
+                <WelcomeSection/>
+                <SearchBar onSearch={(term) => console.log("Searching for:", term)} />
+
             </main>
 
 
