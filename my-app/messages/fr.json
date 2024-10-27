@@ -5,7 +5,8 @@
   "WelcomeHeader" : {
     "Pricing": "Tarifs",
     "About": "A propos",
-    "Login": "Se connecter"
+    "Login": "Se connecter",
+    "Logout": "Se déconnecter"
   },
   "Footer": {
     "About us": "A propos de nous",

@@ -5,7 +5,8 @@
   "WelcomeHeader" : {
     "Pricing": "Pricing",
     "About": "About",
-    "Login": "Sign in"
+    "Login": "Sign in",
+    "Logout" : "Sign out"
   },
   "Footer": {
     "About us": "About us",

@@ -4,13 +4,9 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages} from 'next-intl/server';
+import { AuthProvider } from "@/utils/context/AuthContext";
 
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "LexiLearn",
-  description: "Your vocab partner",
-};
 
 
 export default async function RootLayout({
@@ -26,16 +22,18 @@ export default async function RootLayout({
   return (
     <html lang="{locale}">
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <NextIntlClientProvider messages={messages}>
-            {children}
-          </NextIntlClientProvider>
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <NextIntlClientProvider messages={messages}>
+              {children}
+            </NextIntlClientProvider>
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );

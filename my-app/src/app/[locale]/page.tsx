@@ -1,10 +1,10 @@
-import { ModeToggle } from "@/components/Modetoggle";
 import Footer from "@/components/footer";
 import WelcomeHeader from "@/components/WelcomeHeader";
 import {useTranslations} from 'next-intl';
 
 
 export default function Home() {
+
     const t = useTranslations('HomePage')
 
     return (
