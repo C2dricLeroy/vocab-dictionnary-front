@@ -25,7 +25,6 @@ export default function Dashboard() {
             <main className="flex-grow flex flex-col items-center justify-center px-4">
                 <WelcomeSection/>
                 <SearchBar onSearch={(term) => console.log("Searching for:", term)} />
-
             </main>
 
 

@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         const authenticate = async () => {
             try {
                 const userInfo = await fetchUserInfo();
-                setUserId(userInfo.user_id);
+                // setUserId(userInfo.user_id);
                 setIsAuthenticated(true);
             } catch (error) {
                 console.error("User is not authenticated", error);
@@ -35,7 +35,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const logout = () => {
         setUserId(null);
         setIsAuthenticated(false);
-        router.push('/signin');
     };
 
     return (

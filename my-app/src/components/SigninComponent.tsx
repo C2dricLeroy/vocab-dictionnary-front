@@ -22,10 +22,9 @@ export default function SigninComponent() {
         const url = process.env.NEXT_PUBLIC_BASE_URL + '/api/auth/login/';
 
             const data = {
-                "email": email,
+                "username": email,
                 'password': password
             }
-            console.log(data)
 
         try {
             const response = await fetch(url, {
@@ -63,7 +62,7 @@ export default function SigninComponent() {
                         </label>
                         <Input
                             variant="neumorphism"
-                            type="email"
+                            type="text"
                             id="email"
                             placeholder={t('Enter your email')}
                             className="w-full"

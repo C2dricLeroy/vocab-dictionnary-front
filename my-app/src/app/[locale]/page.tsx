@@ -1,18 +1,8 @@
-'use client';
-
 import Footer from "@/components/footer";
 import WelcomeHeader from "@/components/WelcomeHeader";
 import {useTranslations} from 'next-intl';
-import useAuth from "@/utils/context/AuthContext";
-import {useRouter} from "@/i18n/routing";
 
 export default function Home() {
-    const router = useRouter();
-    const authContext = useAuth();
-
-    if (authContext.isAuthenticated) {
-        router.push('/dashboard');
-    }
 
     const t = useTranslations('HomePage')
 

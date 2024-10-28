@@ -41,12 +41,18 @@ export interface LogoProps
 const Logo = React.forwardRef<HTMLDivElement, LogoProps>(
     ({ className, variant, variantSize, asChild = false, logoSrc, altText = "Logo", ...props }, ref) => {
         const Comp = asChild ? Slot : "div";
+        const handleLogoClick = (event: React.MouseEvent) => {
+            event.preventDefault();
+            window.location.replace("/");
+        };
         return (
             <Link href="/">
                 <Comp
                     className={cn(logoVariants({ variant, variantSize, className }))}
                     ref={ref}
                     {...props}
+                    onClick={handleLogoClick}
+                    style={{ cursor: 'pointer' }}
                 >
                     <img
                         src={logoSrc}
