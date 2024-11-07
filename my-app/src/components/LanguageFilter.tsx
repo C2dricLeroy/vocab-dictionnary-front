@@ -2,9 +2,9 @@
 
 import * as React from "react"
 import { Check, ChevronsUpDown } from "lucide-react"
-
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import {useTranslations} from 'next-intl';
 import {
     Command,
     CommandEmpty,
@@ -19,32 +19,22 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover"
 
-const frameworks = [
+const languages = [
     {
-        value: "next.js",
-        label: "Next.js",
+        value: "fr",
+        label: "Français",
     },
     {
-        value: "sveltekit",
-        label: "SvelteKit",
-    },
-    {
-        value: "nuxt.js",
-        label: "Nuxt.js",
-    },
-    {
-        value: "remix",
-        label: "Remix",
-    },
-    {
-        value: "astro",
-        label: "Astro",
+        value: "en",
+        label: "Anglais",
     },
 ]
 
-export default function SearchBar() {
+export default function LanguageFilter() {
     const [open, setOpen] = React.useState(false)
     const [value, setValue] = React.useState<string[]>([])
+
+    const t = useTranslations('LanguageFilter');
 
     const handleSetValue = (val: string) => {
         if (value.includes(val)) {
@@ -67,34 +57,36 @@ export default function SearchBar() {
                     <div className="flex gap-2 justify-start">
                         {value?.length ?
                             value.map((val, i) => (
-                                <div key={i} className="px-2 py-1 rounded-xl border bg-slate-200 text-xs font-medium">{frameworks.find((framework) => framework.value === val)?.label}</div>
+                                <div key={i} className="px-2 py-1 rounded-xl border bg-slate-200 text-xs font-medium">{languages.find((language) => language.value === val)?.label}</div>
                             ))
-                            : "Select framework..."}
+                            : (
+                                <span>{t("Select language")}</span>
+                            )}
                     </div>
                     <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
             </PopoverTrigger>
             <PopoverContent className="w-[480px] p-0">
                 <Command>
-                    <CommandInput placeholder="Search framework..." />
-                    <CommandEmpty>No framework found.</CommandEmpty>
+                    <CommandInput placeholder="Search language..." />
+                    <CommandEmpty>No language found.</CommandEmpty>
                     <CommandGroup>
                         <CommandList>
-                            {frameworks.map((framework) => (
+                            {languages.map((language) => (
                                 <CommandItem
-                                    key={framework.value}
-                                    value={framework.value}
+                                    key={language.value}
+                                    value={language.value}
                                     onSelect={() => {
-                                        handleSetValue(framework.value)
+                                        handleSetValue(language.value)
                                     }}
                                 >
                                     <Check
                                         className={cn(
                                             "mr-2 h-4 w-4",
-                                            value.includes(framework.value) ? "opacity-100" : "opacity-0"
+                                            value.includes(language.value) ? "opacity-100" : "opacity-0"
                                         )}
                                     />
-                                    {framework.label}
+                                    {language.label}
                                 </CommandItem>
                             ))}
                         </CommandList>

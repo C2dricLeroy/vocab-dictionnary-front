@@ -4,7 +4,7 @@ import {ModeToggle} from "@/components/Modetoggle";
 import {Logo} from "@/components/ui/logo";
 import Footer from "@/components/footer";
 import WelcomeSection from "@/components/WelcomeSection";
-import SearchBar from "@/components/SearchBar";
+import LanguageFilter from "@/components/LanguageFilter";
 
 export default function Dashboard() {
     return (
@@ -24,7 +24,7 @@ export default function Dashboard() {
 
             <main className="flex-grow flex flex-col items-center justify-center px-4">
                 <WelcomeSection/>
-                <SearchBar onSearch={(term) => console.log("Searching for:", term)} />
+                <LanguageFilter onSearch={(term) => console.log("Searching for:", term)} />
             </main>
 
 
