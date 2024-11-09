@@ -5,8 +5,12 @@ import {Logo} from "@/components/ui/logo";
 import Footer from "@/components/footer";
 import WelcomeSection from "@/components/WelcomeSection";
 import LanguageFilter from "@/components/LanguageFilter";
+import {AddDictionnaryModal} from "@/components/AddDictionnaryModal";
+import {useState} from "react";
+import {Button} from "@/components/ui/button";
 
 export default function Dashboard() {
+    const [isModalOpen, setIsModalOpen] = useState(false)
     return (
         <div className="flex flex-col min-h-screen">
             <header className="bg-gray-100 dark:bg-gray-800 py-4 px-8 flex items-center justify-between shadow-md w-full">
@@ -22,9 +26,22 @@ export default function Dashboard() {
                 </div>
             </header>
 
-            <main className="flex-grow flex flex-col items-center justify-center px-4">
+            <main className="flex-grow flex flex-col justify-top px-4">
                 <WelcomeSection/>
-                <LanguageFilter onSearch={(term) => console.log("Searching for:", term)} />
+                <div className="flex items-center space-x-2 mt-4">
+                    <LanguageFilter onSearch={(term) => console.log("Searching for:", term)} />
+                    <Button
+                        variant="neumorphism"
+                        onClick={() => setIsModalOpen(true)}
+                    >
+                        Add Dictionary
+                    </Button>
+                </div>
+
+        <AddDictionnaryModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+        />
             </main>
 
 

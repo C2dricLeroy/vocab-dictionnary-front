@@ -1,10 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { Check, ChevronsUpDown } from "lucide-react"
+import { Check, ChevronsUpDown, X } from "lucide-react" // Import "X" icon for deselection
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import {useTranslations} from 'next-intl';
+import { useTranslations } from 'next-intl';
 import {
     Command,
     CommandEmpty,
@@ -32,17 +32,17 @@ const languages = [
 
 export default function LanguageFilter() {
     const [open, setOpen] = React.useState(false)
-    const [value, setValue] = React.useState<string[]>([])
+    const [value, setValue] = React.useState<string>('')
 
     const t = useTranslations('LanguageFilter');
 
     const handleSetValue = (val: string) => {
-        if (value.includes(val)) {
-            value.splice(value.indexOf(val), 1);
-            setValue(value.filter((item) => item !== val));
-        } else {
-            setValue(prevValue => [...prevValue, val]);
-        }
+        setValue(val);
+        setOpen(false);
+    }
+
+    const handleClearSelection = () => {
+        setValue(''); // Clear the selection
     }
 
     return (
@@ -52,21 +52,28 @@ export default function LanguageFilter() {
                     variant="outline"
                     role="combobox"
                     aria-expanded={open}
-                    className="w-[480px] justify-between"
+                    className="w-full justify-between"
                 >
-                    <div className="flex gap-2 justify-start">
-                        {value?.length ?
-                            value.map((val, i) => (
-                                <div key={i} className="px-2 py-1 rounded-xl border bg-slate-200 text-xs font-medium">{languages.find((language) => language.value === val)?.label}</div>
-                            ))
-                            : (
-                                <span>{t("Select language")}</span>
-                            )}
+                    <div className="w-full flex gap-2 justify-start items-center">
+                        {value ? (
+                            <div className="flex items-center gap-2 px-2 py-1 rounded-xl border bg-slate-200 text-xs font-medium">
+                                {languages.find((language) => language.value === value)?.label}
+                                <X
+                                    className="h-4 w-4 cursor-pointer text-red-500"
+                                    onClick={(e) => {
+                                        e.stopPropagation(); // Prevents popover from opening
+                                        handleClearSelection();
+                                    }}
+                                />
+                            </div>
+                        ) : (
+                            <span>{t("Select language")}</span>
+                        )}
                     </div>
                     <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-[480px] p-0">
+            <PopoverContent className="w-full p-0">
                 <Command>
                     <CommandInput placeholder="Search language..." />
                     <CommandEmpty>No language found.</CommandEmpty>
@@ -83,7 +90,7 @@ export default function LanguageFilter() {
                                     <Check
                                         className={cn(
                                             "mr-2 h-4 w-4",
-                                            value.includes(language.value) ? "opacity-100" : "opacity-0"
+                                            value === language.value ? "opacity-100" : "opacity-0"
                                         )}
                                     />
                                     {language.label}
