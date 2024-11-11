@@ -37,7 +37,7 @@ export default function LanguageFilter() {
 
     const fetchAvailableLanguages = async () => {
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/dictionary/languages/available`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/dictionary/languages/available`, {
                 method: 'GET',
                 credentials: 'include',
                 headers: {
@@ -80,7 +80,7 @@ export default function LanguageFilter() {
                                 <X
                                     className="h-4 w-4 cursor-pointer text-red-500"
                                     onClick={(e) => {
-                                        e.stopPropagation(); // Prevents popover from opening
+                                        e.stopPropagation();
                                         handleClearSelection();
                                     }}
                                 />

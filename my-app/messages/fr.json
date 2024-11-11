@@ -76,5 +76,9 @@
     "Select language": "Sélectionner un language...",
     "Search language": "Rechercher un language...",
     "No language found": "Aucun language trouvé"
+  },
+  "Dashboard": {
+    "Select a language to view dictionary data": "Veuillez sélectionner un language pour afficher le dictionnaire.",
+    "No data found for this language": "Aucune donnée pour ce language."
   }
 }
