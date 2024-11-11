@@ -73,6 +73,8 @@
     "Go back home": "Go back home"
   },
   "LanguageFilter": {
-    "Select language": "Select a language..."
+    "Select language": "Select a language...",
+    "Search language": "Search a language...",
+    "No language found": "No language found"
   }
 }

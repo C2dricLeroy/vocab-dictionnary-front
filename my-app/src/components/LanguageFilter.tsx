@@ -19,19 +19,9 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover"
 
-const languages = [
-    {
-        value: "fr",
-        label: "Français",
-    },
-    {
-        value: "en",
-        label: "Anglais",
-    },
-]
-
 export default function LanguageFilter() {
     const [open, setOpen] = React.useState(false)
+    const [languages, setLanguages] = React.useState<{ value: string, label: string }[]>([])
     const [value, setValue] = React.useState<string>('')
 
     const t = useTranslations('LanguageFilter');
@@ -42,8 +32,37 @@ export default function LanguageFilter() {
     }
 
     const handleClearSelection = () => {
-        setValue(''); // Clear the selection
+        setValue('');
     }
+
+    const fetchAvailableLanguages = async () => {
+        try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/dictionary/languages/available`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error(`Error ${response.status}: Unable to fetch languages`);
+            }
+
+            const data = await response.json();
+            const formattedLanguages = data.map((lang: any) => ({
+                value: lang.code,
+                label: lang.name,
+            }));
+            setLanguages(formattedLanguages);
+        } catch (error) {
+            console.error("Failed to fetch languages:", error);
+        }
+    };
+
+    React.useEffect(() => {
+        fetchAvailableLanguages();
+    }, []);
 
     return (
         <Popover open={open} onOpenChange={setOpen}>
@@ -75,8 +94,8 @@ export default function LanguageFilter() {
             </PopoverTrigger>
             <PopoverContent className="w-full p-0">
                 <Command>
-                    <CommandInput placeholder="Search language..." />
-                    <CommandEmpty>No language found.</CommandEmpty>
+                    <CommandInput placeholder={t("Search language")} />
+                    <CommandEmpty>{t("No language found")}</CommandEmpty>
                     <CommandGroup>
                         <CommandList>
                             {languages.map((language) => (

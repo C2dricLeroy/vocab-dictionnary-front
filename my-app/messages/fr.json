@@ -73,6 +73,8 @@
     "Go back home": "Retourner sur la page d'accueil"
   },
   "LanguageFilter": {
-    "Select language": "Sélectionner un language..."
+    "Select language": "Sélectionner un language...",
+    "Search language": "Rechercher un language...",
+    "No language found": "Aucun language trouvé"
   }
 }
