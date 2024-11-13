@@ -20,7 +20,7 @@ export default function Dashboard() {
 
     const fetchDictionaryData = async (language: string) => {
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/dictionary/languages/available?language=${language}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/dictionary/${selectedLanguage.id}`, {
                 method: 'GET',
                 credentials: 'include',
                 headers: {
@@ -63,7 +63,7 @@ export default function Dashboard() {
             <main className="flex-grow flex flex-col justify-top px-4">
                 <WelcomeSection />
                 <div className="flex items-center space-x-2 mt-4">
-                    <LanguageFilter onSelectLanguage={(language: string) => setSelectedLanguage(language)} />
+                    <LanguageFilter onSelectLanguage={(language: string | null) => setSelectedLanguage(language)} />
                     <Button
                         variant="neumorphism"
                         onClick={() => setIsModalOpen(true)}

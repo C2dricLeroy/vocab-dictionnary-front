@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Check, ChevronsUpDown, X } from "lucide-react" // Import "X" icon for deselection
+import { Check, ChevronsUpDown, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { useTranslations } from 'next-intl';
@@ -19,7 +19,12 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover"
 
-export default function LanguageFilter() {
+
+interface LanguageFilterProps {
+    onSelectLanguage?: (language: string) => void;
+}
+
+export default function LanguageFilter({ onSelectLanguage }: LanguageFilterProps) {
     const [open, setOpen] = React.useState(false)
     const [languages, setLanguages] = React.useState<{ value: string, label: string }[]>([])
     const [value, setValue] = React.useState<string>('')
@@ -29,15 +34,21 @@ export default function LanguageFilter() {
     const handleSetValue = (val: string) => {
         setValue(val);
         setOpen(false);
+        if (onSelectLanguage) {
+            onSelectLanguage(val);
+        }
     }
 
     const handleClearSelection = () => {
         setValue('');
-    }
+        if (onSelectLanguage) {
+            onSelectLanguage(null);
+        }
+    };
 
     const fetchAvailableLanguages = async () => {
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/dictionary/languages/available`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/languages/`, {
                 method: 'GET',
                 credentials: 'include',
                 headers: {
