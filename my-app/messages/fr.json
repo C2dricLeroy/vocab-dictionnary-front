@@ -27,7 +27,8 @@
     "Password": "Mot de passe",
     "Sign in with Google": "Se connecter avec Google",
     "Dont have an account?": "Vous n'avez pas de compte?",
-    "Sign up": "S'inscrire"
+    "Sign up": "S'inscrire",
+    "Invalid username or password": "Nom d'utilisateur ou mot de passe invalide"
   },
   "Signup" : {
     "Enter your email": "Entrez votre email",

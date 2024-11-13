@@ -27,7 +27,8 @@
     "Password": "Password",
     "Sign in with Google": "Sign in with Google",
     "Dont have an account?": "Don't have an account?",
-    "Sign up": "Sign up"
+    "Sign up": "Sign up",
+    "Invalid username or password": "Invalid username or password"
   },
   "Signup" : {
     "Enter your email": "Enter your email",

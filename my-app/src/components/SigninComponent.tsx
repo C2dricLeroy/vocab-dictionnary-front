@@ -13,6 +13,7 @@ export default function SigninComponent() {
     const t = useTranslations('Signin');
     const [password, setPassword] = useState<string>('');
     const [email, setEmail] = useState<string>('');
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
     const router = useRouter()
 
@@ -36,8 +37,13 @@ export default function SigninComponent() {
             });
 
             if (!response.ok) {
-                throw new Error(`Erreur HTTP: ${response.status}`);
-              }
+                if (response.status === 401) {
+                    setErrorMessage(t("Invalid username or password"));
+                } else {
+                    setErrorMessage(t("An error occurred. Please try again."));
+                }
+                throw new Error(`HTTP Error: ${response.status}`);
+            }
 
             router.push('/dashboard');
         } catch (error) {
@@ -56,6 +62,11 @@ export default function SigninComponent() {
                 <hr/>
                 <br/>
                 <form onSubmit={signinSubmit}>
+                    {errorMessage && (
+                        <p className="text-red-500 text-sm mb-4 text-center">
+                            {errorMessage}
+                        </p>
+                    )}
                     <div className="mb-4">
                         <label className="block text-gray-700 dark:text-gray-300 mb-2" htmlFor="email">
                             {t('Email')}
