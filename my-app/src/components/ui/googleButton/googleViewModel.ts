@@ -2,8 +2,8 @@
 
 export default function GoogleViewModel() {
 
-    const client_id = process.env.client_id;
-    const redirect_uri = '';
+    // const client_id = process.env.client_id;
+    // const redirect_uri = '';
 
 
     const handleLogin = async () => {
@@ -12,8 +12,9 @@ export default function GoogleViewModel() {
         } catch (error) {
             console.error("Login failed", error);
         }
-    }
+    };
+
     return {
         handleLogin,
-    }
+    };
 }

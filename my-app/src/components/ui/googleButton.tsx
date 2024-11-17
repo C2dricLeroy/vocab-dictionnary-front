@@ -34,5 +34,5 @@ export default function GoogleButton() {
                 <span>{t('Continue with Google')}</span>
             </button>
         </div>
-    )
+    );
 }
