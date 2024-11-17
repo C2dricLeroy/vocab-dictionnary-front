@@ -9,6 +9,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
+    "plugin:@typescript-eslint/recommended"
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -26,5 +27,6 @@ module.exports = {
     'no-unused-vars': 'warn',
     'jsx-a11y/alt-text': 'warn',
     'jsx-a11y/anchor-is-valid': 'warn',
+    'semi': ['error', 'always'],
   },
 };
