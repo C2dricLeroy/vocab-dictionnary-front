@@ -1,8 +1,6 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { fetchUserInfo } from '@/utils/fetchUserInfo';
-import { useRouter } from '@/i18n/routing';
 
 interface AuthContextType {
     userId: string | null;
@@ -15,12 +13,11 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [userId, setUserId] = useState<string | null>(null);
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-    const router = useRouter();
 
     useEffect(() => {
         const authenticate = async () => {
             try {
-                const userInfo = await fetchUserInfo();
+                // const userInfo = await fetchUserInfo();
                 // setUserId(userInfo.user_id);
                 setIsAuthenticated(true);
             } catch (error) {
@@ -51,4 +48,4 @@ export default function useAuth()  {
         throw new Error("useAuth must be used within an AuthProvider");
     }
     return context;
-};
+}
