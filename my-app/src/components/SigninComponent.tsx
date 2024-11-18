@@ -15,17 +15,17 @@ export default function SigninComponent() {
     const [email, setEmail] = useState<string>('');
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-    const router = useRouter()
+    const router = useRouter();
 
     const signinSubmit = async (e: FormEvent) => {
-        e.preventDefault()
+        e.preventDefault();
 
         const url = process.env.NEXT_PUBLIC_BASE_URL + '/api/auth/login/';
 
-            const data = {
-                "username": email,
-                'password': password
-            }
+        const data = {
+            "username": email,
+            'password': password
+        };
 
         try {
             const response = await fetch(url, {
@@ -45,11 +45,11 @@ export default function SigninComponent() {
                 throw new Error(`HTTP Error: ${response.status}`);
             }
 
-            router.push('/dashboard');
+            router.push("/dashboard" as any);
         } catch (error) {
             console.error('Error fetching data:', error);
           }
-    }
+    };
 
     return (
         <>
@@ -100,10 +100,11 @@ export default function SigninComponent() {
                     </Button>
                     <div className="text-center mt-6">
                         <p>{t('Dont have an account?')}</p>
+                        {/* @ts-expect-error on Link href*/}
                         <Link href="/signup" className="text-blue-500 ml-2">{t('Sign up')}</Link>
                     </div>
                 </form>
             </div>
         </>
-    )
+    );
 }

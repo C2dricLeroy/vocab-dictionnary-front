@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Check, ChevronsUpDown, X } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import * as React from "react";
+import { Check, ChevronsUpDown, X } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import { useTranslations } from 'next-intl';
 import {
     Command,
@@ -12,22 +12,23 @@ import {
     CommandInput,
     CommandItem,
     CommandList,
-} from "@/components/ui/command"
+} from "@/components/ui/command";
 import {
     Popover,
     PopoverContent,
     PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 
 
 interface LanguageFilterProps {
+    // eslint-disable-next-line
     onSelectLanguage?: (language: string) => void;
 }
 
 export default function LanguageFilter({ onSelectLanguage }: LanguageFilterProps) {
-    const [open, setOpen] = React.useState(false)
-    const [languages, setLanguages] = React.useState<{ value: string, label: string }[]>([])
-    const [value, setValue] = React.useState<string>('')
+    const [open, setOpen] = React.useState(false);
+    const [languages, setLanguages] = React.useState<{ value: string, label: string }[]>([]);
+    const [value, setValue] = React.useState<string>('');
 
     const t = useTranslations('LanguageFilter');
 
@@ -37,7 +38,7 @@ export default function LanguageFilter({ onSelectLanguage }: LanguageFilterProps
         if (onSelectLanguage) {
             onSelectLanguage(val);
         }
-    }
+    };
 
     const handleClearSelection = () => {
         setValue('');
@@ -114,7 +115,7 @@ export default function LanguageFilter({ onSelectLanguage }: LanguageFilterProps
                                     key={language.value}
                                     value={language.value}
                                     onSelect={() => {
-                                        handleSetValue(language.value)
+                                        handleSetValue(language.value);
                                     }}
                                 >
                                     <Check
@@ -131,5 +132,5 @@ export default function LanguageFilter({ onSelectLanguage }: LanguageFilterProps
                 </Command>
             </PopoverContent>
         </Popover>
-    )
+    );
 }

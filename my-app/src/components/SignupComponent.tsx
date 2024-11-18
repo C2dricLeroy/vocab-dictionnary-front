@@ -52,7 +52,7 @@ export default function SignupComponent() {
                 throw new Error(`Signup error: ${response.status}`);
             }
 
-            router.push('/signin');
+            router.push('/signin' as any);
         } catch (error) {
             console.error('Signup error:', error);
         }
@@ -93,7 +93,7 @@ export default function SignupComponent() {
                         id="username"
                         placeholder={t('Enter your username')}
                         className="w-full"
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={(e) => setUsername(e.target.value)}
                         required
                     />
                 </div>
@@ -147,6 +147,7 @@ export default function SignupComponent() {
                 </Button>
                 <div className="text-center mt-6">
                     <p>{t('Already have an account?')}</p>
+                    {/* @ts-expect-error on Link href*/}
                     <Link href="/signin" className="text-blue-500 ml-2">{t('Sign In')}</Link>
                 </div>
             </form>

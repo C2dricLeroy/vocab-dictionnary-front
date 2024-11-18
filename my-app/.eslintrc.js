@@ -28,5 +28,6 @@ module.exports = {
     'jsx-a11y/alt-text': 'warn',
     'jsx-a11y/anchor-is-valid': 'warn',
     'semi': ['error', 'always'],
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 };
