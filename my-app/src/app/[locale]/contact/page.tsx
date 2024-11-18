@@ -1,9 +1,7 @@
-import {ModeToggle} from "@/components/Modetoggle";
-import SigninComponent from "@/components/SigninComponent";
-import {Logo} from "@/components/ui/logo";
 import Footer from "@/components/footer";
-import { ContactForm } from "@/components/ContactForm"
+import { ContactForm } from "@/components/ContactForm";
 import WelcomeHeader from "@/components/WelcomeHeader";
+
 export default function Contact() {
     return (
         <div className="flex flex-col min-h-screen">

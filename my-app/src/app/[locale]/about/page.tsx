@@ -1,6 +1,3 @@
-import {ModeToggle} from "@/components/Modetoggle";
-import SigninComponent from "@/components/SigninComponent";
-import {Logo} from "@/components/ui/logo";
 import Footer from "@/components/footer";
 import WelcomeHeader from "@/components/WelcomeHeader";
 

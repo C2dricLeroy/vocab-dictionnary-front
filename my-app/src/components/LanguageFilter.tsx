@@ -22,7 +22,7 @@ import {
 
 interface LanguageFilterProps {
     // eslint-disable-next-line
-    onSelectLanguage?: (language: string) => void;
+    onSelectLanguage?: (language: string | null) => void;
 }
 
 export default function LanguageFilter({ onSelectLanguage }: LanguageFilterProps) {

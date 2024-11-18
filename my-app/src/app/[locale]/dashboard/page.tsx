@@ -11,16 +11,24 @@ import { Button } from "@/components/ui/button";
 import {useTranslations} from "next-intl";
 import {Dictionary} from "@/components/Dictionary";
 
+class Language {
+    // TODO: refactor to add different models
+    constructor(id: number) {
+        this.id = id;
+    }
+    id: number;
+}
+
 export default function Dashboard() {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
+    const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(null);
     const [dictionaryData, setDictionaryData] = useState<any | null>(null);
 
     const t = useTranslations('Dashboard');
 
-    const fetchDictionaryData = async (language: string) => {
+    const fetchDictionaryData = async () => {
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/dictionary/${selectedLanguage.id}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/dictionary/${selectedLanguage?.id}`, {
                 method: 'GET',
                 credentials: 'include',
                 headers: {
@@ -43,7 +51,7 @@ export default function Dashboard() {
         if (selectedLanguage) {
             fetchDictionaryData(selectedLanguage);
         }
-    }, [selectedLanguage]);
+    }, [selectedLanguage]); // eslint-disable-line
 
     return (
         <div className="flex flex-col min-h-screen">
@@ -63,7 +71,7 @@ export default function Dashboard() {
             <main className="flex-grow flex flex-col justify-top px-4">
                 <WelcomeSection />
                 <div className="flex items-center space-x-2 mt-4">
-                    <LanguageFilter onSelectLanguage={(language: string | null) => setSelectedLanguage(language)} />
+                    <LanguageFilter onSelectLanguage={(language: Language | null) => setSelectedLanguage(language)} />
                     <Button
                         variant="neumorphism"
                         onClick={() => setIsModalOpen(true)}

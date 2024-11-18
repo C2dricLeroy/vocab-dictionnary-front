@@ -1,7 +1,6 @@
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "@/components/theme-provider";
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages} from 'next-intl/server';
 import { AuthProvider } from "@/utils/context/AuthContext";
@@ -11,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default async function RootLayout({
   children,
-  params: { locale },
+  params: { locale }, // eslint-disable-line
 }: Readonly<{
   children: React.ReactNode;
   params: { locale: string };
