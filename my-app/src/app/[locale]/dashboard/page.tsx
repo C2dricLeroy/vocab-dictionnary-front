@@ -10,14 +10,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {useTranslations} from "next-intl";
 import {Dictionary} from "@/components/Dictionary";
-
-class Language {
-    // TODO: refactor to add different models
-    constructor(id: number) {
-        this.id = id;
-    }
-    id: number;
-}
+import {Language} from "@/models/Language";
 
 export default function Dashboard() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,7 +19,7 @@ export default function Dashboard() {
 
     const t = useTranslations('Dashboard');
 
-    const fetchDictionaryData = async () => {
+    const fetchDictionaryData = async (selectedLanguage: Language) => {
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/dictionary/${selectedLanguage?.id}`, {
                 method: 'GET',
