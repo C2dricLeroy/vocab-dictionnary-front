@@ -1,8 +1,8 @@
 export class Language {
-    constructor(id: number, code: string) {
+    constructor(id: number, code: string, name: string) {
         this.id = id;
-        this.code = '';
-        this.name = '';
+        this.code = code;
+        this.name = name;
     }
     id: number;
     code: string;

@@ -21,7 +21,7 @@ import {
 import { Language } from "@/models/Language";
 
 interface LanguageFilterProps {
-    onSelectLanguage?: (language: Language | null) => void;
+    onSelectLanguage?: (language: Language | null) => void; //eslint-disable-line
 }
 
 export default function LanguageFilter({ onSelectLanguage }: LanguageFilterProps) {

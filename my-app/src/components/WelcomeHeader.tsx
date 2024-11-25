@@ -22,11 +22,13 @@ export default function WelcomeHeader() {
 
             <div className="ml-auto flex space-x-4 pr-8">
                 <Button variant="neumorphism">
+                    {/* @ts-expect-error on Link href*/}
                     <Link href="/pricing">
                         {t('Pricing')}
                     </Link>
                 </Button>
                 <Button variant="neumorphism">
+                    {/* @ts-expect-error on Link href*/}
                     <Link href="/about">
                         {t('About')}
                     </Link>
@@ -37,6 +39,7 @@ export default function WelcomeHeader() {
                     </Button>
                 ) : (
                     <Button variant="neumorphism">
+                        {/* @ts-expect-error on Link href*/}
                         <Link href="/signin">
                             {t('Login')}
                         </Link>
