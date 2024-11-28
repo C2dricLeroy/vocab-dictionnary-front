@@ -7,7 +7,7 @@ import {useState, FormEvent} from "react";
 import {useRouter} from '@/i18n/routing';
 import {useTranslations} from "next-intl";
 import {Link} from "@/i18n/routing";
-
+import useAuth from "@/utils/context/AuthContext";
 
 export default function SigninComponent() {
     const t = useTranslations('Signin');
@@ -16,7 +16,7 @@ export default function SigninComponent() {
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
     const router = useRouter();
-
+    const { setIsAuthenticated, setUserId, isAuthenticated } = useAuth();
     const signinSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
@@ -45,6 +45,11 @@ export default function SigninComponent() {
                 throw new Error(`HTTP Error: ${response.status}`);
             }
 
+            let responseData = await response.json()
+
+            setUserId(responseData.user_id);
+            setIsAuthenticated(true);
+            
             router.push("/dashboard" as any);
         } catch (error) {
             console.error('Error fetching data:', error);
