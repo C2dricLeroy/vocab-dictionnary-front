@@ -17,8 +17,6 @@ export default function WelcomeHeader() {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    console.log(context.isAuthenticated)
-
     const t = useTranslations('WelcomeHeader');
     return (
         <div

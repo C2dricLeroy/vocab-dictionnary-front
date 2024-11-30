@@ -16,44 +16,17 @@ export default function SigninComponent() {
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
     const router = useRouter();
-    const { setIsAuthenticated, setUserId, isAuthenticated } = useAuth();
+    const authContext = useAuth();
     const signinSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
-        const url = process.env.NEXT_PUBLIC_BASE_URL + '/api/auth/login/';
+        const response: { success: boolean, message?: string } = await authContext.login(email, password);
 
-        const data = {
-            "username": email,
-            'password': password
-        };
-
-        try {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            });
-
-            if (!response.ok) {
-                if (response.status === 401) {
-                    setErrorMessage(t("Invalid username or password"));
-                } else {
-                    setErrorMessage(t("An error occurred. Please try again."));
-                }
-                throw new Error(`HTTP Error: ${response.status}`);
-            }
-
-            let responseData = await response.json()
-
-            setUserId(responseData.user_id);
-            setIsAuthenticated(true);
-            
+        if (!response.success) {
+            setErrorMessage(t(response.message));
+        } else {
             router.push("/dashboard" as any);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-          }
+        }
     };
 
     return (
