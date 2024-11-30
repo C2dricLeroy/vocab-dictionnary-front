@@ -1,6 +1,13 @@
 {
   "HomePage": {
-    "title": "Bonjour monde!"
+    "Welcome on LexiLearn": "Bienvenue sur LexiLearn",
+    "Your vocabulary builder": "Votre assistant vocabulaire",
+    "Whether you're a student, professional or language enthusiast, LexiLearn helps you build a solid, relevant vocabulary in the languages of your choice More than just an application, it's your intelligent revision companion": "Que vous soyez étudiant, professionnel ou passionné de langues, LexiLearn vous aide à construire un vocabulaire solide et pertinent dans les langues de votre choix. Plus qu'une simple application, c'est votre compagnon de révision intelligent.",
+    "Learn, enrich, master Your multilingual vocabulary at your fingertips" : "Apprendre, enrichir, maîtriser votre vocabulaire multilingue à la main",
+    "Create your own word lists in several languages, adapted to your objectives and level of proficiency" : "Créez vos propres listes de mots dans plusieurs langues, adaptées à vos objectifs et à votre niveau.",
+    "Test and reinforce your knowledge with a variety of fun exercises designed to make learning stimulating" : "Testez et renforcez vos connaissances avec des exercices variés et ludiques, conçus pour rendre l'apprentissage stimulant.",
+    "Interactive exercises" : "Des exercices interactifs",
+    "Your personal dictionaries" : "Vos dictionnaires personnels"
   },
   "WelcomeHeader" : {
     "Pricing": "Tarifs",

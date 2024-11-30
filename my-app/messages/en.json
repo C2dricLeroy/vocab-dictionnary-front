@@ -1,6 +1,13 @@
 {
   "HomePage": {
-    "title": "Hello world"
+    "Welcome on LexiLearn": "Welcome on LexiLearn",
+    "Your vocabulary builder": "Your vocabulary builder",
+    "Whether you're a student, professional or language enthusiast, LexiLearn helps you build a solid, relevant vocabulary in the languages of your choice More than just an application, it's your intelligent revision companion" : "Whether you're a student, professional or language enthusiast, LexiLearn helps you build a solid, relevant vocabulary in the languages of your choice. More than just an application, it's your intelligent revision companion.",
+    "Learn, enrich, master Your multilingual vocabulary at your fingertips": "Learn, enrich, master :  Your multilingual vocabulary at your fingertips",
+    "Create your own word lists in several languages, adapted to your objectives and level of proficiency": "Create your own word lists in several languages, adapted to your objectives and level of proficiency.",
+    "Test and reinforce your knowledge with a variety of fun exercises designed to make learning stimulating" : "Test and reinforce your knowledge with a variety of fun exercises designed to make learning stimulating.",
+    "Interactive exercises" : "Interactive exercises",
+    "Your personal dictionaries" : "Your personal dictionaries"
   },
   "WelcomeHeader" : {
     "Pricing": "Pricing",

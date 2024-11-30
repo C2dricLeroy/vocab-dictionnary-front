@@ -14,13 +14,13 @@ export default function Home() {
     const features = [
         {
             icon: Book,
-            title: t("feature1.title"),
-            description: t("feature1.description"),
+            title: t("Your personal dictionaries"),
+            description: t("Create your own word lists in several languages, adapted to your objectives and level of proficiency"),
         },
         {
             icon: Globe,
-            title: t("feature2.title"),
-            description: t("feature2.description"),
+            title: t("Interactive exercises"),
+            description: t("Test and reinforce your knowledge with a variety of fun exercises designed to make learning stimulating"),
         },
         {
             icon: Brain,
@@ -51,7 +51,6 @@ export default function Home() {
             </header>
 
             <main className="flex-grow">
-                {/* Hero Section */}
                 <section className="relative py-20 overflow-hidden">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center space-y-8">
@@ -61,7 +60,7 @@ export default function Home() {
                                 transition={{ duration: 0.5 }}
                                 className="text-4xl md:text-6xl font-bold text-gray-900"
                             >
-                                {t("hero.title")}
+                                {t("Welcome on LexiLearn")}
                             </motion.h1>
                             <motion.p
                                 initial={{ opacity: 0, y: 20 }}
@@ -69,7 +68,7 @@ export default function Home() {
                                 transition={{ duration: 0.5, delay: 0.2 }}
                                 className="max-w-2xl mx-auto text-xl text-gray-500"
                             >
-                                {t("hero.subtitle")}
+                                {t("Your vocabulary builder")}
                             </motion.p>
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
@@ -91,10 +90,10 @@ export default function Home() {
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center mb-16">
                             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                                {t("features.title")}
+                                {t("Learn, enrich, master Your multilingual vocabulary at your fingertips")}
                             </h2>
                             <p className="text-xl text-gray-500 max-w-2xl mx-auto">
-                                {t("features.subtitle")}
+                                {t("Whether you're a student, professional or language enthusiast, LexiLearn helps you build a solid, relevant vocabulary in the languages of your choice More than just an application, it's your intelligent revision companion")}
                             </p>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
