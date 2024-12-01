@@ -1,13 +1,23 @@
 {
   "HomePage": {
     "Welcome on LexiLearn": "Welcome on LexiLearn",
-    "Your vocabulary builder": "Your vocabulary builder",
+    "Ready to transform your language learning? Join LexiLearn today and master the vocabulary that will make all the difference!": "Ready to transform your language learning? Join LexiLearn today and master the vocabulary that will make all the difference!",
     "Whether you're a student, professional or language enthusiast, LexiLearn helps you build a solid, relevant vocabulary in the languages of your choice More than just an application, it's your intelligent revision companion" : "Whether you're a student, professional or language enthusiast, LexiLearn helps you build a solid, relevant vocabulary in the languages of your choice. More than just an application, it's your intelligent revision companion.",
     "Learn, enrich, master Your multilingual vocabulary at your fingertips": "Learn, enrich, master :  Your multilingual vocabulary at your fingertips",
     "Create your own word lists in several languages, adapted to your objectives and level of proficiency": "Create your own word lists in several languages, adapted to your objectives and level of proficiency.",
     "Test and reinforce your knowledge with a variety of fun exercises designed to make learning stimulating" : "Test and reinforce your knowledge with a variety of fun exercises designed to make learning stimulating.",
     "Interactive exercises" : "Interactive exercises",
-    "Your personal dictionaries" : "Your personal dictionaries"
+    "Your personal dictionaries" : "Your personal dictionaries",
+    "Smart progress tracking" : "Smart progress tracking",
+    "Analyze your progress with detailed statistics, identify your strengths and focus on areas for improvement": "Analyze your progress with detailed statistics, identify your strengths and focus on areas for improvement.",
+    "Multilingual learning": "Multilingual learning",
+    "Learn an unlimited number of languages by creating YOUR own dictionaries" : "Learn an unlimited number of languages by creating YOUR own dictionaries",
+    "Spacing-based revisions (SRS)" : "Spacing-based revisions (SRS)",
+    "Benefit from a spaced repetition system to memorize each new word added to your vocabulary" : "Benefit from a spaced repetition system to memorize each new word added to your vocabulary.",
+    "Sharing and community" : "Sharing and community",
+    "Share your progress and discover new approaches by interacting with a community of passionate learners" : "Share your progress and discover new approaches by interacting with a community of passionate learners"
+
+
   },
   "WelcomeHeader" : {
     "Pricing": "Pricing",

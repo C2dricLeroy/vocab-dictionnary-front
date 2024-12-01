@@ -24,23 +24,23 @@ export default function Home() {
         },
         {
             icon: Brain,
-            title: t("feature3.title"),
-            description: t("feature3.description"),
+            title: t("Smart progress tracking"),
+            description: t("Analyze your progress with detailed statistics, identify your strengths and focus on areas for improvement"),
         },
         {
             icon: Trophy,
-            title: t("feature4.title"),
-            description: t("feature4.description"),
+            title: t("Multilingual learning"),
+            description: t("Learn an unlimited number of languages by creating YOUR own dictionaries"),
         },
         {
             icon: Users,
-            title: t("feature5.title"),
-            description: t("feature5.description"),
+            title: t("Spacing-based revisions (SRS)"),
+            description: t("Benefit from a spaced repetition system to memorize each new word added to your vocabulary"),
         },
         {
             icon: Rocket,
-            title: t("feature6.title"),
-            description: t("feature6.description"),
+            title: t("Sharing and community"),
+            description: t("Share your progress and discover new approaches by interacting with a community of passionate learners"),
         },
     ];
 
@@ -68,7 +68,7 @@ export default function Home() {
                                 transition={{ duration: 0.5, delay: 0.2 }}
                                 className="max-w-2xl mx-auto text-xl text-gray-500"
                             >
-                                {t("Your vocabulary builder")}
+                                {t("Ready to transform your language learning? Join LexiLearn today and master the vocabulary that will make all the difference!")}
                             </motion.p>
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
