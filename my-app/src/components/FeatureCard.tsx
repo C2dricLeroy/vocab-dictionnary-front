@@ -15,8 +15,9 @@ export default function FeatureCard({ icon: Icon, title, description }: FeatureC
         <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
+            className="h-full"
         >
-            <Card className="p-6 h-full">
+            <Card className="p-6 h-full flex flex-col justify-between">
                 <div className="space-y-4">
                     <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center">
                         <Icon className="h-6 w-6 text-primary" />

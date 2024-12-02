@@ -22,12 +22,15 @@ export default function Footer() {
                 <Link href="/" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">{t('Home')}</Link>
               </li>
               <li className="mb-2">
+                {/* @ts-expect-error on Link href*/}
                 <Link href="/about" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">{t('About')}</Link>
               </li>
               <li className="mb-2">
+                {/* @ts-expect-error on Link href*/}
                 <Link href="/pricing" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">{t('Pricing')}</Link>
               </li>
               <li className="mb-2">
+                {/* @ts-expect-error on Link href*/}
                 <Link href="/contact" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">{t('Contact')}</Link>
               </li>
             </ul>
