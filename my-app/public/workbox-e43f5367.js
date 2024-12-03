@@ -1,8 +1,11 @@
+// eslint-disable-next-line
 define(['exports'], (function (exports) { 'use strict';
 
-    // @ts-ignore
+    // @ts-expect-error not my code
     try {
+      // eslint-disable-next-line
       self['workbox:core:6.5.4'] && _();
+      // eslint-disable-next-line
     } catch (e) {}
 
     /*
@@ -49,7 +52,7 @@ define(['exports'], (function (exports) { 'use strict';
           inGroup = false;
         }
       };
-      // eslint-disable-next-line @typescript-eslint/ban-types
+      // eslint-disable-next-line
       const api = {};
       const loggerMethods = Object.keys(methodToColorMap);
       for (const key of loggerMethods) {
@@ -416,7 +419,7 @@ define(['exports'], (function (exports) { 'use strict';
     };
     const isInstance = (object,
     // Need the general type to do the check later.
-    // eslint-disable-next-line @typescript-eslint/ban-types
+    // eslint-disable-next-line 
     expectedClass, details) => {
       if (!(object instanceof expectedClass)) {
         details['expectedClassName'] = expectedClass.name;
@@ -453,9 +456,11 @@ define(['exports'], (function (exports) { 'use strict';
       isArrayOfClass
     };
 
-    // @ts-ignore
+    // @ts-expect-error not my code
     try {
+      // eslint-disable-next-line
       self['workbox:routing:6.5.4'] && _();
+      // eslint-disable-next-line
     } catch (e) {}
 
     /*
@@ -1182,10 +1187,12 @@ define(['exports'], (function (exports) { 'use strict';
       return route;
     }
 
-    // @ts-ignore
+    // @ts-expect-error not my code
     try {
+      // eslint-disable-next-line
       self['workbox:strategies:6.5.4'] && _();
-    } catch (e) {}
+      // eslint-disable-next-line
+    } catch (e) { /* empty */ }
 
     /*
       Copyright 2018 Google LLC
@@ -1227,6 +1234,7 @@ define(['exports'], (function (exports) { 'use strict';
       precache: 'precache-v2',
       prefix: 'workbox',
       runtime: 'runtime',
+      // eslint-disable-next-line
       suffix: typeof registration !== 'undefined' ? registration.scope : ''
     };
     const _createCacheName = cacheName => {
@@ -1343,7 +1351,7 @@ define(['exports'], (function (exports) { 'use strict';
     */
     // Callbacks to be executed whenever there's a quota error.
     // Can't change Function type right now.
-    // eslint-disable-next-line @typescript-eslint/ban-types
+    // eslint-disable-next-line
     const quotaErrorCallbacks = new Set();
 
     /*
@@ -1469,6 +1477,7 @@ define(['exports'], (function (exports) { 'use strict';
          * @memberof workbox-strategies.StrategyHandler
          */
         {
+          // eslint-disable-next-line
           finalAssertExports.isInstance(options.event, ExtendableEvent, {
             moduleName: 'workbox-strategies',
             className: 'StrategyHandler',
@@ -1508,6 +1517,7 @@ define(['exports'], (function (exports) { 'use strict';
           event
         } = this;
         let request = toRequest(input);
+        // eslint-disable-next-line
         if (request.mode === 'navigate' && event instanceof FetchEvent && event.preloadResponse) {
           const possiblePreloadResponse = await event.preloadResponse;
           if (possiblePreloadResponse) {
@@ -1543,6 +1553,7 @@ define(['exports'], (function (exports) { 'use strict';
           let fetchResponse;
           // See https://github.com/GoogleChrome/workbox/issues/1796
           fetchResponse = await fetch(request, request.mode === 'navigate' ? undefined : this._strategy.fetchOptions);
+          // eslint-disable-next-line
           if ("development" !== 'production') {
             logger.debug(`Network request for ` + `'${getFriendlyURL(request.url)}' returned a response with ` + `status '${fetchResponse.status}'.`);
           }
@@ -1834,6 +1845,7 @@ define(['exports'], (function (exports) { 'use strict';
        */
       async doneWaiting() {
         let promise;
+        // eslint-disable-next-line
         while (promise = this._extendLifetimePromises.shift()) {
           await promise;
         }
@@ -2005,6 +2017,7 @@ define(['exports'], (function (exports) { 'use strict';
        */
       handleAll(options) {
         // Allow for flexible options to be passed.
+        // eslint-disable-next-line
         if (options instanceof FetchEvent) {
           options = {
             event: options,
@@ -2073,6 +2086,7 @@ define(['exports'], (function (exports) { 'use strict';
         let error;
         try {
           response = await responseDone;
+          // eslint-disable-next-line
         } catch (error) {
           // Ignore errors, as response errors should be caught via the `response`
           // promise above. The `done` promise will only throw for errors in

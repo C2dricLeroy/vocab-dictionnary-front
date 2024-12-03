@@ -31,6 +31,7 @@ if (!self.define) {
             document.head.appendChild(script);
           } else {
             nextDefineUri = uri;
+            // eslint-disable-next-line
             importScripts(uri);
             resolve();
           }
@@ -67,8 +68,9 @@ if (!self.define) {
     });
   };
 }
+// eslint-disable-next-line
 define(['./workbox-e43f5367'], (function (workbox) { 'use strict';
-
+// eslint-disable-next-line
   importScripts();
   self.skipWaiting();
   workbox.clientsClaim();
@@ -76,10 +78,7 @@ define(['./workbox-e43f5367'], (function (workbox) { 'use strict';
     "cacheName": "start-url",
     plugins: [{
       cacheWillUpdate: async ({
-        request,
         response,
-        event,
-        state
       }) => {
         if (response && response.type === 'opaqueredirect') {
           return new Response(response.body, {

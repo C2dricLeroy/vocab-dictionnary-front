@@ -1,8 +1,8 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode } from 'react';
 
-interface AuthContextType {
+export interface AuthContextType {
     userId: string | null;
     isAuthenticated: boolean;
     isAuthenticating: boolean;
