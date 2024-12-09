@@ -24,7 +24,6 @@ export default function Signup() {
                 <SignupComponent/>
             </main>
 
-
             <footer className="w-full">
                 <Footer />
             </footer>

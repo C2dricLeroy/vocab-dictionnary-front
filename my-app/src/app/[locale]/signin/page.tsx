@@ -11,7 +11,7 @@ export default function Signin() {
     const authContext = useAuth();
 
     if (authContext.isAuthenticated) {
-        router.push('/dashboard');
+        router.push('/dashboard' as any);
     }
     return (
         <div className="flex flex-col min-h-screen">
@@ -31,7 +31,6 @@ export default function Signin() {
             <main className="flex-grow flex flex-col items-center justify-center px-4">
                 <SigninComponent/>
             </main>
-
 
             <footer className="w-full">
                 <Footer />

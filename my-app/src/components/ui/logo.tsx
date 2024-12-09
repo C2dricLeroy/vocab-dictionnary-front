@@ -6,7 +6,6 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { Slot } from "@radix-ui/react-slot";
 import {Link} from "@/i18n/routing";
 
-
 const logoVariants = cva(
     "flex items-center justify-center",
     {
