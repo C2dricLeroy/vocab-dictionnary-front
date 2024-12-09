@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, useCallback, ChangeEvent, FormEvent } from 'react';
 import { Button } from "@/components/ui/button";
 import {useTranslations} from "next-intl";
 
@@ -22,13 +22,15 @@ export function ContactForm() {
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({
-        ...prev,
-        [name]: value,
-        }));
-    };
+    const handleFormChange = useCallback((field: keyof FormData) => {
+        return (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+            const { value } = e.target;
+            setFormData((prev) => ({
+                ...prev,
+                [field]: value,
+            }));
+        };
+    }, []);
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -74,7 +76,7 @@ export function ContactForm() {
                         id="email"
                         name="email"
                         value={formData.email}
-                        onChange={handleChange}
+                        onChange={handleFormChange('email')}
                         className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
                         placeholder="contact@lexilearn.com"
                         required
@@ -87,7 +89,7 @@ export function ContactForm() {
                         id="subject"
                         name="subject"
                         value={formData.subject}
-                        onChange={handleChange}
+                        onChange={handleFormChange('subject')}
                         className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
                         placeholder={t("Let us know how we can help you")}
                         required
@@ -100,7 +102,7 @@ export function ContactForm() {
                         name="message"
                         rows={6}
                         value={formData.message}
-                        onChange={handleChange}
+                        onChange={handleFormChange('message')}
                         className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         placeholder={t("Leave a comment")}
                         required
