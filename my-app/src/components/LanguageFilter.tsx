@@ -106,21 +106,21 @@ export default function LanguageFilter({ onSelectLanguage }: LanguageFilterProps
                     <CommandEmpty>{t("No language found")}</CommandEmpty>
                     <CommandGroup>
                         <CommandList>
-                            {languages.map((language) => (
+                            {languages.map(({code, name}) => (
                                 <CommandItem
-                                    key={language.code}
-                                    value={language.code}
+                                    key={code}
+                                    value={code}
                                     onSelect={() => {
-                                        handleSetLanguage(language.code);
+                                        handleSetLanguage(code);
                                     }}
                                 >
                                     <Check
                                         className={cn(
                                             "mr-2 h-4 w-4",
-                                            selectedLanguage?.code === language.code ? "opacity-100" : "opacity-0"
+                                            selectedLanguage?.code === code ? "opacity-100" : "opacity-0"
                                         )}
                                     />
-                                    {language.name}
+                                    {name}
                                 </CommandItem>
                             ))}
                         </CommandList>
