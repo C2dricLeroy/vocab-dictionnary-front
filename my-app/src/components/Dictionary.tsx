@@ -1,5 +1,5 @@
 
-import React, { Fragment } from "react";
+import React from "react";
 
 interface WordEntry {
     word: string;
@@ -23,13 +23,15 @@ export const Dictionary: React.FC<DictionaryProps> = ({ dictionaryData }) => {
         return <p>No data available.</p>;
     }
 
+    const {title, language_name, description, words} = dictionaryData;
+
     return (
         <div className="p-4 border border-gray-300 rounded-md shadow-sm dark:border-gray-700">
-            <h2 className="text-xl font-bold mb-2">{dictionaryData.title}</h2>
-            <p><strong>Language:</strong> {dictionaryData.language_name}</p>
-            <p><strong>Description:</strong> {dictionaryData.description}</p>
+            <h2 className="text-xl font-bold mb-2">{title}</h2>
+            <p><strong>Language:</strong> {language_name}</p>
+            <p><strong>Description:</strong> {description}</p>
 
-            {dictionaryData.words && dictionaryData.words.length > 0 ? (
+            {words && words.length > 0 ? (
                 <table className="mt-4 w-full border-collapse">
                     <thead>
                     <tr>
@@ -39,11 +41,11 @@ export const Dictionary: React.FC<DictionaryProps> = ({ dictionaryData }) => {
                     </tr>
                     </thead>
                     <tbody>
-                    {dictionaryData.words.map((wordEntry, index) => (
+                    {dictionaryData.words.map(({word, translation, description}, index) => (
                         <tr key={index}>
-                            <td className="border border-gray-300 px-4 py-2">{wordEntry.word}</td>
-                            <td className="border border-gray-300 px-4 py-2">{wordEntry.translation}</td>
-                            <td className="border border-gray-300 px-4 py-2">{wordEntry.description}</td>
+                            <td className="border border-gray-300 px-4 py-2">{word}</td>
+                            <td className="border border-gray-300 px-4 py-2">{translation}</td>
+                            <td className="border border-gray-300 px-4 py-2">{description}</td>
                         </tr>
                     ))}
                     </tbody>
