@@ -12,7 +12,6 @@ export default function About() {
                 <p>About</p>
             </main>
 
-
             <footer className="w-full">
                 <Footer />
             </footer>

@@ -8,7 +8,6 @@ import {useRouter} from '@/i18n/routing';
 import {useTranslations} from "next-intl";
 import {Link} from "@/i18n/routing";
 
-
 export default function SigninComponent() {
     const t = useTranslations('Signin');
     const [password, setPassword] = useState<string>('');

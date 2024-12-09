@@ -7,7 +7,6 @@ import { AuthProvider } from "@/utils/context/AuthContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
-
 export default async function RootLayout({
   children,
   params: { locale }, // eslint-disable-line

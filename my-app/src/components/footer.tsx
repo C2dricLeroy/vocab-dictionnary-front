@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="bg-gray-200 text-gray-900 py-8 shadow-[8px_8px_16px_#d1d9e6,_-8px_-8px_16px_#ffffff] dark:bg-gray-800 dark:text-white dark:shadow-[inset_1px_1px_2px_#2e2e2e,_inset_-1px_-1px_2px_#3f3f3f]">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap justify-between">
-          
+
           <div className="w-full sm:w-1/2 lg:w-1/3 mb-6">
             <h2 className="text-lg font-semibold mb-4">{t('About us')}</h2>
             <p className="text-gray-600 dark:text-gray-400">

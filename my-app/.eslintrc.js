@@ -29,5 +29,13 @@ module.exports = {
     'jsx-a11y/anchor-is-valid': 'warn',
     'semi': ['error', 'always'],
     '@typescript-eslint/no-explicit-any': 'off',
+    'no-trailing-spaces': 'error',
+    'no-multiple-empty-lines': ['error', { max: 1 }],
+    'padding-line-between-statements': [
+      'error',
+      { blankLine: 'always', prev: '*', next: 'function' },
+      { blankLine: 'always', prev: '*', next: 'class' },
+      { blankLine: 'any', prev: 'block-like', next: '*' }
+    ]
   },
 };

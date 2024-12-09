@@ -30,7 +30,6 @@ const DialogOverlay = React.forwardRef<
 // @ts-expect-error TypeScript does not correctly infer the type of DialogOverlay
 DialogOverlay.displayName = DialogPrimitive.Overlay;
 
-
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>

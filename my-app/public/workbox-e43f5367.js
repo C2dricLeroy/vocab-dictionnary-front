@@ -419,7 +419,7 @@ define(['exports'], (function (exports) { 'use strict';
     };
     const isInstance = (object,
     // Need the general type to do the check later.
-    // eslint-disable-next-line 
+    // eslint-disable-next-line
     expectedClass, details) => {
       if (!(object instanceof expectedClass)) {
         details['expectedClassName'] = expectedClass.name;

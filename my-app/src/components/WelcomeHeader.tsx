@@ -31,7 +31,7 @@ export default function WelcomeHeader() {
                     variant="default"
                     variantSize="lg"
                 />
-    
+
                 <div className="hidden md:flex space-x-4 items-center">
                     <Button size="lg" variant="outline">
                         {/* @ts-expect-error on Link href*/}
@@ -53,7 +53,7 @@ export default function WelcomeHeader() {
                     )}
                     <ModeToggle />
                 </div>
-    
+
                 <div className="md:hidden">
                     <button
                         onClick={toggleMenu}
@@ -76,12 +76,11 @@ export default function WelcomeHeader() {
                     </button>
                 </div>
             </div>
-    
+
             {isMenuOpen && (
                 <HeaderToggleMenu context={context}
                         className="flex flex-col mt-4 space-y-4 w-full items-center"
                     />
-                    
             )}
         </div>
     );
