@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 export interface AuthContextType {
     userId: string | null;
@@ -15,6 +15,14 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [userId, setUserId] = useState<string | null>(null);
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+
+    useEffect(() => {
+        const storedUserId = localStorage.getItem('userId');
+        if (storedUserId) {
+            setUserId(storedUserId);
+            setIsAuthenticated(true);
+        }
+    }, []);
 
     const login = async (email: string | null, password: string | null): Promise<{ success: boolean, message?: string }> => {
         const url = process.env.NEXT_PUBLIC_BASE_URL + '/api/auth/login/';
