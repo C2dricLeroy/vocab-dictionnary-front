@@ -76,7 +76,7 @@ export default function LanguageFilter({ onSelectLanguage }: LanguageFilterProps
         <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
                 <Button
-                    variant="outline"
+                    variant="filter"
                     role="combobox"
                     aria-expanded={open}
                     className="w-full justify-between"
@@ -100,7 +100,7 @@ export default function LanguageFilter({ onSelectLanguage }: LanguageFilterProps
                     <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-full p-0">
+            <PopoverContent className="w-[--radix-popover-trigger-width] p-0">
                 <Command>
                     <CommandInput placeholder={t("Search language")} />
                     <CommandEmpty>{t("No language found")}</CommandEmpty>
