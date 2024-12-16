@@ -16,14 +16,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [userId, setUserId] = useState<string | null>(null);
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
-
-
     const login = async (email: string | null, password: string | null): Promise<{ success: boolean, message?: string }> => {
         const url = process.env.NEXT_PUBLIC_BASE_URL + '/api/auth/login/';
 
         const data = {
             "username": email,
-            'password': password
+            "password": password
         };
 
         try {
@@ -39,13 +37,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 if (response.status === 401) {
                     return {success: false, message: "Invalid username or password"};
                 } else {
-                    return {success: false, message: "An error occurred. Please try again"};
+                    return {success: false, message: "An error occurred, Please try again"};
                 }
             }
 
             const responseData = await response.json();
-
-            console.log(responseData);
 
             setUserId(responseData.user_id);
             setIsAuthenticated(true);
@@ -54,7 +50,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             return {success: true};
         } catch (error) {
             console.error('Error fetching data:', error);
-            return { success: false, message: "Network error. Please try again." };
+            return { success: false, message: "Network error, Please try again" };
         }
     };
 

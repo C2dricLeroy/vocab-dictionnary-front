@@ -53,7 +53,9 @@
     "Sign in with Google": "Sign in with Google",
     "Dont have an account?": "Don't have an account?",
     "Sign up": "Sign up",
-    "Invalid username or password": "Invalid username or password"
+    "Invalid username or password": "Invalid username or password",
+    "An error occurred, Please try again": "An error occurred, Please try again",
+    "Network error, Please try again": "Network error, Please try again"
   },
   "Signup" : {
     "Enter your email": "Enter your email",
