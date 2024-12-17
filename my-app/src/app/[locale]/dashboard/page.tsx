@@ -5,19 +5,35 @@ import { Logo } from "@/components/ui/logo";
 import Footer from "@/components/footer";
 import useAuth from "@/utils/context/AuthContext";
 import { useRouter } from '@/i18n/routing';
-import { DashboardDictionaries } from "@/components/DashboardDictionaries";
-import { DashboardProfile } from "@/components/DashboardProfile";
-import { DashboardStatistics } from "@/components/DashboardStatistics";
-import { DashboardFavorites } from "@/components/DashboardFavorites";
-import { DashboardActivities } from "@/components/DashboardActivities";
+import { DashboardDictionaries } from "@/components/dashboard/DashboardDictionaries";
+import { DashboardProfile } from "@/components/dashboard/DashboardProfile";
+import { DashboardStatistics } from "@/components/dashboard/DashboardStatistics";
+import { DashboardFavorites } from "@/components/dashboard/DashboardFavorites";
+import { DashboardActivities } from "@/components/dashboard/DashboardActivities";
+import { useState, useEffect } from "react";
 
 export default function Dashboard() {
     const router = useRouter();
     const authContext = useAuth();
+    const [dictionaries, setDictionaries] = useState<any[]>([]);
 
     if (!authContext.isAuthenticated) {
         router.push('/signin');
     }
+
+    const fetchDictionaries = async () => {
+        const url = process.env.NEXT_PUBLIC_BASE_URL + '/api/dictionaries/';
+        const response = await fetch(url, {
+            credentials: 'include',
+        });
+        const data = await response.json();
+        console.log(data);
+        setDictionaries(data);
+    };
+
+    useEffect(() => {
+        fetchDictionaries();
+    }, []);
 
     return (
         <div className="bg-gray-100 text-white min-h-screen dark:bg-gray-900">
@@ -37,7 +53,7 @@ export default function Dashboard() {
                 <div className="w-full p-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 m-6">
 
-                        <DashboardDictionaries dictionaries={[]} />
+                        <DashboardDictionaries dictionaries={dictionaries} />
                         <DashboardProfile />
                         <DashboardStatistics />
                         <DashboardFavorites />

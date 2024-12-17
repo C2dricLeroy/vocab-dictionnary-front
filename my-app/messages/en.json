@@ -18,12 +18,21 @@
     "Share your progress and discover new approaches by interacting with a community of passionate learners" : "Share your progress and discover new approaches by interacting with a community of passionate learners",
     "Join Lexit": "Join Lexit",
     "Learn More": "Learn More",
+<<<<<<< HEAD
     "What is Lexit and how does it work?": "What is Lexit and how does it work?",
     "Lexit is a language-learning application designed to help you expand and master your vocabulary in multiple languages You can build personalized vocabulary lists, track your progress with intelligent revision tools, and access interactive quizzes to reinforce your learning" : "Lexit is a language-learning application designed to help you expand and master your vocabulary in multiple languages. You can build personalized vocabulary lists, track your progress with intelligent revision tools, and access interactive quizzes to reinforce your learning.",
     "Is Lexit suitable for beginners?" : "Is Lexit suitable for beginners?",
     "Absolutely! Lexit caters to all levels, from beginners to advanced learners You can start with basic vocabulary and progress at your own pace, leveraging features like customizable study plans and contextual examples": "Absolutely! Lexit caters to all levels, from beginners to advanced learners. You can start with basic vocabulary and progress at your own pace, leveraging features like customizable study plans and contextual examples.",
     "Can I use Lexit offline?": "Can I use Lexit offline?",
     "No, for the moment you cannot use Lexit offline, but we are working on it": "No, for the moment you cannot use Lexit offline, but we are working on it."
+=======
+    "What is LexiLearn and how does it work?": "What is LexiLearn and how does it work?",
+    "LexiLearn is a language-learning application designed to help you expand and master your vocabulary in multiple languages You can build personalized vocabulary lists, track your progress with intelligent revision tools, and access interactive quizzes to reinforce your learning" : "LexiLearn is a language-learning application designed to help you expand and master your vocabulary in multiple languages. You can build personalized vocabulary lists, track your progress with intelligent revision tools, and access interactive quizzes to reinforce your learning.",
+    "Is LexiLearn suitable for beginners" : "Is LexiLearn suitable for beginners?",
+    "Absolutely! LexiLearn caters to all levels, from beginners to advanced learners You can start with basic vocabulary and progress at your own pace, leveraging features like customizable study plans and contextual examples": "Absolutely! LexiLearn caters to all levels, from beginners to advanced learners. You can start with basic vocabulary and progress at your own pace, leveraging features like customizable study plans and contextual examples.",
+    "Can I use LexiLearn offline?": "Can I use LexiLearn offline?",
+    "No, for the moment you cannot use LexiLearn offline, but we are working on it": "No, for the moment you cannot use LexiLearn offline, but we are working on it."
+>>>>>>> 3dd95de ([IMP] fetch dictionaries and display it on dashboard)
 
 
   },
