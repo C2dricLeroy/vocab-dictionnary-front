@@ -1,10 +1,10 @@
 import React from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import Link from "next/link";
+import {Link} from "@/i18n/routing";
 
 interface Dictionary {
     id: number;
-    title: string;
+    name: string;
 }
 
 interface DictionariesProps {
@@ -33,7 +33,7 @@ export const DashboardDictionaries: React.FC<DictionariesProps> = ({ dictionarie
     return (
         <Card className="bg-white dark:bg-gray-800">
             <CardHeader>
-                <div className="text-xl text-gray-800 dark:text-white">Mes Dictionnaires</div>
+                <div className="text-xl font-bold text-gray-800 dark:text-white">Mes Dictionnaires</div>
             </CardHeader>
             <CardContent>
                 <div className="space-y-4">
@@ -46,7 +46,7 @@ export const DashboardDictionaries: React.FC<DictionariesProps> = ({ dictionarie
                                         href={`/dictionary/${dictionary.id}`}
                                         className="text-blue-500 hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-500"
                                     >
-                                        {dictionary.title}
+                                        {dictionary.name}
                                     </Link>
                                 </li>
                             ))}

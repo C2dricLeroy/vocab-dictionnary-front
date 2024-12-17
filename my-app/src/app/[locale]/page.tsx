@@ -134,7 +134,7 @@ export default function Home() {
                                 </AccordionContent>
                             </AccordionItem>
                             <AccordionItem value="item-2">
-                                <AccordionTrigger>{t(" Is LexiLearn suitable for beginners?")}</AccordionTrigger>
+                                <AccordionTrigger>{t("Is LexiLearn suitable for beginners")}</AccordionTrigger>
                                 <AccordionContent>
                                     {t("Absolutely! LexiLearn caters to all levels, from beginners to advanced learners You can start with basic vocabulary and progress at your own pace, leveraging features like customizable study plans and contextual examples")}
                                 </AccordionContent>
