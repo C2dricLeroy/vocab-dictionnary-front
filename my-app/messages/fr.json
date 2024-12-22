@@ -20,7 +20,7 @@
     "Learn More": "En savoir plus",
     "What is LexiLearn and how does it work?": "Qu'est-ce que LexiLearn et comment cela fonctionne-t-il ?",
     "LexiLearn is a language-learning application designed to help you expand and master your vocabulary in multiple languages You can build personalized vocabulary lists, track your progress with intelligent revision tools, and access interactive quizzes to reinforce your learning": "LexiLearn est une application d'apprentissage des langues conçue pour vous aider à enrichir et à maîtriser votre vocabulaire dans plusieurs langues. Vous pouvez créer des listes de vocabulaire personnalisées, suivre vos progrès grâce à des outils de révision intelligents et accéder à des quiz interactifs pour renforcer votre apprentissage.",
-    "Is LexiLearn suitable for beginner?": "LexiLearn est-il adapté aux débutants ?",
+    "Is LexiLearn suitable for beginners": "LexiLearn est-il adapté aux débutants ?",
     "Absolutely! LexiLearn caters to all levels, from beginners to advanced learners You can start with basic vocabulary and progress at your own pace, leveraging features like customizable study plans and contextual examples": "Absolument ! LexiLearn s'adresse à tous les niveaux, des débutants aux apprenants avancés. Vous pouvez commencer par le vocabulaire de base et progresser à votre rythme, en tirant parti de fonctions telles que les plans d'étude personnalisables et les exemples contextuels.",
     "Can I use LexiLearn offline?": "Puis-je utiliser LexiLearn hors ligne ?",
     "No, for the moment you cannot use LexiLearn offline, but we are working on it": "Non, pour le moment, vous ne pouvez pas utiliser LexiLearn hors ligne, mais nous travaillons sur ce sujet"
@@ -107,6 +107,7 @@
   },
   "Dashboard": {
     "Select a language to view dictionary data": "Veuillez sélectionner un language pour afficher le dictionnaire.",
-    "No data found for this language": "Aucune donnée pour ce language."
+    "No data found for this language": "Aucune donnée pour ce language.",
+    "Modify Profile": "Modifier le profil"
   }
 }

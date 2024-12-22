@@ -107,6 +107,7 @@
   },
   "Dashboard": {
     "Select a language to view dictionary data": "Select a language to view dictionary data.",
-    "No data found for this language": "No data found for this language."
+    "No data found for this language": "No data found for this language.",
+    "Modify Profile": "Modify Profile"
   }
 }
