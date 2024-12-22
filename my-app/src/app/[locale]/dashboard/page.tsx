@@ -1,16 +1,16 @@
 'use client';
 
-import { ModeToggle } from "@/components/Modetoggle";
-import { Logo } from "@/components/ui/logo";
+import {ModeToggle} from "@/components/Modetoggle";
+import {Logo} from "@/components/ui/logo";
 import Footer from "@/components/footer";
 import useAuth from "@/utils/context/AuthContext";
-import { useRouter } from '@/i18n/routing';
-import { DashboardDictionaries } from "@/components/dashboard/DashboardDictionaries";
-import { DashboardProfile } from "@/components/dashboard/DashboardProfile";
-import { DashboardStatistics } from "@/components/dashboard/DashboardStatistics";
-import { DashboardFavorites } from "@/components/dashboard/DashboardFavorites";
-import { DashboardActivities } from "@/components/dashboard/DashboardActivities";
-import { useState, useEffect } from "react";
+import {useRouter} from '@/i18n/routing';
+import {DashboardDictionaries} from "@/components/dashboard/DashboardDictionaries";
+import {DashboardProfile} from "@/components/dashboard/DashboardProfile";
+import {DashboardStatistics} from "@/components/dashboard/DashboardStatistics";
+import {DashboardFavorites} from "@/components/dashboard/DashboardFavorites";
+import {DashboardActivities} from "@/components/dashboard/DashboardActivities";
+import {useState, useEffect} from "react";
 
 export default function Dashboard() {
     const router = useRouter();
@@ -27,7 +27,6 @@ export default function Dashboard() {
             credentials: 'include',
         });
         const data = await response.json();
-        console.log(data);
         setDictionaries(data);
     };
 
