@@ -9,7 +9,7 @@ export const DashboardStatistics: React.FC = () => {
 
     const [statistics, setStatistics] = useState<{
         totalWordsAdded: number;
-        wordsAddedThisMonth: number;
+        totalDictionaries: number;
     } | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -26,8 +26,8 @@ export const DashboardStatistics: React.FC = () => {
 
             const data = await response.json();
             setStatistics({
-                totalWordsAdded: data.total_dictionaries,
-                wordsAddedThisMonth: data.total_entries,
+                totalDictionaries: data.total_dictionaries,
+                totalWordsAdded: data.total_entries,
             });
         } catch (error) {
             console.error(error);
@@ -52,7 +52,8 @@ export const DashboardStatistics: React.FC = () => {
             <CardContent>
                 <div className="space-y-4">
                     <p>{t("total words added")} : <span className="font-bold">{statistics?.totalWordsAdded}</span></p>
-                    <p>{t("words added this month")} : <span className="font-bold">{statistics?.wordsAddedThisMonth}</span></p>
+                    <p>{t("total dictionaries")} : <span className="font-bold">{statistics?.totalDictionaries}</span></p>
+                    {/* <p>{t("words added this month")} : <span className="font-bold">{statistics?.wordsAddedThisMonth}</span></p> */}
                 </div>
             </CardContent>
         </Card>
