@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 export const DashboardActivities: React.FC = () => {
     return (
-        <Card className='m-6 bg-white dark:bg-gray-800'>
+        <Card className='p-6 bg-white dark:bg-gray-800'>
             <CardHeader>
                 <div className="text-xl text-gray-800 dark:text-white">Activité récente</div>
             </CardHeader>
