@@ -31,7 +31,7 @@ export const DashboardDictionaries: React.FC<DictionariesProps> = ({ dictionarie
     }
 
     return (
-        <Card className="bg-white dark:bg-gray-800">
+        <Card className="bg-white dark:bg-gray-800 h-full">
             <CardHeader>
                 <div className="text-xl font-bold text-gray-800 dark:text-white">Mes Dictionnaires</div>
             </CardHeader>
