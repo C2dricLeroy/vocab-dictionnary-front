@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {Link} from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 interface Dictionary {
     id: number;
@@ -12,17 +13,18 @@ interface DictionariesProps {
 }
 
 export const DashboardDictionaries: React.FC<DictionariesProps> = ({ dictionaries }) => {
+    const t = useTranslations("Dashboard");
     if (!dictionaries || dictionaries.length === 0) {
         return (
             <Card className="bg-white dark:bg-gray-800 h-full">
             <CardHeader>
-                <div className="text-xl font-bold text-gray-800 dark:text-white">Mes Dictionnaires</div>
+                <div className="text-xl font-bold text-gray-800 dark:text-white">{t('My dictionaries')}</div>
             </CardHeader>
             <CardContent>
                 <div className="space-y-4">
-                    <p>Total de dictionnaires : <span className="font-bold">{dictionaries.length}</span></p>
+                    <p>{t('Total dictionaries')}: <span className="font-bold">{dictionaries.length}</span></p>
                     <div className="max-h-60 overflow-y-auto">
-                        <p>Aucun dictionnaire disponible</p>
+                        <p>{t('No dictionary available')}</p>
                     </div>
                 </div>
             </CardContent>
@@ -33,11 +35,11 @@ export const DashboardDictionaries: React.FC<DictionariesProps> = ({ dictionarie
     return (
         <Card className="bg-white dark:bg-gray-800 h-full">
             <CardHeader>
-                <div className="text-xl font-bold text-gray-800 dark:text-white">Mes Dictionnaires</div>
+                <div className="text-xl font-bold text-gray-800 dark:text-white">{t('My dictionaries')}</div>
             </CardHeader>
             <CardContent>
                 <div className="space-y-4">
-                    <p>Total de dictionnaires : {dictionaries.length}</p>
+                    <p>{t('Total dictionaries')}: {dictionaries.length}</p>
                     <div className="max-h-60 overflow-y-auto">
                         <ul>
                             {dictionaries.map((dictionary) => (
