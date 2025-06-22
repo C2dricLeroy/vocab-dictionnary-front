@@ -22,7 +22,7 @@ export default function Dashboard() {
     }
 
     const fetchDictionaries = async () => {
-        const url = process.env.NEXT_PUBLIC_BASE_URL + '/api/dictionaries/';
+        const url = process.env.NEXT_PUBLIC_BASE_URL + '/api/v1/dictionary/';
         const response = await fetch(url, {
             credentials: 'include',
         });
