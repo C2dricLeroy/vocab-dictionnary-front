@@ -18,7 +18,7 @@ export default function WelcomeSection() {
             >
                 &times;
             </button>
-            <h1 className="text-4xl font-bold mb-4">Bienvenue sur LexiLearn!</h1>
+            <h1 className="text-4xl font-bold mb-4">Bienvenue sur Lexit!</h1>
             <p className="text-lg text-center">
                 Construisez et enrichissez votre dictionnaire de vocabulaire personnalisé dans différentes langues.
             </p>

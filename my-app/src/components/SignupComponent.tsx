@@ -24,7 +24,7 @@ export default function SignupComponent() {
         e.preventDefault();
 
         const base_url = process.env.NEXT_PUBLIC_BASE_URL;
-        const url = base_url + '/api/auth/register/';
+        const url = base_url + '/api/v1/user/signup/';
 
         const data = {
             "username": username,

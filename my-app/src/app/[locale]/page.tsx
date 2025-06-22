@@ -66,7 +66,7 @@ export default function Home() {
                                 transition={{ duration: 0.5 }}
                                 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-gray-100"
                             >
-                                {t("Welcome on LexiLearn")}
+                                {t("Welcome on Lexit")}
                             </motion.h1>
                             <motion.p
                                 initial={{ opacity: 0, y: 20 }}
@@ -75,7 +75,7 @@ export default function Home() {
                                 className="max-w-2xl mx-auto text-xl text-gray-500 dark:text-gray-400"
                             >
                                 {t(
-                                    "Ready to transform your language learning? Join LexiLearn today and master the vocabulary that will make all the difference!"
+                                    "Ready to transform your language learning? Join Lexit today and master the vocabulary that will make all the difference!"
                                 )}
                             </motion.p>
                             <motion.div
@@ -86,7 +86,7 @@ export default function Home() {
                             >
                                 {/* @ts-expect-error on Link href*/}
                                 <Button size="lg" href="/signin">
-                                    {t("Join LexiLearn")}
+                                    {t("Join Lexit")}
                                 </Button>
                                 {/* @ts-expect-error on Link href*/}
                                 <Button size="lg" variant="outline" href="/about">
@@ -105,7 +105,7 @@ export default function Home() {
                             </h2>
                             <p className="text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
                                 {t(
-                                    "Whether you're a student, professional or language enthusiast, LexiLearn helps you build a solid, relevant vocabulary in the languages of your choice More than just an application, it's your intelligent revision companion"
+                                    "Whether you're a student, professional or language enthusiast, Lexit helps you build a solid, relevant vocabulary in the languages of your choice More than just an application, it's your intelligent revision companion"
                                 )}
                             </p>
                         </div>
@@ -128,21 +128,21 @@ export default function Home() {
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <Accordion type="single" collapsible className="w-full">
                             <AccordionItem value="item-1">
-                                <AccordionTrigger>{t("What is LexiLearn and how does it work?")}</AccordionTrigger>
+                                <AccordionTrigger>{t("What is Lexit and how does it work?")}</AccordionTrigger>
                                 <AccordionContent>
-                                    {t("LexiLearn is a language-learning application designed to help you expand and master your vocabulary in multiple languages You can build personalized vocabulary lists, track your progress with intelligent revision tools, and access interactive quizzes to reinforce your learning")}
+                                    {t("Lexit is a language-learning application designed to help you expand and master your vocabulary in multiple languages You can build personalized vocabulary lists, track your progress with intelligent revision tools, and access interactive quizzes to reinforce your learning")}
                                 </AccordionContent>
                             </AccordionItem>
                             <AccordionItem value="item-2">
-                                <AccordionTrigger>{t(" Is LexiLearn suitable for beginners?")}</AccordionTrigger>
+                                <AccordionTrigger>{t(" Is Lexit suitable for beginners?")}</AccordionTrigger>
                                 <AccordionContent>
-                                    {t("Absolutely! LexiLearn caters to all levels, from beginners to advanced learners You can start with basic vocabulary and progress at your own pace, leveraging features like customizable study plans and contextual examples")}
+                                    {t("Absolutely! Lexit caters to all levels, from beginners to advanced learners You can start with basic vocabulary and progress at your own pace, leveraging features like customizable study plans and contextual examples")}
                                 </AccordionContent>
                             </AccordionItem>
                             <AccordionItem value="item-3">
-                                <AccordionTrigger>{t("Can I use LexiLearn offline?")}</AccordionTrigger>
+                                <AccordionTrigger>{t("Can I use Lexit offline?")}</AccordionTrigger>
                                 <AccordionContent>
-                                    {t("No, for the moment you cannot use LexiLearn offline, but we are working on it")}
+                                    {t("No, for the moment you cannot use Lexit offline, but we are working on it")}
                                 </AccordionContent>
                             </AccordionItem>
                         </Accordion>

@@ -25,10 +25,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }, []);
 
     const login = async (email: string | null, password: string | null): Promise<{ success: boolean, message?: string }> => {
-        const url = process.env.NEXT_PUBLIC_BASE_URL + '/api/auth/login/';
+        const url = process.env.NEXT_PUBLIC_BASE_URL + '/api/v1/user/login';
 
         const data = {
-            "username": email,
+            "email": email,
             "password": password
         };
 

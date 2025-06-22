@@ -51,7 +51,7 @@ export default function Dashboard() {
             <header className="bg-gray-100 dark:bg-gray-800 py-4 px-8 flex items-center justify-between shadow-md w-full">
                 <Logo
                     logoSrc="/logo.png"
-                    altText="LexiLearn Logo"
+                    altText="Lexit Logo"
                     variant="default"
                     variantSize="lg"
                 />

@@ -49,7 +49,7 @@ export default function LanguageFilter({ onSelectLanguage }: LanguageFilterProps
 
     const fetchAvailableLanguages = async () => {
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/languages/`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/language/`, {
                 method: "GET",
                 credentials: "include",
                 headers: {

@@ -38,7 +38,7 @@ export default function Footer() {
 
           <div className="w-full sm:w-1/2 lg:w-1/3 mb-6">
             <h2 className="text-lg font-semibold mb-4">{t('Contact us')}</h2>
-            <p className="text-gray-600 dark:text-gray-400">Email: contact@lexilearn.eu</p>
+            <p className="text-gray-600 dark:text-gray-400">Email: cedric.lexoy@lexit.icu</p>
             <div className="flex space-x-4 mt-4">
               <a href="my-app/src/app/[locale]/components#" className="hover:text-gray-800 dark:hover:text-gray-300">
                 <i className="fab fa-facebook-f"></i>

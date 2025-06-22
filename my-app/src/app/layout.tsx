@@ -3,8 +3,8 @@ import './[locale]/globals.css';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'LexiLearn',
-    description: 'Apprendre avec LexiLearn',
+    title: 'Lexit',
+    description: 'Apprendre avec Lexit',
 };
 
 type Props = {
@@ -16,7 +16,7 @@ export default function RootLayout({ children }: Props) {
         <html lang="en">
         <head>
             <link rel="icon" href="/logo.png" type="image/png" />
-            <title>LexiLearn</title>
+            <title>Lexit</title>
         </head>
         <body>{children}</body>
         </html>

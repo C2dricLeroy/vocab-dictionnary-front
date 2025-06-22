@@ -1,6 +1,6 @@
 /**
  * Fetches the current user's ID from the authentication endpoint.
- * Makes an authenticated request to the /api/auth/me/ endpoint to get the user information.
+ * Makes an authenticated request to the /api/v1/user/me/ endpoint to get the user information.
  *
  * @returns {Promise<number | null>} Returns the user ID if successful, null if:
  *   - The user is not authenticated
@@ -12,7 +12,7 @@
 export async function fetchUserInfo(): Promise<number | null> {
     try {
         const response = await fetch(
-            process.env.NEXT_PUBLIC_BASE_URL + "/api/auth/me/",
+            process.env.NEXT_PUBLIC_BASE_URL + "/api/v1/user/me/",
             {
                 method: "GET",
                 credentials: "include"

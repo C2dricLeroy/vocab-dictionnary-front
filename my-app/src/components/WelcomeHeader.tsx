@@ -29,7 +29,7 @@ export default function WelcomeHeader() {
             <div className="flex items-center justify-between w-full">
                 <Logo
                     logoSrc="/logo.png"
-                    altText="LexiLearn Logo"
+                    altText="Lexit Logo"
                     variant="default"
                     variantSize="lg"
                 />

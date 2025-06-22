@@ -2,8 +2,8 @@ import { MetadataRoute } from 'next';
 
 export default async function manifest(): Promise<MetadataRoute.Manifest> {
     return {
-        name: "LexiLearn",
-        short_name: "Lexi",
+        name: "Lexit",
+        short_name: "Lexit",
         start_url: '/',
         display: 'fullscreen',
         background_color: '#ffffff',
