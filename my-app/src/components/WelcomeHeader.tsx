@@ -8,6 +8,7 @@ import {Link} from "@/i18n/routing";
 import useAuth from "@/utils/context/AuthContext";
 import {useState} from "react";
 import HeaderToggleMenu from "@/components/HeaderToggleMenu";
+import { LanguageSwitcher } from "./LangugageSwitcher";
 
 export default function WelcomeHeader() {
     const context = useAuth();
@@ -33,6 +34,7 @@ export default function WelcomeHeader() {
                 />
 
                 <div className="hidden md:flex space-x-4 items-center">
+                    <LanguageSwitcher/>
                     <Button size="lg" variant="outline">
                         {/* @ts-expect-error on Link href*/}
                         <Link href="/pricing">{t("Pricing")}</Link>
