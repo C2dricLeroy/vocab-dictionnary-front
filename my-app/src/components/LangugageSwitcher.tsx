@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname, useRouter } from '@/i18n/routing';
+import { usePathname, useRouter } from '@/i18n/navigation';
 import { useLocale } from 'next-intl';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';

@@ -4,7 +4,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Slot } from "@radix-ui/react-slot";
-import {Link} from "@/i18n/routing";
+import {Link} from '@/i18n/navigation';
 import Image from "next/image";
 
 const logoVariants = cva(

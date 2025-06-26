@@ -4,7 +4,7 @@ import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/Modetoggle";
 import {useTranslations} from 'next-intl';
-import {Link} from "@/i18n/routing";
+import {Link} from '@/i18n/navigation';
 import useAuth from "@/utils/context/AuthContext";
 import {useState} from "react";
 import HeaderToggleMenu from "@/components/HeaderToggleMenu";

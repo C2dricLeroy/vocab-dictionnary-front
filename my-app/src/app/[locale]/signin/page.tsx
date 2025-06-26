@@ -5,7 +5,7 @@ import SigninComponent from "@/components/SigninComponent";
 import {Logo} from "@/components/ui/logo";
 import Footer from "@/components/footer";
 import useAuth from "@/utils/context/AuthContext";
-import {useRouter} from '@/i18n/routing';
+import {useRouter} from '@/i18n/navigation';
 export default function Signin() {
     const router = useRouter();
     const authContext = useAuth();

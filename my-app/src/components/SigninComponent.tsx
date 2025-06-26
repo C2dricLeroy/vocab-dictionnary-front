@@ -4,9 +4,9 @@ import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
 import GoogleButton from "@/components/ui/googleButton";
 import {useState, FormEvent} from "react";
-import {useRouter} from '@/i18n/routing';
+import {useRouter} from '@/i18n/navigation';
 import {useTranslations} from "next-intl";
-import {Link} from "@/i18n/routing";
+import {Link} from '@/i18n/navigation';
 import useAuth from "@/utils/context/AuthContext";
 
 export default function SigninComponent() {

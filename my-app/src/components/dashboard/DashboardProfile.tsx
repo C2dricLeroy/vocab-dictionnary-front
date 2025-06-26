@@ -2,11 +2,14 @@ import React from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/routing";
+import { Link } from '@/i18n/navigation';
+import useAuth from "@/utils/context/AuthContext";
 
 export const DashboardProfile: React.FC = () => {
 
     const t = useTranslations("Dashboard");
+
+    const { user } = useAuth();
 
     return (
         <Card className="bg-white dark:bg-gray-800">
@@ -15,8 +18,8 @@ export const DashboardProfile: React.FC = () => {
             </CardHeader>
             <CardContent>
                 <div className="space-y-4">
-                    <p>Nom : John Doe</p>
-                    <p>Email : john.doe@example.com</p>
+                    <p>{t('Name')} : {user?.name ?? "Inconnu"}</p>
+                    <p>{t('Email')} : {user?.email ?? "Inconnu"}</p>
                     <Button variant="default">
                         {/* @ts-expect-error on Link href*/}
                         <Link href="/profile">{t("Modify Profile")}</Link>

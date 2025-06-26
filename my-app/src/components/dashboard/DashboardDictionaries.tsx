@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import {Link} from "@/i18n/routing";
+import {Link} from '@/i18n/navigation';
 import { useTranslations } from "next-intl";
 
 interface Dictionary {

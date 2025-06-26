@@ -4,7 +4,7 @@ import {ModeToggle} from "@/components/Modetoggle";
 import {Logo} from "@/components/ui/logo";
 import Footer from "@/components/footer";
 import useAuth from "@/utils/context/AuthContext";
-import {useRouter} from '@/i18n/routing';
+import {useRouter} from '@/i18n/navigation';
 import {DashboardDictionaries} from "@/components/dashboard/DashboardDictionaries";
 import {DashboardProfile} from "@/components/dashboard/DashboardProfile";
 import {DashboardStatistics} from "@/components/dashboard/DashboardStatistics";

@@ -1,21 +1,25 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import {NextIntlClientProvider} from 'next-intl';
-import {getMessages} from 'next-intl/server';
 import { AuthProvider } from "@/utils/context/AuthContext";
+import {NextIntlClientProvider, hasLocale} from 'next-intl';
+import {notFound} from 'next/navigation';
+import {routing} from '@/i18n/routing';
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default async function RootLayout({
   children,
-  params: { locale }, // eslint-disable-line
+  params
 }: Readonly<{
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{locale: string}>;
 }>) {
 
-  const messages = await getMessages();
+  const {locale} = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
 
   return (
     <html lang="{locale}">
@@ -27,7 +31,7 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <NextIntlClientProvider messages={messages}>
+            <NextIntlClientProvider>
               {children}
             </NextIntlClientProvider>
           </ThemeProvider>
