@@ -8,3 +8,5 @@ export default createMiddleware({
 export const config = {
   matcher: ['/', '/(en|fr)/:path*']
 };
+
+export { auth as middleware } from "@/auth";
