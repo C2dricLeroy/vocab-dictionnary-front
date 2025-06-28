@@ -1,8 +1,7 @@
-import FeatureCard from "@/components/FeatureCard";
+import FeatureCard, { FeatureCardProps } from "@/components/FeatureCard";
 import Footer from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import WelcomeHeader from "@/components/WelcomeHeader";
-import { Book, Globe, Brain, Rocket, Users, Trophy } from "lucide-react";
 import { useTranslations } from "next-intl";
 import {
     Accordion,
@@ -14,7 +13,7 @@ import {
 export default function Home() {
     const t = useTranslations("HomePage");
 
-    const features = [
+    const features: FeatureCardProps[] = [
         {
             icon: "book",
             title: t("Your personal dictionaries"),

@@ -21,8 +21,6 @@ export default async function RootLayout({
   setRequestLocale(locale);
 
   return (
-    <html lang={locale}>
-      <body>
         <AuthProvider>
           {/* <ThemeProvider
             attribute="class"
@@ -35,7 +33,5 @@ export default async function RootLayout({
             </NextIntlClientProvider>
           {/* </ThemeProvider> */}
         </AuthProvider>
-      </body>
-    </html>
   );
 }

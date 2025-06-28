@@ -1,5 +1,3 @@
-"use client";
-
 import { Card } from "@/components/ui/card";
 import { Book, Globe, Brain, Rocket, Users, Trophy } from "lucide-react";
 
@@ -14,7 +12,7 @@ const iconMap = {
 
 type IconKey = keyof typeof iconMap;
 
-interface FeatureCardProps {
+export interface FeatureCardProps {
   icon: IconKey;
   title: string;
   description: string;
