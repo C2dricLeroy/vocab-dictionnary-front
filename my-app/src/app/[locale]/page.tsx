@@ -1,10 +1,7 @@
-"use client";
-
 import FeatureCard from "@/components/FeatureCard";
 import Footer from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import WelcomeHeader from "@/components/WelcomeHeader";
-import { motion } from "framer-motion";
 import { Book, Globe, Brain, Rocket, Users, Trophy } from "lucide-react";
 import { useTranslations } from "next-intl";
 import {
@@ -19,32 +16,32 @@ export default function Home() {
 
     const features = [
         {
-            icon: Book,
+            icon: "book",
             title: t("Your personal dictionaries"),
             description: t("Create your own word lists in several languages, adapted to your objectives and level of proficiency"),
         },
         {
-            icon: Globe,
+            icon: "globe",
             title: t("Interactive exercises"),
             description: t("Test and reinforce your knowledge with a variety of fun exercises designed to make learning stimulating"),
         },
         {
-            icon: Brain,
+            icon: "brain",
             title: t("Smart progress tracking"),
             description: t("Analyze your progress with detailed statistics, identify your strengths and focus on areas for improvement"),
         },
         {
-            icon: Trophy,
+            icon: "trophy",
             title: t("Multilingual learning"),
             description: t("Learn an unlimited number of languages by creating YOUR own dictionaries"),
         },
         {
-            icon: Users,
+            icon: "users",
             title: t("Spacing-based revisions (SRS)"),
             description: t("Benefit from a spaced repetition system to memorize each new word added to your vocabulary"),
         },
         {
-            icon: Rocket,
+            icon: "rocket",
             title: t("Sharing and community"),
             description: t("Share your progress and discover new approaches by interacting with a community of passionate learners"),
         },
@@ -60,28 +57,19 @@ export default function Home() {
                 <section className="relative py-20 overflow-hidden">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center space-y-8">
-                            <motion.h1
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5 }}
+                            <h1
                                 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-gray-100"
                             >
                                 {t("Welcome on Lexit")}
-                            </motion.h1>
-                            <motion.p
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 0.2 }}
+                            </h1>
+                            <p
                                 className="max-w-2xl mx-auto text-xl text-gray-500 dark:text-gray-400"
                             >
                                 {t(
                                     "Ready to transform your language learning? Join Lexit today and master the vocabulary that will make all the difference!"
                                 )}
-                            </motion.p>
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 0.4 }}
+                            </p>
+                            <div
                                 className="flex justify-center space-x-4"
                             >
                                 {/* @ts-expect-error on Link href*/}
@@ -92,7 +80,7 @@ export default function Home() {
                                 <Button size="lg" variant="outline" href="/about">
                                     {t("Learn More")}
                                 </Button>
-                            </motion.div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -111,14 +99,7 @@ export default function Home() {
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {features.map((feature, index) => (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                                >
-                                    <FeatureCard {...feature} />
-                                </motion.div>
+                                <FeatureCard key={index} {...feature} />
                             ))}
                         </div>
                     </div>

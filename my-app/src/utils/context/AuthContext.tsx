@@ -1,31 +1,45 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import {
+    createContext,
+    useContext,
+    useState,
+    useEffect,
+    ReactNode,
+} from "react";
 
 export interface AuthContextType {
-    userId: string | null;
+    user: User | null;
+    token: string | null;
     isAuthenticated: boolean;
-    // eslint-disable-next-line no-unused-vars
-    login: (email: string | null, password: string | null) => Promise<{ success: boolean, message?: string }>;
+    login: (
+        email: string | null,
+        password: string | null
+    ) => Promise<{ success: boolean; message?: string }>;
     logout: () => void;
+}
+
+export interface User {
+    id: string;
+    name: string;
+    email: string;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-    const [userId, setUserId] = useState<string | null>(null);
+    const [user, setUser] = useState<User | null>(null);
+    const [token, setToken] = useState<string | null>(null);
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
-    useEffect(() => {
-        const storedUserId = localStorage.getItem('userId');
-        if (storedUserId) {
-            setUserId(storedUserId);
-            setIsAuthenticated(true);
-        }
-    }, []);
-
-    const login = async (email: string | null, password: string | null): Promise<{ success: boolean, message?: string }> => {
-        const url = process.env.NEXT_PUBLIC_BASE_URL + '/api/v1/user/login';
+    const login = async (
+        email: string | null,
+        password: string | null
+    ): Promise<{ success: boolean; message?: string }> => {
+        const login_url =
+            process.env.NEXT_PUBLIC_BASE_URL + "/api/v1/user/login";
+        const fetchme_url =
+            process.env.NEXT_PUBLIC_BASE_URL + "/api/v1/user/me";
 
         const data = {
             "email": email,
@@ -33,43 +47,70 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         };
 
         try {
-            const response = await fetch(url, {
-                method: 'POST',
+            const response = await fetch(login_url, {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify(data),
+                credentials: "include",
             });
 
             if (!response.ok) {
                 if (response.status === 401) {
-                    return {success: false, message: "Invalid username or password"};
+                    return {
+                        success: false,
+                        message: "Invalid username or password",
+                    };
                 } else {
-                    return {success: false, message: "An error occurred, Please try again"};
+                    return {
+                        success: false,
+                        message: "An error occurred, please try again",
+                    };
                 }
             }
 
             const responseData = await response.json();
+            setToken(responseData.token);
 
-            setUserId(responseData.user_id);
-            setIsAuthenticated(true);
-            localStorage.setItem('userId', responseData.user_id);
+            const meRes = await fetch(fetchme_url, {
+                headers: {
+                    Authorization: `Bearer ${responseData.token}`,
+                },
+                credentials: "include",
+            });
 
-            return {success: true};
+            console.log(meRes.status);
+
+            if (meRes.ok) {
+                const userData = await meRes.json();
+                setUser(userData);
+                setIsAuthenticated(true);
+                return { success: true };
+            } else {
+                return {
+                    success: false,
+                    message: "Login succeeded but failed to fetch user data",
+                };
+            }
         } catch (error) {
-            console.error('Error fetching data:', error);
-            return { success: false, message: "Network error, Please try again" };
+            console.error("Error during login:", error);
+            return {
+                success: false,
+                message: "Network error, please try again",
+            };
         }
     };
 
     const logout = () => {
-        setUserId(null);
+        setUser(null);
+        setToken(null);
         setIsAuthenticated(false);
     };
 
     return (
         <AuthContext.Provider
-            value={{ userId, isAuthenticated, logout, login }}
+            value={{ user, token, isAuthenticated, logout, login }}
         >
             {children}
         </AuthContext.Provider>

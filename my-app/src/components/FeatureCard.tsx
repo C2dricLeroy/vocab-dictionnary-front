@@ -1,20 +1,29 @@
 "use client";
 
 import { Card } from "@/components/ui/card";
-import { motion } from "framer-motion";
-import { LucideIcon } from "lucide-react";
+import { Book, Globe, Brain, Rocket, Users, Trophy } from "lucide-react";
+
+const iconMap = {
+  book: Book,
+  globe: Globe,
+  brain: Brain,
+  trophy: Trophy,
+  users: Users,
+  rocket: Rocket,
+} as const;
+
+type IconKey = keyof typeof iconMap;
 
 interface FeatureCardProps {
-    icon: LucideIcon;
-    title: string;
-    description: string;
+  icon: IconKey;
+  title: string;
+  description: string;
 }
 
-export default function FeatureCard({ icon: Icon, title, description }: FeatureCardProps) {
+export default function FeatureCard({ icon, title, description }: FeatureCardProps) {
+  const Icon = iconMap[icon];
     return (
-        <motion.div
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 300 }}
+        <div
             className="h-full"
         >
             <Card className="p-6 h-full flex flex-col justify-between">
@@ -26,6 +35,6 @@ export default function FeatureCard({ icon: Icon, title, description }: FeatureC
                     <p className="text-gray-500">{description}</p>
                 </div>
             </Card>
-        </motion.div>
+        </div>
     );
 }
