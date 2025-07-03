@@ -42,7 +42,7 @@ export const DashboardDictionaries: React.FC<DictionariesProps> = ({ dictionarie
                     <p>{t('Total dictionaries')}: {dictionaries.length}</p>
                     <div className="max-h-60 overflow-y-auto">
                         <ul>
-                            {dictionaries.map((dictionary) => (
+                            {dictionaries?.map((dictionary) => (
                                 <li key={dictionary.id} className="mb-2">
                                     <Link
                                         href={`/dictionary/${dictionary.id}`}

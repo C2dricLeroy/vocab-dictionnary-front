@@ -9,20 +9,23 @@ import {DashboardStatistics} from "@/components/dashboard/DashboardStatistics";
 import {DashboardFavorites} from "@/components/dashboard/DashboardFavorites";
 import {DashboardActivities} from "@/components/dashboard/DashboardActivities";
 import {useState, useEffect} from "react";
+import { useSession } from "next-auth/react";
 
-export default function DashboardClient({ session }: { session: any }) {
-  const [dictionaries, setDictionaries] = useState<any[]>([]);
+export default function DashboardClient() {
+    const { data: session } = useSession();
+    const [dictionaries, setDictionaries] = useState<any[]>([]);
 
-  useEffect(() => {
+    useEffect(() => {
+    if (!session?.backendAccessToken && !session?.accessToken) return;
     const fetchDictionaries = async () => {
-      const url = process.env.NEXT_PUBLIC_BASE_URL + "/api/v1/user/dictionary";
-      const response = await fetch(url, {
+        const url = process.env.NEXT_PUBLIC_BASE_URL + "/api/v1/user/dictionary";
+        const response = await fetch(url, {
         headers: {
-          Authorization: `Bearer ${session?.backendAccessToken || session.accessToken}`,
+            Authorization: `Bearer ${session?.backendAccessToken || session.accessToken}`,
         },
-      });
-      const data = await response.json();
-      setDictionaries(data);
+    });
+        const data = await response.json();
+        setDictionaries(data);
     };
 
     fetchDictionaries();
