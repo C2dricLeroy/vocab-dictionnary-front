@@ -1,14 +1,28 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 
+declare module "next-auth" {
+  interface Session {
+    accessToken?: string; // 👈 Ton token backend
+    refreshToken?: string; // (optionnel)
+    userId?: string; // (optionnel)
+  }
+
+  interface JWT {
+    backendAccessToken?: string;
+    backendRefreshToken?: string;
+    userId?: string;
+  }
+}
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [Google],
+  session: {
+    strategy: "jwt",
+  },
   callbacks: {
     async jwt({ token, account, profile, user, trigger, session }) {
       if (account && profile) {
-        console.log("begin jwt callback");
-        console.log(account.provider);
-        console.log(account.access_token);
         try {
           const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/social/login`, {
             method: "POST",
@@ -20,7 +34,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
               access_token: account.access_token,
             }),
           });
-          console.log(res);
 
           if (!res.ok) throw new Error("Failed to login with backend");
 
@@ -35,11 +48,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }
       }
 
-      return token;
+      return { ...token, accessToken: token.backendAccessToken };
     },
 
     async redirect({ url, baseUrl }) {
     return `${baseUrl}/dashboard`;
   },
+
+  async session({ session, token }) {
+    session.accessToken = token.accessToken;
+    return session;
+}
   }
 });

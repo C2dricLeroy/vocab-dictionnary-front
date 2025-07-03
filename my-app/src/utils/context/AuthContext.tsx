@@ -80,8 +80,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 credentials: "include",
             });
 
-            console.log(meRes.status);
-
             if (meRes.ok) {
                 const userData = await meRes.json();
                 setUser(userData);

@@ -1,11 +1,9 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
-import useAuth from "@/utils/context/AuthContext";
 
 export const DashboardStatistics: React.FC = () => {
     const t = useTranslations("Dashboard");
-    const userId = useAuth().userId;
 
     const [statistics, setStatistics] = useState<{
         totalWordsAdded: number;
@@ -15,26 +13,26 @@ export const DashboardStatistics: React.FC = () => {
 
     const fetchTotalWordsAdded = useCallback(async () => {
         try {
-            const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/stats/user/${userId}/`;
-            const response = await fetch(url, {
-                credentials: 'include',
-            });
+            // const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/stats/user/${userId}/`;
+            // const response = await fetch(url, {
+            //     credentials: 'include',
+            // });
 
-            if (!response.ok) {
-                throw new Error("Failed to fetch statistics");
-            }
+            // if (!response.ok) {
+            //     throw new Error("Failed to fetch statistics");
+            // }
 
-            const data = await response.json();
-            setStatistics({
-                totalDictionaries: data.total_dictionaries,
-                totalWordsAdded: data.total_entries,
-            });
+            // const data = await response.json();
+            // setStatistics({
+            //     totalDictionaries: data.total_dictionaries,
+            //     totalWordsAdded: data.total_entries,
+            // });
         } catch (error) {
             console.error(error);
         } finally {
             setLoading(false);
         }
-    }, [userId]);
+    }, []);
 
     useEffect(() => {
         fetchTotalWordsAdded();
