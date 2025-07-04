@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 import { Link } from '@/i18n/navigation';
-import useAuth from "@/utils/context/AuthContext";
+import { useSession } from "next-auth/react";
 
 export const DashboardProfile: React.FC = () => {
 
     const t = useTranslations("Dashboard");
 
-    const { user } = useAuth();
+    const { data: session } = useSession();
+
+
 
     return (
         <Card className="bg-white dark:bg-gray-800">
@@ -18,8 +20,8 @@ export const DashboardProfile: React.FC = () => {
             </CardHeader>
             <CardContent>
                 <div className="space-y-4">
-                    <p>{t('Name')} : {user?.name ?? "Inconnu"}</p>
-                    <p>{t('Email')} : {user?.email ?? "Inconnu"}</p>
+                    <p className="text-gray-800 dark:text-white">{t('Name')} : {session?.user?.name ?? "Inconnu"}</p>
+                    <p className="text-gray-800 dark:text-white">{t('Email')} : {session?.user?.email ?? "Inconnu"}</p>
                     <Button variant="default">
                         {/* @ts-expect-error on Link href*/}
                         <Link href="/profile">{t("Modify Profile")}</Link>
