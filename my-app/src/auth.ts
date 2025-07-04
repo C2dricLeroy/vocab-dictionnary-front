@@ -26,7 +26,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           const data = await res.json();
 
           token.backendAccessToken = data.access_token;
-          token.backendRefreshToken = data.refresh_token;
           token.userId = data.user_id;
 
         } catch (err) {

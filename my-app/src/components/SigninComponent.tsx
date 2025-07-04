@@ -7,7 +7,6 @@ import {useState, FormEvent} from "react";
 import {useRouter} from '@/i18n/navigation';
 import {useTranslations} from "next-intl";
 import {Link} from '@/i18n/navigation';
-import useAuth from "@/utils/context/AuthContext";
 
 export default function SigninComponent() {
     const t = useTranslations('Signin');
@@ -16,17 +15,15 @@ export default function SigninComponent() {
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
     const router = useRouter();
-    const authContext = useAuth();
     const signinSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
-        const response: { success: boolean, message?: string } = await authContext.login(email, password);
 
-        if (!response.success) {
-            setErrorMessage(t(response.message));
-        } else {
-            router.push("/dashboard" as any);
-        }
+        // if (!response.success) {                    {/* @ts-expect-error*/}
+        //     setErrorMessage(t(response.message));
+        // } else {
+        //     router.push("/dashboard" as any);
+        // }
     };
 
     return (
@@ -77,7 +74,6 @@ export default function SigninComponent() {
                 </Button>
                 <div className="text-center mt-6">
                     <p>{t('Dont have an account?')}</p>
-                    {/* @ts-expect-error on Link href*/}
                     <Link href="/signup" className="text-blue-500 ml-2">{t('Sign up')}</Link>
                 </div>
             </form>

@@ -23,7 +23,6 @@ export const DashboardProfile: React.FC = () => {
                     <p className="text-gray-800 dark:text-white">{t('Name')} : {session?.user?.name ?? "Inconnu"}</p>
                     <p className="text-gray-800 dark:text-white">{t('Email')} : {session?.user?.email ?? "Inconnu"}</p>
                     <Button variant="default">
-                        {/* @ts-expect-error on Link href*/}
                         <Link href="/profile">{t("Modify Profile")}</Link>
                     </Button>
                 </div>

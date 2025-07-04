@@ -5,13 +5,11 @@ import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/Modetoggle";
 import {useTranslations} from 'next-intl';
 import {Link} from '@/i18n/navigation';
-import useAuth from "@/utils/context/AuthContext";
 import {useState} from "react";
 import HeaderToggleMenu from "@/components/HeaderToggleMenu";
 import { LanguageSwitcher } from "./LangugageSwitcher";
 
 export default function WelcomeHeader() {
-    const context = useAuth();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -36,23 +34,15 @@ export default function WelcomeHeader() {
                 <div className="hidden md:flex space-x-4 items-center">
                     <LanguageSwitcher/>
                     <Button size="lg" variant="outline">
-                        {/* @ts-expect-error on Link href*/}
                         <Link href="/pricing">{t("Pricing")}</Link>
                     </Button>
                     <Button size="lg" variant="outline">
-                        {/* @ts-expect-error on Link href*/}
                         <Link href="/about">{t("About")}</Link>
                     </Button>
-                    {context.isAuthenticated ? (
-                        <Button size="lg" onClick={context.logout}>
-                            {t("Logout")}
-                        </Button>
-                    ) : (
-                        <Button size="lg">
-                            {/* @ts-expect-error on Link href*/}
-                            <Link href="/signin">{t("Login")}</Link>
-                        </Button>
-                    )}
+                    
+                    <Button size="lg">
+                        <Link href="/signin">{t("Login")}</Link>
+                    </Button>
                     <ModeToggle />
                 </div>
 
@@ -80,9 +70,9 @@ export default function WelcomeHeader() {
             </div>
 
             {isMenuOpen && (
-                <HeaderToggleMenu context={context}
-                        className="flex flex-col mt-4 space-y-4 w-full items-center"
-                    />
+                <div className="flex flex-col mt-4 space-y-4 w-full items-center">
+                    <HeaderToggleMenu />
+                </div>
             )}
         </div>
     );

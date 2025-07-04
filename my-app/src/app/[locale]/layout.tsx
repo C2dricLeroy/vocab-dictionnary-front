@@ -1,6 +1,5 @@
 import {setRequestLocale} from 'next-intl/server';
 import { ThemeProvider } from "@/components/theme-provider";
-import { AuthProvider } from "@/utils/context/AuthContext";
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
@@ -21,7 +20,7 @@ export default async function RootLayout({
   setRequestLocale(locale);
 
   return (
-        <AuthProvider>
+        <>
           {/* <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -32,6 +31,6 @@ export default async function RootLayout({
               {children}
             </NextIntlClientProvider>
           {/* </ThemeProvider> */}
-        </AuthProvider>
+        </>
   );
 }
