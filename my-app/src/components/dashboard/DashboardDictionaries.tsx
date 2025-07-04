@@ -21,7 +21,7 @@ export const DashboardDictionaries: React.FC<DictionariesProps> = ({ dictionarie
                 <div className="text-xl font-bold text-gray-800 dark:text-white">{t('My dictionaries')}</div>
             </CardHeader>
             <CardContent>
-                <div className="space-y-4">
+                <div className="space-y-4 text-gray-800 dark:text-white">
                     <p>{t('Total dictionaries')}: <span className="font-bold">{dictionaries.length}</span></p>
                     <div className="max-h-60 overflow-y-auto">
                         <p>{t('No dictionary available')}</p>
@@ -38,7 +38,7 @@ export const DashboardDictionaries: React.FC<DictionariesProps> = ({ dictionarie
                 <div className="text-xl font-bold text-gray-800 dark:text-white">{t('My dictionaries')}</div>
             </CardHeader>
             <CardContent>
-                <div className="space-y-4">
+                <div className="space-y-4 text-gray-800 dark:text-white">
                     <p>{t('Total dictionaries')}: {dictionaries.length}</p>
                     <div className="max-h-60 overflow-y-auto">
                         <ul>
