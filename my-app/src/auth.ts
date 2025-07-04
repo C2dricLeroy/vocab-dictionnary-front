@@ -1,20 +1,6 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 
-declare module "next-auth" {
-  interface Session {
-    accessToken?: string; // 👈 Ton token backend
-    refreshToken?: string; // (optionnel)
-    userId?: string; // (optionnel)
-  }
-
-  interface JWT {
-    backendAccessToken?: string;
-    backendRefreshToken?: string;
-    userId?: string;
-  }
-}
-
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [Google],
   session: {
@@ -56,7 +42,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
 
   async session({ session, token }) {
-    session.accessToken = token.accessToken;
+    session.accessToken = token.accessToken as string | undefined
     return session;
 }
   }

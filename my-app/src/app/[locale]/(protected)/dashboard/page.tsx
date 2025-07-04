@@ -16,12 +16,12 @@ export default function DashboardClient() {
     const [dictionaries, setDictionaries] = useState<any[]>([]);
 
     useEffect(() => {
-    if (!session?.backendAccessToken && !session?.accessToken) return;
+    if (!session?.accessToken) return;
     const fetchDictionaries = async () => {
         const url = process.env.NEXT_PUBLIC_BASE_URL + "/api/v1/user/dictionary";
         const response = await fetch(url, {
         headers: {
-            Authorization: `Bearer ${session?.backendAccessToken || session.accessToken}`,
+            Authorization: `Bearer ${session.accessToken}`,
         },
     });
         const data = await response.json();
