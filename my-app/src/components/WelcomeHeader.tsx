@@ -25,8 +25,17 @@ export default function WelcomeHeader() {
     const t = useTranslations('WelcomeHeader');
 
     const handleLogout = async () => {
+        const accessToken = session?.accessToken;
+
+        await fetch(process.env.NEXT_PUBLIC_BASE_URL + "/api/v1/user/logout", {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${accessToken}`,
+                "Content-Type": "application/json",
+            },
+            credentials: "include",
+        });
         await signOut({ redirect: false });
-        router.push("/signin");
     };
 
     return (

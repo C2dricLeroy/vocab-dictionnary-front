@@ -9,6 +9,7 @@ import {DashboardActivities} from "@/components/dashboard/DashboardActivities";
 import AppHeader from "@/components/AppHeader";
 import {useState, useEffect} from "react";
 import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 export default function DashboardClient() {
     const { data: session } = useSession();
@@ -29,6 +30,10 @@ export default function DashboardClient() {
 
     fetchDictionaries();
   }, [session]);
+
+    // if (!session) {
+    //     redirect("/signin");
+    // }
 
     return (
         <div className="bg-gray-100 text-white min-h-screen dark:bg-gray-900">
