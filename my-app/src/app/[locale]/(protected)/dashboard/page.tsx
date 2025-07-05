@@ -1,13 +1,12 @@
 'use client';
 
-import {ModeToggle} from "@/components/Modetoggle";
-import {Logo} from "@/components/ui/logo";
 import Footer from "@/components/footer";
 import {DashboardDictionaries} from "@/components/dashboard/DashboardDictionaries";
 import {DashboardProfile} from "@/components/dashboard/DashboardProfile";
 import {DashboardStatistics} from "@/components/dashboard/DashboardStatistics";
 import {DashboardFavorites} from "@/components/dashboard/DashboardFavorites";
 import {DashboardActivities} from "@/components/dashboard/DashboardActivities";
+import AppHeader from "@/components/AppHeader";
 import {useState, useEffect} from "react";
 import { useSession } from "next-auth/react";
 
@@ -33,17 +32,7 @@ export default function DashboardClient() {
 
     return (
         <div className="bg-gray-100 text-white min-h-screen dark:bg-gray-900">
-            <header className="bg-gray-100 dark:bg-gray-800 py-4 px-8 flex items-center justify-between shadow-md w-full">
-                <Logo
-                    logoSrc="/logo.png"
-                    altText="Lexit Logo"
-                    variant="default"
-                    variantSize="lg"
-                />
-                <div className="ml-auto flex space-x-4 pr-8">
-                    <ModeToggle />
-                </div>
-            </header>
+            <AppHeader/>
 
             <div className="flex">
                 <div className="w-full p-6">

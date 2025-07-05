@@ -8,15 +8,27 @@ import {Link} from '@/i18n/navigation';
 import {useState} from "react";
 import HeaderToggleMenu from "@/components/HeaderToggleMenu";
 import { LanguageSwitcher } from "./LangugageSwitcher";
+import { useRouter } from "@/i18n/navigation";
+
+import { useSession, signOut } from "next-auth/react";
 
 export default function WelcomeHeader() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const router = useRouter();
+
+    const { data: session } = useSession();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
     const t = useTranslations('WelcomeHeader');
+
+    const handleLogout = async () => {
+        await signOut({ redirect: false });
+        router.push("/signin");
+    };
+
     return (
         <div
             className={`bg-gray-100 dark:bg-gray-800 px-4 sm:px-8 py-4 shadow-md w-full transition-all duration-300 ${
@@ -40,9 +52,15 @@ export default function WelcomeHeader() {
                         <Link href="/about">{t("About")}</Link>
                     </Button>
                     
-                    <Button size="lg">
-                        <Link href="/signin">{t("Login")}</Link>
-                    </Button>
+            {session?.user ? (
+                <Button size="lg" variant="default" onClick={handleLogout}>
+                    {t("Logout")}
+                </Button>
+            ) : (
+                <Button size="lg" variant="default">
+                    <Link href="/signin">{t("Login")}</Link>
+                </Button>
+            )}
                     <ModeToggle />
                 </div>
 

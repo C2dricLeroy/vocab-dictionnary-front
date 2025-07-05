@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
+import { SessionProvider } from "next-auth/react";
 
 export default async function RootLayout({
   children,
@@ -21,6 +22,7 @@ export default async function RootLayout({
 
   return (
         <>
+        <SessionProvider>
           {/* <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -31,6 +33,7 @@ export default async function RootLayout({
               {children}
             </NextIntlClientProvider>
           {/* </ThemeProvider> */}
+          </SessionProvider>
         </>
   );
 }
