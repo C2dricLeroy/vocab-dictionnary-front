@@ -38,6 +38,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   callbacks: {
     async jwt({ token, account, profile, user, trigger, session }) {
+      if (account && account.provider == "credentials" ) {
+        const customUser = user as { id: string; accessToken: string };
+        token.accessToken = customUser.accessToken;
+        token.userId = customUser.id;
+      }
       if (account && profile) {
         try {
           const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/social/login`, {
@@ -63,7 +68,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }
       }
 
-      return { ...token, accessToken: token.backendAccessToken };
+      return {
+        ...token,
+        accessToken: token.accessToken ?? token.backendAccessToken,
+      };
     },
 
     async redirect({ url, baseUrl }) {
