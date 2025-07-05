@@ -7,6 +7,7 @@ import {useState, FormEvent} from "react";
 import {useRouter} from '@/i18n/navigation';
 import {useTranslations} from "next-intl";
 import {Link} from '@/i18n/navigation';
+import { signIn } from "next-auth/react";
 
 export default function SigninComponent() {
     const t = useTranslations('Signin');
@@ -19,11 +20,18 @@ export default function SigninComponent() {
         e.preventDefault();
 
 
-        // if (!response.success) {                    {/* @ts-expect-error*/}
-        //     setErrorMessage(t(response.message));
-        // } else {
-        //     router.push("/dashboard" as any);
-        // }
+        const res = await signIn("credentials", {
+            redirect: false,
+            email,
+            password,
+        });
+
+        if (!res?.ok) {
+            setErrorMessage("Invalid credentials");
+        } else {
+            router.push("/dashboard");
+        }
+
     };
 
     return (
