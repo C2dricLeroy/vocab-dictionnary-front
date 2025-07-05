@@ -1,38 +1,39 @@
-import { Inter } from "next/font/google";
-import "./globals.css";
+import {setRequestLocale} from 'next-intl/server';
 import { ThemeProvider } from "@/components/theme-provider";
-import {NextIntlClientProvider} from 'next-intl';
-import {getMessages} from 'next-intl/server';
-import { AuthProvider } from "@/utils/context/AuthContext";
-
-const inter = Inter({ subsets: ["latin"] });
+import {NextIntlClientProvider, hasLocale} from 'next-intl';
+import {notFound} from 'next/navigation';
+import {routing} from '@/i18n/routing';
+import { SessionProvider } from "next-auth/react";
 
 export default async function RootLayout({
   children,
-  params: { locale }, // eslint-disable-line
-}: Readonly<{
+  params
+}: {
   children: React.ReactNode;
-  params: { locale: string };
-}>) {
+  params: Promise<{locale: string}>;
+}) {
 
-  const messages = await getMessages();
+  const {locale} = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  setRequestLocale(locale);
 
   return (
-    <html lang="{locale}">
-      <body className={inter.className}>
-        <AuthProvider>
-          <ThemeProvider
+        <>
+        <SessionProvider>
+          {/* <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
-          >
-            <NextIntlClientProvider messages={messages}>
+          > */}
+            <NextIntlClientProvider>
               {children}
             </NextIntlClientProvider>
-          </ThemeProvider>
-        </AuthProvider>
-      </body>
-    </html>
+          {/* </ThemeProvider> */}
+          </SessionProvider>
+        </>
   );
 }

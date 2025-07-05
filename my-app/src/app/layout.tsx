@@ -1,6 +1,6 @@
 import {ReactNode} from 'react';
-import './[locale]/globals.css';
 import { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
     title: 'Lexit',
@@ -14,10 +14,6 @@ type Props = {
 export default function RootLayout({ children }: Props) {
     return (
         <html lang="en">
-        <head>
-            <link rel="icon" href="/logo.png" type="image/png" />
-            <title>Lexit</title>
-        </head>
         <body>{children}</body>
         </html>
     );

@@ -5,8 +5,8 @@ import {Button} from "@/components/ui/button";
 import GoogleButton from "@/components/ui/googleButton";
 import {useState, FormEvent} from "react";
 import {useTranslations} from "next-intl";
-import {Link} from "@/i18n/routing";
-import {useRouter} from '@/i18n/routing';
+import {Link} from '@/i18n/navigation';
+import {useRouter} from '@/i18n/navigation';
 
 export default function SignupComponent() {
     const t = useTranslations('Signup');

@@ -1,11 +1,14 @@
+"use client";
 import * as React from "react";
 import {useTranslations} from "next-intl";
+
+import { signIn } from "next-auth/react";
 
 export default function GoogleButton() {
     const t = useTranslations('GoogleButton');
     return (
         <div className="flex items-center justify-center py-4">
-            <button
+            <button onClick={() => signIn("google")}
                 className="flex items-center justify-center bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-white border border-transparent rounded-lg shadow-[8px_8px_16px_#d1d9e6,-8px_-8px_16px_#ffffff] dark:shadow-[8px_8px_16px_#2e2e2e,-8px_-8px_16px_#010101] px-6 py-2 text-sm font-medium hover:shadow-[inset_8px_8px_16px_#d1d9e6,inset_-8px_-8px_16px_#ffffff] dark:hover:shadow-[inset_8px_8px_16px_#2e2e2e,inset_-8px_-8px_16px_#010101] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                 <svg className="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg"
                      xmlnsXlink="http://www.w3.org/1999/xlink" width="800px" height="800px" viewBox="-0.5 0 48 48"

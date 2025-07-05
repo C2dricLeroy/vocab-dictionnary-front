@@ -9,7 +9,8 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
-    "plugin:@typescript-eslint/recommended"
+    'plugin:@typescript-eslint/recommended',
+    'next/core-web-vitals'
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -19,9 +20,14 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: [
-      'react',
-      'jsx-a11y',
+    'react',
+    'jsx-a11y',
   ],
+  settings: {
+    react: {
+      version: 'detect'
+    }
+  },
   rules: {
     'react/react-in-jsx-scope': 'off',
     'no-unused-vars': 'warn',

@@ -4,7 +4,8 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Slot } from "@radix-ui/react-slot";
-import {Link} from "@/i18n/routing";
+import {Link} from '@/i18n/navigation';
+import Image from "next/image";
 
 const logoVariants = cva(
     "flex items-center justify-center",
@@ -52,10 +53,12 @@ const Logo = React.forwardRef<HTMLDivElement, LogoProps>(
                     onClick={handleLogoClick}
                     style={{ cursor: 'pointer' }}
                 >
-                    <img
+                    <Image
                         src={logoSrc}
                         alt={altText}
                         className="h-full w-auto max-w-full"
+                        width={100}
+                        height={100}
                     />
                 </Comp>
             </Link>
