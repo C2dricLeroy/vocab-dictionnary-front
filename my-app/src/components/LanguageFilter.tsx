@@ -19,6 +19,7 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover";
 import { Language } from "@/models/Language";
+import { useEffect } from "react";
 
 interface LanguageFilterProps {
     onSelectLanguage?: (language: Language | null) => void; //eslint-disable-line
@@ -68,7 +69,7 @@ export default function LanguageFilter({ onSelectLanguage }: LanguageFilterProps
         }
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         fetchAvailableLanguages();
     }, []);
 

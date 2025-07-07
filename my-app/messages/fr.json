@@ -112,7 +112,11 @@
     "total words added": "Total de mots ajoutés",
     "words added this month": "Mots ajoutés ce mois-ci",
     "Total dictionaries": "Total de dictionnaires",
+    "total dictionaries": "Total de dictionaries",
     "My dictionaries": "Mes dictionnaires",
-    "No dictionary available": "Aucun dictionnaire disponible"
+    "No dictionary available": "Aucun dictionnaire disponible",
+    "Add dictionary": "Ajouter un dictionnaire",
+    "Name": "Nom",
+    "Email": "Email"
   }
 }
