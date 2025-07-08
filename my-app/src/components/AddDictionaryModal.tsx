@@ -29,10 +29,11 @@ export function AddDictionaryModal({
   const [name, setName] = useState("");
   const [sourceLanguage, setSourceLanguage] = useState<Language | null>(null);
   const [targetLanguage, setTargetLanguage] = useState<Language | null>(null);
+  const [description, setDescription] = useState("");
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    onSubmit({ name, sourceLanguage, targetLanguage });
+    onSubmit({ name, description, sourceLanguage, targetLanguage });
   };
 
   return (
@@ -53,6 +54,18 @@ export function AddDictionaryModal({
               onChange={(e) => setName(e.target.value)}
               className="mt-1 w-full border border-gray-300 dark:border-gray-700 rounded px-3 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
               required
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              Description
+            </label>
+            <input
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="mt-1 w-full border border-gray-300 dark:border-gray-700 rounded px-3 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
             />
           </div>
 

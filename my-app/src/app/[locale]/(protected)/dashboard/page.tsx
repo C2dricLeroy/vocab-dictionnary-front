@@ -14,6 +14,10 @@ export default function DashboardClient() {
     const { data: session } = useSession();
     const [dictionaries, setDictionaries] = useState<any[]>([]);
 
+    const addDictionaryToList = (newDictionary: any) => {
+        setDictionaries((prev) => [...prev, newDictionary]);
+    };
+
     useEffect(() => {
     if (!session?.accessToken) return;
     const fetchDictionaries = async () => {
@@ -38,7 +42,7 @@ export default function DashboardClient() {
                 <div className="w-full p-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 m-6">
                     <div className="col-span-1 sm:col-span-2 lg:col-span-2 row-span-2 shadow-md rounded-lg">
-                        <DashboardDictionaries dictionaries={dictionaries} />
+                        <DashboardDictionaries dictionaries={dictionaries} onDictionaryCreated={addDictionaryToList}/>
                     </div>
 
                     <div className="col-span-1 sm:col-span-1 lg:col-span-2 row-span-1 bg-white shadow-md rounded-lg">
