@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {Link} from '@/i18n/navigation';
 import { useTranslations } from "next-intl";
@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Language } from "@/models/Language";
 import { AddDictionaryFormData } from "@/models/AddDictionaryFormType";
 import { useSession } from "next-auth/react";
+import DeleteDictionary from "../ui/dictionary/DeleteDictionary";
 
 interface Dictionary {
     id: number;
@@ -24,9 +25,16 @@ export const DashboardDictionaries: React.FC<DictionariesProps> = (
     const t = useTranslations("Dashboard");
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { data: session } = useSession();
+    const [localDictionaries, setDictionaries] = useState(dictionaries);
+
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
+
+    useEffect(() => {
+    setDictionaries(dictionaries);
+  }, [dictionaries]);
+
 
     const handleModalSubmit = async (data: AddDictionaryFormData) => {
         if (!data.sourceLanguage || !data.targetLanguage ||!data.name) {
@@ -81,24 +89,30 @@ export const DashboardDictionaries: React.FC<DictionariesProps> = (
                     <div className="text-gray-800 dark:text-white space-y-4">
                         <p>
                             {t("Total dictionaries")}:{" "}
-                            <span className="font-semibold">{dictionaries.length}</span>
+                            <span className="font-semibold">{localDictionaries.length}</span>
                         </p>
 
-                        {dictionaries.length === 0 ? (
+                        {localDictionaries.length === 0 ? (
                             <p className="italic text-gray-500">{t("No dictionary available")}</p>
                         ) : (
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-h-80 overflow-y-auto pr-2">
-                                {dictionaries.map((dictionary) => (
-                                    <Link key={dictionary.id} href={`/dictionary/${dictionary.id}`}>
-                                        <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition-shadow bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800">
+                                {localDictionaries.map((dictionary) => (
+                                    <div
+                                        key={dictionary.id}
+                                        className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition-shadow bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800"
+                                    >
+                                        <div className="flex justify-between items-center mb-2">
+                                        <Link href={`/dictionary/${dictionary.id}`}>
                                             <h3 className="text-md font-medium text-blue-700 dark:text-blue-300 truncate">
-                                                {dictionary.name}
+                                            {dictionary.name}
                                             </h3>
-                                            {/* <p className="text-sm text-gray-500 dark:text-gray-400">
-                                                {dictionary.source_language} → {dictionary.target_language}
-                                            </p> */}
+                                        </Link>
+                                        <DeleteDictionary 
+                                            dictionaryId={dictionary.id} 
+                                            onDeleted={(id) => setDictionaries(prev => prev.filter(d => d.id !== id))} 
+                                        />
                                         </div>
-                                    </Link>
+                                    </div>
                                 ))}
                             </div>
                         )}
