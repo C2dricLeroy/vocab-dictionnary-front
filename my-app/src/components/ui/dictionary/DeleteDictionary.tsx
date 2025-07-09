@@ -14,7 +14,7 @@ import {
 
 interface DeleteDictionaryProps {
     dictionaryId: number;
-    onDeleted?: (id: number) => void;
+    onDeleted?: (id: number) => void;  // eslint-disable-line
 }
 
 export default function DeleteDictionary({ dictionaryId, onDeleted }: DeleteDictionaryProps) {

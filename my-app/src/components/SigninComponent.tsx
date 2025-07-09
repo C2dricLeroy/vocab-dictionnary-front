@@ -19,7 +19,6 @@ export default function SigninComponent() {
     const signinSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
-
         const res = await signIn("credentials", {
             redirect: false,
             email,

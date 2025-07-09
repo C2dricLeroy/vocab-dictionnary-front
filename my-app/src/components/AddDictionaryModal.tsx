@@ -14,7 +14,7 @@ import { AddDictionaryFormData } from "@/models/AddDictionaryFormType";
 interface AddDictionaryModalProps {
   open: boolean;
   onClose: () => void;
-  onSubmit: (data: AddDictionaryFormData) => void;
+  onSubmit: (data: AddDictionaryFormData) => void;  // eslint-disable-line
   loading?: boolean;
   error?: string | null;
 }

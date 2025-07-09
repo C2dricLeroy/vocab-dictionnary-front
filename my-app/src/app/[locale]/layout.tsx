@@ -1,15 +1,15 @@
-import {setRequestLocale} from 'next-intl/server';
-import { ThemeProvider } from "@/components/theme-provider";
-import {NextIntlClientProvider, hasLocale} from 'next-intl';
-import {notFound} from 'next/navigation';
-import {routing} from '@/i18n/routing';
+import { setRequestLocale } from 'next-intl/server';
+import { NextIntlClientProvider, hasLocale } from 'next-intl';
+import { notFound } from 'next/navigation';
+import { routing } from '@/i18n/routing';
 import { SessionProvider } from "next-auth/react";
+import { ReactNode } from "react";
 
 export default async function RootLayout({
   children,
   params
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   params: Promise<{locale: string}>;
 }) {
 

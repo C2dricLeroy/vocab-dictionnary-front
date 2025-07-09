@@ -37,7 +37,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     strategy: "jwt",
   },
   callbacks: {
-    async jwt({ token, account, profile, user, trigger, session }) {
+    async jwt({ token, account, profile, user, trigger, session }) {  // eslint-disable-line
       if (account && account.provider == "credentials" ) {
         const customUser = user as { id: string; accessToken: string };
         token.accessToken = customUser.accessToken;
@@ -74,12 +74,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       };
     },
 
-    async redirect({ url, baseUrl }) {
+    async redirect({ url, baseUrl }) {  // eslint-disable-line
     return `${baseUrl}/dashboard`;
   },
 
   async session({ session, token }) {
-    session.accessToken = token.accessToken as string | undefined
+    session.accessToken = token.accessToken as string | undefined;
     return session;
 }
   }

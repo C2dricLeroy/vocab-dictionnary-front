@@ -18,7 +18,7 @@ import { useLanguages } from "@/hooks/useLanguages"; // <- si tu l'extrais
 
 interface LanguageSelectorProps {
     selected?: Language | null;
-    onChange: (language: Language | null) => void;
+    onChange: (language: Language | null) => void;  // eslint-disable-line
     placeholder?: string;
 }
 

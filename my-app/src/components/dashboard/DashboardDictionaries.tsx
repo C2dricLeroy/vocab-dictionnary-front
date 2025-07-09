@@ -4,7 +4,6 @@ import {Link} from '@/i18n/navigation';
 import { useTranslations } from "next-intl";
 import { AddDictionaryModal } from "@/components/AddDictionaryModal";
 import { Button } from "@/components/ui/button";
-import { Language } from "@/models/Language";
 import { AddDictionaryFormData } from "@/models/AddDictionaryFormType";
 import { useSession } from "next-auth/react";
 import DeleteDictionary from "../ui/dictionary/DeleteDictionary";
@@ -16,7 +15,7 @@ interface Dictionary {
 
 interface DictionariesProps {
     dictionaries: Dictionary[];
-    onDictionaryCreated?: (newDict: Dictionary) => void;
+    onDictionaryCreated?: (newDict: Dictionary) => void;  // eslint-disable-line
 }
 
 export const DashboardDictionaries: React.FC<DictionariesProps> = (
@@ -27,14 +26,12 @@ export const DashboardDictionaries: React.FC<DictionariesProps> = (
     const { data: session } = useSession();
     const [localDictionaries, setDictionaries] = useState(dictionaries);
 
-
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
     useEffect(() => {
     setDictionaries(dictionaries);
   }, [dictionaries]);
-
 
     const handleModalSubmit = async (data: AddDictionaryFormData) => {
         if (!data.sourceLanguage || !data.targetLanguage ||!data.name) {
@@ -73,7 +70,6 @@ export const DashboardDictionaries: React.FC<DictionariesProps> = (
         }
     };
 
-    
     return (
         <>
             <Card className="bg-white dark:bg-gray-800 h-full">
@@ -107,9 +103,9 @@ export const DashboardDictionaries: React.FC<DictionariesProps> = (
                                             {dictionary.name}
                                             </h3>
                                         </Link>
-                                        <DeleteDictionary 
-                                            dictionaryId={dictionary.id} 
-                                            onDeleted={(id) => setDictionaries(prev => prev.filter(d => d.id !== id))} 
+                                        <DeleteDictionary
+                                            dictionaryId={dictionary.id}
+                                            onDeleted={(id) => setDictionaries(prev => prev.filter(d => d.id !== id))}
                                         />
                                         </div>
                                     </div>

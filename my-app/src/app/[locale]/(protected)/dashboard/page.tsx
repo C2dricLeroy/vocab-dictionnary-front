@@ -18,7 +18,6 @@ export default function DashboardClient() {
         setDictionaries((prev) => [...prev, newDictionary]);
     };
 
-
     useEffect(() => {
     if (!session?.accessToken) return;
     const fetchDictionaries = async () => {

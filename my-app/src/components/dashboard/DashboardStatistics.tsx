@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 export const DashboardStatistics: React.FC = () => {
     const t = useTranslations("Dashboard");
 
-    const [statistics, setStatistics] = useState<{
+    const [statistics, setStatistics] = useState<{  // eslint-disable-line
         totalWordsAdded: number;
         totalDictionaries: number;
     } | null>(null);

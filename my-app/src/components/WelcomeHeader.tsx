@@ -51,7 +51,7 @@ export default function WelcomeHeader() {
                     <Button size="lg" variant="outline">
                         <Link href="/about">{t("About")}</Link>
                     </Button>
-                    
+
             {session?.user ? (
                 <Button size="lg" variant="default" onClick={handleLogout}>
                     {t("Logout")}

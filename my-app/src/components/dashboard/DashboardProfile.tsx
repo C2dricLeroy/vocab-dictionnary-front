@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 import { Link } from '@/i18n/navigation';
 import { useSession } from "next-auth/react";
+import { FC } from "react";
 
-export const DashboardProfile: React.FC = () => {
+export const DashboardProfile: FC = () => {
 
     const t = useTranslations("Dashboard");
 
     const { data: session } = useSession();
-
-
 
     return (
         <Card className="bg-white dark:bg-gray-800">

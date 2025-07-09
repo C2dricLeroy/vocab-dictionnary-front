@@ -17,7 +17,7 @@ export default function HeaderToggleMenu() {
             <Button size="sm" variant="outline" className="w-3/4 h-[50px]">
                 <Link href="/about">{t("About")}</Link>
             </Button>
-            
+
             <Button size="sm" className="w-3/4 h-[50px]">
                 <Link href="/signin">{t("Login")}</Link>
             </Button>
