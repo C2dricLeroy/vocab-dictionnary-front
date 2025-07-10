@@ -7,10 +7,12 @@ import { Button } from "@/components/ui/button";
 import { AddDictionaryFormData } from "@/models/AddDictionaryFormType";
 import { useSession } from "next-auth/react";
 import DeleteDictionary from "../ui/dictionary/DeleteDictionary";
+import UpdateDictionary from "../ui/dictionary/UpdateDictionary";
 
 interface Dictionary {
     id: number;
     name: string;
+    description: string;
 }
 
 interface DictionariesProps {
@@ -103,6 +105,16 @@ export const DashboardDictionaries: React.FC<DictionariesProps> = (
                                             {dictionary.name}
                                             </h3>
                                         </Link>
+                                        <UpdateDictionary
+                                            dictionaryId={dictionary.id}
+                                            initialName={dictionary.name}
+                                            initialDescription={dictionary.description}
+                                            onUpdated={(id, name, description) => {
+                                                setDictionaries(prev =>
+                                                    prev.map(d => d.id === id ? { ...d, name, description } : d)
+                                                );
+                                            }}
+                                        />
                                         <DeleteDictionary
                                             dictionaryId={dictionary.id}
                                             onDeleted={(id) => setDictionaries(prev => prev.filter(d => d.id !== id))}
