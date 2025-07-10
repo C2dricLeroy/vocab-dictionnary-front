@@ -14,7 +14,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
 
 interface QuickAddEntryProps {
     dictionaryId: number;
@@ -99,39 +98,46 @@ export default function QuickAddEntry({ dictionaryId }: QuickAddEntryProps) {
 
             <div className="space-y-3">
                 <div>
-                <Label>Original</Label>
-                <Input
-                    value={originalName}
-                    onChange={(e) => setOriginalName(e.target.value)}
-                    placeholder="e.g., Bonjour"
-                />
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                        Original
+                    </label>
+                    <Input
+                        value={originalName}
+                        onChange={(e) => setOriginalName(e.target.value)}
+                        placeholder="e.g., Bonjour"
+                    />
                 </div>
 
                 <div>
-                <Label>Translation</Label>
-                <Input
-                    value={translation}
-                    onChange={(e) => setTranslation(e.target.value)}
-                    placeholder="e.g., Hello"
-                />
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                        Translation
+                    </label>
+                    <Input
+                        value={translation}
+                        onChange={(e) => setTranslation(e.target.value)}
+                        placeholder="e.g., Hello"
+                    />
                 </div>
 
                 <div>
-                <Label>Description (optional)</Label>
-                <Textarea
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    placeholder="e.g., Formal greeting in French"
-                />
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                        Description (Optional)
+                    </label>
+                    <Textarea
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        placeholder="e.g., Formal greeting in French"
+                    />
                 </div>
 
-                <div className="flex items-center gap-2">
-                <Switch
-                    checked={isExpression}
-                    onCheckedChange={setIsExpression}
-                    id="isExpression"
-                />
-                <Label htmlFor="isExpression">This is an expression</Label>
+                <div className="flex items-center justify-center">
+                    <Button
+                        variant={isExpression ? "default" : "outline"}
+                        id="isExpression"
+                        onClick={() => setIsExpression(prev => !prev)}
+                        >
+                        {isExpression ? "Is an expression" : "Not an expression"}
+                    </Button>
                 </div>
             </div>
 
