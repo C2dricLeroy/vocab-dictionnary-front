@@ -6,8 +6,9 @@ import { AddDictionaryModal } from "@/components/AddDictionaryModal";
 import { Button } from "@/components/ui/button";
 import { AddDictionaryFormData } from "@/models/AddDictionaryFormType";
 import { useSession } from "next-auth/react";
-import DeleteDictionary from "../ui/dictionary/DeleteDictionary";
-import UpdateDictionary from "../ui/dictionary/UpdateDictionary";
+import DeleteDictionary from "@/components/ui/dictionary/DeleteDictionary";
+import UpdateDictionary from "@/components/ui/dictionary/UpdateDictionary";
+import QuickAddEntry from "@/components/ui/dictionary/QuickAddEntry";
 
 interface Dictionary {
     id: number;
@@ -100,25 +101,28 @@ export const DashboardDictionaries: React.FC<DictionariesProps> = (
                                         className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition-shadow bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800"
                                     >
                                         <div className="flex justify-between items-center mb-2">
-                                        <Link href={`/dictionary/${dictionary.id}`}>
-                                            <h3 className="text-md font-medium text-blue-700 dark:text-blue-300 truncate">
-                                            {dictionary.name}
-                                            </h3>
-                                        </Link>
-                                        <UpdateDictionary
-                                            dictionaryId={dictionary.id}
-                                            initialName={dictionary.name}
-                                            initialDescription={dictionary.description}
-                                            onUpdated={(id, name, description) => {
-                                                setDictionaries(prev =>
-                                                    prev.map(d => d.id === id ? { ...d, name, description } : d)
-                                                );
-                                            }}
-                                        />
-                                        <DeleteDictionary
-                                            dictionaryId={dictionary.id}
-                                            onDeleted={(id) => setDictionaries(prev => prev.filter(d => d.id !== id))}
-                                        />
+                                            <Link href={`/dictionary/${dictionary.id}`}>
+                                                <h3 className="text-md font-medium text-blue-700 dark:text-blue-300 truncate">
+                                                {dictionary.name}
+                                                </h3>
+                                            </Link>
+                                            <div className="flex justify-end">
+                                                <UpdateDictionary
+                                                    dictionaryId={dictionary.id}
+                                                    initialName={dictionary.name}
+                                                    initialDescription={dictionary.description}
+                                                    onUpdated={(id, name, description) => {
+                                                        setDictionaries(prev =>
+                                                            prev.map(d => d.id === id ? { ...d, name, description } : d)
+                                                        );
+                                                    }}
+                                                />
+                                                <QuickAddEntry dictionaryId={dictionary.id} />
+                                                <DeleteDictionary
+                                                    dictionaryId={dictionary.id}
+                                                    onDeleted={(id) => setDictionaries(prev => prev.filter(d => d.id !== id))}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 ))}
