@@ -62,7 +62,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
                             {languages.map((lang) => (
                                 <CommandItem
                                     key={lang.code}
-                                    value={lang.code}
+                                    value={lang.name}
                                     onSelect={() => {
                                         onChange(lang);
                                         setOpen(false);
