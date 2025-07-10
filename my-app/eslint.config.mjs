@@ -5,6 +5,7 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import ts from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
+import prettier from 'eslint-config-prettier';
 
 const compat = new FlatCompat({
   baseDirectory: import.meta.url,
@@ -40,6 +41,8 @@ export default [
       'semi': ['error', 'always'],
       'no-trailing-spaces': 'error',
       'no-multiple-empty-lines': ['error', { max: 1 }],
+      'indent': ['error', 4, { SwitchCase: 1 }],
+      'max-len': ['warn', { code: 120, tabWidth: 4, ignoreUrls: true }],
       'padding-line-between-statements': [
         'error',
         { blankLine: 'always', prev: '*', next: 'function' },
@@ -74,4 +77,5 @@ export default [
       },
     },
   },
+  prettier
 ];
