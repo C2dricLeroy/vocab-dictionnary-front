@@ -9,7 +9,7 @@ export class Dictionary {
         user_id?: number | undefined,
         created_at?: Date | undefined,
         updated_at?: Date | undefined,
-        total_entries?: number | undefined,
+        entry_count?: number | undefined,
     ) {
         this.id = id;
         this.name = name;
@@ -18,7 +18,7 @@ export class Dictionary {
         this.source_language_id = source_language_id;
         this.target_language_id = target_language_id;
         this.user_id = user_id;
-        this.total_entries = total_entries;
+        this.entry_count = entry_count;
     }
     id: number;
     name: string;
@@ -29,6 +29,6 @@ export class Dictionary {
     user_id?: number | undefined;
     created_at?: Date | undefined;
     updated_at?: Date | undefined;
-    total_entries?: number | undefined;
+    entry_count?: number | undefined;
 
 }

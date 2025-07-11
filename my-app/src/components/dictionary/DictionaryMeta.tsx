@@ -18,6 +18,7 @@ export default function DictionaryMeta({
     name,
     description,
     display_name,
+    entry_count,
     source_language_id,
     target_language_id,
   } = dictionary;

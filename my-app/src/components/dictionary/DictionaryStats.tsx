@@ -9,7 +9,7 @@ export default function DictionaryStats({ dictionary }: DictionaryStatsProps) {
   return (
     <Card>
       <CardContent className="p-4 space-y-2">
-        <p>✅ <strong>{dictionary.total_entries ?? 0}</strong> mots au total</p>
+        <p>✅ <strong>{dictionary.entry_count ?? 0}</strong> mots au total</p>
         {dictionary.created_at && (
           <p>📅 Créé le : {new Date(dictionary.created_at).toLocaleDateString()}</p>
         )}
