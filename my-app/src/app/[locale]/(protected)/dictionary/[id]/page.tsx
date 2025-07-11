@@ -3,12 +3,11 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-
-import DictionaryMeta from "@/components/dictionary/DictionaryMeta";
-import DictionaryStats from "@/components/dictionary/DictionaryStats";
 import QuickAddEntry from "@/components/ui/dictionary/QuickAddEntry";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/footer";
+import DictionaryTable from "@/components/dictionary/DictionaryTable";
+import DictionaryOverview from "@/components/dictionary/DictionaryOverview";
 
 export default function DictionaryClientPage() {
     const { id } = useParams();
@@ -52,41 +51,46 @@ export default function DictionaryClientPage() {
     }
 
     return (
-        <div className="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div className="flex flex-col min-h-screen bg-muted/40">
             <AppHeader />
 
-            <div className="max-w-7xl mx-auto p-4">
-            <button
-                onClick={() => router.push('/dashboard')}
-                className="inline-flex items-center text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium"
-                aria-label="Retour au dashboard"
-            >
-            <span className="mr-2 text-2xl">←</span>
-                Retour
-            </button>
-            </div>
+            <main className="flex-grow max-w-6xl w-full mx-auto px-4 py-8 space-y-8">
+                <div className="text-sm text-muted-foreground mb-2">
+                    <button
+                        onClick={() => router.push('/dashboard')}
+                        className="hover:underline"
+                    >
+                        ← Retour au tableau de bord
+                    </button>
+                </div>
 
-            <main className="flex-grow max-w-7xl mx-auto p-6">
-            <div className="flex gap-x-6">
-                <div className="flex-1 bg-white p-4 rounded shadow">
-                <DictionaryMeta dictionary={dictionary} />
+                <div>
+                    <h1 className="text-3xl font-bold tracking-tight">
+                        📘 {dictionary.name}
+                    </h1>
+                    {dictionary.description && (
+                        <p className="text-muted-foreground mt-1">{dictionary.description}</p>
+                    )}
                 </div>
-                <div className="flex-1 bg-white p-4 rounded shadow">
-                <DictionaryStats dictionary={dictionary} />
-                </div>
-                <div className="flex-1 bg-white p-4 rounded shadow">
-                <QuickAddEntry dictionaryId={dictionary.id} />
-                </div>
-            </div>
 
-            <div className="text-center mt-12">
-                <button disabled className="text-sm text-gray-400 hover:text-gray-500">
-                📖 Réviser ce dictionnaire (bientôt)
-                </button>
-            </div>
+                <DictionaryOverview dictionary={dictionary} />
+
+
+                <section className="space-y-4">
+                    <QuickAddEntry dictionaryId={dictionary.id} />
+                    <DictionaryTable dictionaryId={dictionary.id} />
+                </section>
+
+                <div className="text-center pt-6">
+                    <button disabled className="text-sm text-gray-400 hover:text-gray-500">
+                        📖 Réviser ce dictionnaire (bientôt)
+                    </button>
+                </div>
+
+
             </main>
 
-            <footer className="bg-gray-100 dark:bg-gray-800 text-center">
+            <footer className="bg-gray-100 dark:bg-gray-800">
                 <Footer />
             </footer>
         </div>
