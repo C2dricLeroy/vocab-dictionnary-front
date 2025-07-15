@@ -8,6 +8,9 @@ import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/footer";
 import DictionaryTable from "@/components/dictionary/DictionaryTable";
 import DictionaryOverview from "@/components/dictionary/DictionaryOverview";
+import DeleteDictionary from "@/components/ui/dictionary/DeleteDictionary";
+import UpdateDictionary from "@/components/ui/dictionary/UpdateDictionary";
+import { useTranslations } from "next-intl";
 
 export default function DictionaryClientPage() {
     const { id } = useParams();
@@ -15,6 +18,9 @@ export default function DictionaryClientPage() {
     const { data: session } = useSession();
     const [dictionary, setDictionary] = useState<any>(null);
     const [error, setError] = useState(false);
+
+    const t = useTranslations("Dashboard");
+
 
     useEffect(() => {
         if (!id || !session?.accessToken) return;
@@ -77,7 +83,23 @@ export default function DictionaryClientPage() {
 
 
                 <section className="space-y-4">
-                    <QuickAddEntry dictionaryId={dictionary.id} />
+                    <div className="flex items-center justify-content">
+                        <UpdateDictionary
+                            dictionaryId={dictionary.id}
+                            initialName={dictionary.name}
+                            initialDescription={dictionary.description}
+                            onUpdated={(id, name, description) => {
+                                setDictionary(prev =>
+                                    prev.map(d => d.id === id ? { ...d, name, description } : d)
+                                );
+                            }}
+                        />
+                        <QuickAddEntry dictionaryId={dictionary.id} />
+                        <DeleteDictionary
+                            dictionaryId={dictionary.id}
+                            onDeleted={(id) => setDictionary(prev => prev.filter(d => d.id !== id))}
+                        />
+                    </div>
                     <DictionaryTable dictionaryId={dictionary.id} />
                 </section>
 
