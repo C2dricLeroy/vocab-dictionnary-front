@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import { FC, useState} from "react";
 import { Check, ChevronsUpDown, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,7 +14,7 @@ import {
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { Language } from "@/models/Language";
-import { useLanguages } from "@/hooks/useLanguages"; // <- si tu l'extrais
+import { useLanguages } from "@/hooks/useLanguages";
 
 interface LanguageSelectorProps {
     selected?: Language | null;
@@ -22,13 +22,13 @@ interface LanguageSelectorProps {
     placeholder?: string;
 }
 
-export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
+export const LanguageSelector: FC<LanguageSelectorProps> = ({
     selected,
     onChange,
     placeholder = "Select language",
 }) => {
-    const [open, setOpen] = React.useState(false);
-    const { languages } = useLanguages(); // ou remets fetch localement si tu veux
+    const [open, setOpen] = useState(false);
+    const { languages } = useLanguages();
 
     return (
         <Popover open={open} onOpenChange={setOpen}>

@@ -1,5 +1,3 @@
-'use client';
-
 import {ModeToggle} from "@/components/Modetoggle";
 import SigninComponent from "@/components/SigninComponent";
 import {Logo} from "@/components/ui/logo";

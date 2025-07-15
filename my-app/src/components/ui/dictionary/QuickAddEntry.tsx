@@ -48,7 +48,7 @@ export default function QuickAddEntry({ dictionaryId }: QuickAddEntryProps) {
             method: "POST",
             headers: {
             Authorization: `Bearer ${session?.accessToken}`,
-            "Content-Type": "application/json",
+                "Content-Type": "application/json",
             },
             body: JSON.stringify({
             original_name: originalName,

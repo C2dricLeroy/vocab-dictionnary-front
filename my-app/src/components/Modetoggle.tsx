@@ -13,7 +13,7 @@ import {useTranslations} from "next-intl";
 
 export function ModeToggle() {
     const t = useTranslations('ModeToggle');
-    const { setTheme } = useTheme();
+    // const { setTheme } = useTheme();
 
     return (
         <DropdownMenu>
@@ -25,15 +25,15 @@ export function ModeToggle() {
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => setTheme("light")}>
+                {/* <DropdownMenuItem onClick={() => setTheme("light")}>
                     {t('Light')}
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setTheme("dark")}>
                     {t('Dark')}
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("system")}>
-                    {t('System')}
-                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setTheme("system")}> */}
+                    {/* {t('System')}
+                </DropdownMenuItem> */}
             </DropdownMenuContent>
         </DropdownMenu>
     );

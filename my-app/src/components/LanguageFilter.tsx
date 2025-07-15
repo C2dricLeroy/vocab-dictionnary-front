@@ -19,16 +19,16 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover";
 import { Language } from "@/models/Language";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface LanguageFilterProps {
     onSelectLanguage?: (language: Language | null) => void; //eslint-disable-line
 }
 
 export default function LanguageFilter({ onSelectLanguage }: LanguageFilterProps) {
-    const [open, setOpen] = React.useState(false);
-    const [languages, setLanguages] = React.useState<Language[]>([]);
-    const [selectedLanguage, setSelectedLanguage] = React.useState<Language | null>(null);
+    const [open, setOpen] = useState(false);
+    const [languages, setLanguages] = useState<Language[]>([]);
+    const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(null);
 
     const t = useTranslations("LanguageFilter");
 
