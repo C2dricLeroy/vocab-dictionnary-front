@@ -34,6 +34,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BookOpenText, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, LayoutGrid } from "lucide-react";
+import DeleteEntry from "@/components/ui/entry/DeleteEntry";
 
 export default function DictionaryTable({ dictionaryId }: { dictionaryId: number }) {
     const { data: session } = useSession();
@@ -171,11 +172,17 @@ export default function DictionaryTable({ dictionaryId }: { dictionaryId: number
                                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                 </TableCell>
                                 ))}
+                                <TableCell>
+                                    <DeleteEntry
+                                        entryId={row.original.id}
+                                        onDeleted={(id) => setEntries(prev => prev.filter(d => d.id !== id))}
+                                    />
+                                </TableCell>
                             </TableRow>
                             ))}
                         </TableBody>
                         </Table>
-                    </div>
+                    </div>  
                     )}
 
                     {/* Pagination */}
