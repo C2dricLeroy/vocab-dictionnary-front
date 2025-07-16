@@ -28,7 +28,20 @@ export const LanguageSelector: FC<LanguageSelectorProps> = ({
     placeholder = "Select language",
 }) => {
     const [open, setOpen] = useState(false);
-    const { languages } = useLanguages();
+    const {
+        data: languages = [],
+        isLoading,
+        isError,
+        error,
+    } = useLanguages();
+
+    if (isLoading) {
+        return <div className="text-sm text-gray-500">Loading languages...</div>;
+    }
+
+    if (isError) {
+        return <div className="text-sm text-red-500">Error: {error.message}</div>;
+    }
 
     return (
         <Popover open={open} onOpenChange={setOpen}>
@@ -59,7 +72,7 @@ export const LanguageSelector: FC<LanguageSelectorProps> = ({
                     <CommandEmpty>No language found</CommandEmpty>
                     <CommandGroup>
                         <CommandList>
-                            {languages.map((lang) => (
+                            {languages.map((lang: any) => (
                                 <CommandItem
                                     key={lang.code}
                                     value={lang.name}

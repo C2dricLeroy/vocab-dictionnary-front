@@ -6,6 +6,7 @@ import jsxA11y from 'eslint-plugin-jsx-a11y';
 import ts from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import prettier from 'eslint-config-prettier';
+import pluginQuery from '@tanstack/eslint-plugin-query';
 
 const compat = new FlatCompat({
   baseDirectory: import.meta.url,
@@ -15,6 +16,7 @@ export default [
   js.configs.recommended,
 
   ...compat.extends('next', 'next/core-web-vitals'),
+  ...pluginQuery.configs['flat/recommended'],
 
   {
     ignores: ['.next/**'],

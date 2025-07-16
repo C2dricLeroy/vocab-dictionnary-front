@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { SessionProvider } from "next-auth/react";
 import { ReactNode } from "react";
+import { QueryProvider } from '@/app/provider';
 
 export default async function RootLayout({
   children,
@@ -22,6 +23,7 @@ export default async function RootLayout({
 
   return (
         <>
+        <QueryProvider>
         <SessionProvider>
           {/* <ThemeProvider
             attribute="class"
@@ -34,6 +36,7 @@ export default async function RootLayout({
             </NextIntlClientProvider>
           {/* </ThemeProvider> */}
           </SessionProvider>
+          </QueryProvider>
         </>
   );
 }

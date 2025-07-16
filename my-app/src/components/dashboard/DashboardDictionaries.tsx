@@ -5,7 +5,6 @@ import { useTranslations } from "next-intl";
 import { AddDictionaryModal } from "@/components/AddDictionaryModal";
 import { Button } from "@/components/ui/button";
 import { AddDictionaryFormData } from "@/models/AddDictionaryFormType";
-import { useSession } from "next-auth/react";
 import DeleteDictionary from "@/components/ui/dictionary/DeleteDictionary";
 import UpdateDictionary from "@/components/ui/dictionary/UpdateDictionary";
 import QuickAddEntry from "@/components/ui/dictionary/QuickAddEntry";
@@ -18,7 +17,7 @@ interface Dictionary {
 
 interface DictionariesProps {
     dictionaries: Dictionary[];
-    onDictionaryCreated?: (newDict: Dictionary) => void;  // eslint-disable-line
+    onDictionaryCreated?: any;  // eslint-disable-line
 }
 
 export const DashboardDictionaries: React.FC<DictionariesProps> = (
@@ -26,7 +25,6 @@ export const DashboardDictionaries: React.FC<DictionariesProps> = (
 ) => {
     const t = useTranslations("Dashboard");
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const { data: session } = useSession();
     const [localDictionaries, setDictionaries] = useState(dictionaries);
 
     const openModal = () => setIsModalOpen(true);
@@ -34,43 +32,22 @@ export const DashboardDictionaries: React.FC<DictionariesProps> = (
 
     useEffect(() => {
     setDictionaries(dictionaries);
-  }, [dictionaries]);
+}, [dictionaries]);
 
     const handleModalSubmit = async (data: AddDictionaryFormData) => {
-        if (!data.sourceLanguage || !data.targetLanguage ||!data.name) {
-            console.warn("Missing data for creating a dictionary. Please fill at least Name, source language & targetLanguage.");
-            return;
-        }
-        try {
-            const response = await fetch(process.env.NEXT_PUBLIC_BASE_URL + "/api/v1/dictionary", {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer ${session?.accessToken}`,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    name: data.name,
-                    description: data.description,
-                    source_language_id: data.sourceLanguage.id,
-                    target_language_id: data.targetLanguage.id,
-                }),
-            });
+    if (!data.sourceLanguage || !data.targetLanguage || !data.name) {
+        console.warn("Missing data...");
+        return;
+    }
 
-            if (!response.ok) {
-                const errorData = await response.json();
-                console.error("Error response:", errorData);
-                alert(`Failed to create dictionary: ${errorData.detail || response.statusText}`);
-                return;
-            }
+    onDictionaryCreated({
+        name: data.name,
+        description: data.description,
+        source_language_id: data.sourceLanguage.id,
+        target_language_id: data.targetLanguage.id,
+    });
 
-            const created = await response.json();
-            console.log("Dictionary created:", created);
-            onDictionaryCreated?.(created);
-            closeModal();
-        } catch (error) {
-            console.error("Error creating dictionary:", error);
-            alert("An unexpected error occurred.");
-        }
+    closeModal();
     };
 
     return (
