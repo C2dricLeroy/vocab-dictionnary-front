@@ -24,6 +24,7 @@ export default function DictionaryClientPage() {
         data: dictionary,
         isLoading,
         isError,
+        refetch
     } = useOneDictionary(session, dictionaryId);
 
     if (isLoading) {
@@ -65,6 +66,9 @@ export default function DictionaryClientPage() {
                             dictionaryId={dictionary.id}
                             initialName={dictionary.name}
                             initialDescription={dictionary.description}
+                            onUpdated={(id, name, description) => {
+                                refetch();
+                            }}
                         />
                         <QuickAddEntry dictionaryId={dictionary.id} />
                         <DeleteDictionary

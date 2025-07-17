@@ -100,7 +100,7 @@ export const DashboardDictionaries: React.FC = () => {
                             initialName={dictionary.name}
                             initialDescription={dictionary.description}
                             onUpdated={(id, name, description) => {
-                                // Tu peux aussi utiliser refetch ici si tu veux forcer le refresh
+                                refetch();
                             }}
                             />
                             <QuickAddEntry dictionaryId={dictionary.id} />

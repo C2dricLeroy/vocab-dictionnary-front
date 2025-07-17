@@ -13,21 +13,23 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useCreateEntry } from "@/hooks/entries/useAddEntry";
 
 interface QuickAddEntryProps {
     dictionaryId: number;
     onAdded?: (id: number) => void;
 }
 
-export default function QuickAddEntry({ dictionaryId }: QuickAddEntryProps) {
+export default function QuickAddEntry({ dictionaryId, onAdded }: QuickAddEntryProps) {
     const { data: session } = useSession();
     const [open, setOpen] = useState(false);
-    const [loading, setLoading] = useState(false);
 
     const [originalName, setOriginalName] = useState('');
     const [translation, setTranslation] = useState('');
     const [description, setDescription] = useState('');
     const [isExpression, setIsExpression] = useState(false);
+
+    const createEntryMutation = useCreateEntry(session);
 
     const resetForm = () => {
         setOriginalName('');
@@ -36,45 +38,28 @@ export default function QuickAddEntry({ dictionaryId }: QuickAddEntryProps) {
         setIsExpression(false);
     };
 
-    const handleSubmit = async () => {
+    const handleSubmit = () => {
         if (!originalName || !translation) {
             alert("Original and translation fields are required.");
             return;
         }
 
-        setLoading(true);
-
-        try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/entry`, {
-                method: "POST",
-                headers: {
-                Authorization: `Bearer ${session?.accessToken}`,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                original_name: originalName,
-                translation,
-                dictionary_id: dictionaryId,
-                description,
-                is_expression: isExpression,
-            }),
+        createEntryMutation.mutate({
+            original_name: originalName,
+            translation,
+            dictionary_id: dictionaryId,
+            description,
+            is_expression: isExpression,
+        }, {
+            onSuccess: () => {
+            resetForm();
+            setOpen(false);
+            onAdded?.(dictionaryId);
+            },
+            onError: (error: Error) => {
+            alert(`Failed to add entry: ${error.message}`);
+            }
         });
-
-        if (!response.ok) {
-            const errorData = await response.json();
-            console.error("Error response:", errorData);
-            alert(`Failed to add entry: ${errorData.detail || response.statusText}`);
-            return;
-        }
-
-        resetForm();
-        setOpen(false);
-        } catch (error) {
-        console.error("Unexpected error:", error);
-        alert("An unexpected error occurred.");
-        } finally {
-        setLoading(false);
-        }
     };
 
     return (
@@ -147,8 +132,8 @@ export default function QuickAddEntry({ dictionaryId }: QuickAddEntryProps) {
                 <Button variant="outline" onClick={() => setOpen(false)}>
                 Cancel
                 </Button>
-                <Button onClick={handleSubmit} disabled={loading}>
-                    {loading ? "Saving..." : "Add Entry"}
+                <Button onClick={handleSubmit}>
+                    {"Add Entry"}
                 </Button>
                 </DialogFooter>
             </DialogContent>
