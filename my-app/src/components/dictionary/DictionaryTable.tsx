@@ -1,76 +1,54 @@
 "use client";
 
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
 } from "@/components/ui/table";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
+import type { VisibilityState } from "@tanstack/react-table";
 import { useSession } from "next-auth/react";
 import {
-  useReactTable,
-  getCoreRowModel,
-  getPaginationRowModel,
-  flexRender,
-  ColumnDef,
-  VisibilityState,
+    useReactTable,
+    getCoreRowModel,
+    getPaginationRowModel,
+    flexRender,
+    ColumnDef,
+    VisibilityState,
 } from "@tanstack/react-table";
 import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
+    Tabs,
+    TabsContent,
+    TabsList,
+    TabsTrigger,
 } from "@/components/ui/tabs";
 import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
+    DropdownMenu,
+    DropdownMenuCheckboxItem,
+    DropdownMenuContent,
+    DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BookOpenText, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, LayoutGrid } from "lucide-react";
 import DeleteEntry from "@/components/ui/entry/DeleteEntry";
+import { useEntries } from "@/hooks/useEntries";
+
+import { useQueryClient } from "@tanstack/react-query";
 
 export default function DictionaryTable({ dictionaryId }: { dictionaryId: number }) {
     const { data: session } = useSession();
-    const [entries, setEntries] = useState<any[]>([]);
-    const [loading, setLoading] = useState(true);
+    const queryClient = useQueryClient();
+
     const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
         description: false,
-});
+    });
 
-
-    useEffect(() => {
-        if (!session?.accessToken) return;
-
-        const fetchEntries = async () => {
-        setLoading(true);
-        try {
-            const res = await fetch(
-            `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/entry/dictionary/${dictionaryId}`,
-            {
-                headers: {
-                Authorization: `Bearer ${session.accessToken}`,
-                },
-            }
-            );
-            if (!res.ok) throw new Error("Failed to fetch");
-            const data = await res.json();
-            setEntries(data);
-        } catch (err) {
-            console.error("Erreur lors du chargement des entrées :", err);
-        } finally {
-            setLoading(false);
-        }
-        };
-
-        fetchEntries();
-    }, [dictionaryId, session?.accessToken]);
+    const { data: entries = [], isLoading } = useEntries(session, dictionaryId);
 
     const columns = useMemo<ColumnDef<any>[]>(
         () => [
@@ -140,7 +118,7 @@ export default function DictionaryTable({ dictionaryId }: { dictionaryId: number
                     value="entries"
                     className="relative flex flex-col gap-4 overflow-auto px-4 lg:px-6"
                 >
-                    {loading ? (
+                    {isLoading ? (
                     <div className="space-y-2">
                         <Skeleton className="h-8 w-full" />
                         <Skeleton className="h-8 w-full" />
@@ -148,7 +126,7 @@ export default function DictionaryTable({ dictionaryId }: { dictionaryId: number
                     </div>
                     ) : table.getRowModel().rows.length === 0 ? (
                     <div className="text-muted-foreground text-sm">
-                        Aucune entrée disponible.
+                        Loading ... 
                     </div>
                     ) : (
                     <div className="rounded-lg border overflow-hidden">
@@ -175,7 +153,12 @@ export default function DictionaryTable({ dictionaryId }: { dictionaryId: number
                                 <TableCell>
                                     <DeleteEntry
                                         entryId={row.original.id}
-                                        onDeleted={(id) => setEntries(prev => prev.filter(d => d.id !== id))}
+                                        onDeleted={(id) => {
+                                            queryClient.setQueryData<any[]>(
+                                            ['entries', session?.accessToken, dictionaryId],
+                                            (old = []) => old.filter(e => e.id !== id)
+                                            );
+                                        }}
                                     />
                                 </TableCell>
                             </TableRow>
@@ -186,7 +169,7 @@ export default function DictionaryTable({ dictionaryId }: { dictionaryId: number
                     )}
 
                     {/* Pagination */}
-                    {!loading && (
+                    {!isLoading && (
                     <div className="flex items-center justify-between px-2">
                         <div className="flex items-center gap-2 text-sm text-muted-foreground">
                         Page {table.getState().pagination.pageIndex + 1} sur {table.getPageCount()}
