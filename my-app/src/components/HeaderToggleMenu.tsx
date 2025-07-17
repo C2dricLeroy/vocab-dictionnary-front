@@ -1,11 +1,10 @@
 import { Button } from "@/components/ui/button";
-import {Link} from '@/i18n/navigation';
-import {useTranslations} from 'next-intl';
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { ModeToggle } from "@/components/Modetoggle";
 
 export default function HeaderToggleMenu() {
-
-    const t = useTranslations('WelcomeHeader');
+    const t = useTranslations("WelcomeHeader");
 
     return (
         <div className="flex flex-col mt-4 space-y-4 items-center">

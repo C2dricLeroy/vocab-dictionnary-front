@@ -8,7 +8,8 @@ const inputVariants = cva(
     {
         variants: {
             variant: {
-                default: "shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light",
+                default:
+                    "shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light",
                 destructive: "bg-destructive",
                 neumorphism:
                     "bg-gray-200 shadow-[8px_8px_16px_#d1d9e6,-8px_-8px_16px_#ffffff] dark:bg-gray-800 dark:shadow-[1px_1px_2px_#2e2e2e,-1px_-1px_2px_#010101] dark:text-gray-300",
@@ -27,22 +28,14 @@ const inputVariants = cva(
     }
 );
 
-export interface InputProps
-    extends React.InputHTMLAttributes<HTMLInputElement>,
-        VariantProps<typeof inputVariants> {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>, VariantProps<typeof inputVariants> {
     asChild?: boolean;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
     ({ className, variant, variantSize, asChild = false, ...props }, ref) => {
         const Comp = asChild ? Slot : "input";
-        return (
-            <Comp
-                className={cn(inputVariants({ variant, variantSize, className }))}
-                ref={ref}
-                {...props}
-            />
-        );
+        return <Comp className={cn(inputVariants({ variant, variantSize, className }))} ref={ref} {...props} />;
     }
 );
 

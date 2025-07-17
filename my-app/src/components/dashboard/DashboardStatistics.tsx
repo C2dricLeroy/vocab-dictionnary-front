@@ -7,7 +7,8 @@ import { useTranslations } from "next-intl";
 export const DashboardStatistics: React.FC = () => {
     const t = useTranslations("Dashboard");
 
-    const [statistics, setStatistics] = useState<{  // eslint-disable-line
+    const [statistics, setStatistics] = useState<{
+        // eslint-disable-line
         totalWordsAdded: number;
         totalDictionaries: number;
     } | null>(null);
@@ -19,11 +20,9 @@ export const DashboardStatistics: React.FC = () => {
             // const response = await fetch(url, {
             //     credentials: 'include',
             // });
-
             // if (!response.ok) {
             //     throw new Error("Failed to fetch statistics");
             // }
-
             // const data = await response.json();
             // setStatistics({
             //     totalDictionaries: data.total_dictionaries,
@@ -51,8 +50,12 @@ export const DashboardStatistics: React.FC = () => {
             </CardHeader>
             <CardContent>
                 <div className="space-y-4">
-                    <p>{t("total words added")} : <span className="font-bold">{statistics?.totalWordsAdded}</span></p>
-                    <p>{t("total dictionaries")} : <span className="font-bold">{statistics?.totalDictionaries}</span></p>
+                    <p>
+                        {t("total words added")} : <span className="font-bold">{statistics?.totalWordsAdded}</span>
+                    </p>
+                    <p>
+                        {t("total dictionaries")} : <span className="font-bold">{statistics?.totalDictionaries}</span>
+                    </p>
                     {/* <p>{t("words added this month")} : <span className="font-bold">{statistics?.wordsAddedThisMonth}</span></p> */}
                 </div>
             </CardContent>

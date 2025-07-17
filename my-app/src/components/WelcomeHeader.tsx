@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
 import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/Modetoggle";
-import {useTranslations} from 'next-intl';
-import {Link} from '@/i18n/navigation';
-import {useState} from "react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { useState } from "react";
 import HeaderToggleMenu from "@/components/HeaderToggleMenu";
 import { LanguageSwitcher } from "./LangugageSwitcher";
 import { useRouter } from "@/i18n/navigation";
@@ -22,7 +22,7 @@ export default function WelcomeHeader() {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    const t = useTranslations('WelcomeHeader');
+    const t = useTranslations("WelcomeHeader");
 
     const handleLogout = async () => {
         await signOut({ redirect: false });
@@ -36,15 +36,10 @@ export default function WelcomeHeader() {
             }`}
         >
             <div className="flex items-center justify-between w-full">
-                <Logo
-                    logoSrc="/logo.png"
-                    altText="Lexit Logo"
-                    variant="default"
-                    variantSize="lg"
-                />
+                <Logo logoSrc="/logo.png" altText="Lexit Logo" variant="default" variantSize="lg" />
 
                 <div className="hidden md:flex space-x-4 items-center">
-                    <LanguageSwitcher/>
+                    <LanguageSwitcher />
                     <Button size="lg" variant="outline">
                         <Link href="/pricing">{t("Pricing")}</Link>
                     </Button>
@@ -52,23 +47,20 @@ export default function WelcomeHeader() {
                         <Link href="/about">{t("About")}</Link>
                     </Button>
 
-            {session?.user ? (
-                <Button size="lg" variant="default" onClick={handleLogout}>
-                    {t("Logout")}
-                </Button>
-            ) : (
-                <Button size="lg" variant="default">
-                    <Link href="/signin">{t("Login")}</Link>
-                </Button>
-            )}
+                    {session?.user ? (
+                        <Button size="lg" variant="default" onClick={handleLogout}>
+                            {t("Logout")}
+                        </Button>
+                    ) : (
+                        <Button size="lg" variant="default">
+                            <Link href="/signin">{t("Login")}</Link>
+                        </Button>
+                    )}
                     <ModeToggle />
                 </div>
 
                 <div className="md:hidden">
-                    <button
-                        onClick={toggleMenu}
-                        className="text-gray-700 dark:text-gray-300 focus:outline-none"
-                    >
+                    <button onClick={toggleMenu} className="text-gray-700 dark:text-gray-300 focus:outline-none">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-6 w-6"

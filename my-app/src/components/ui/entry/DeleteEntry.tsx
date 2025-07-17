@@ -1,20 +1,14 @@
-'use client';
+"use client";
 
 import { Trash2 } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-    Dialog,
-    DialogContent,
-    DialogHeader,
-    DialogFooter,
-    DialogTitle,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogFooter, DialogTitle } from "@/components/ui/dialog";
 
 interface DeleteEntryProps {
     entryId: number;
-    onDeleted?: (id: number) => void;  // eslint-disable-line
+    onDeleted?: (id: number) => void; // eslint-disable-line
 }
 
 export default function DeleteEntry({ entryId, onDeleted }: DeleteEntryProps) {
@@ -23,7 +17,6 @@ export default function DeleteEntry({ entryId, onDeleted }: DeleteEntryProps) {
     const [showModal, setShowModal] = useState(false);
 
     const handleDelete = async () => {
-
         setLoading(true);
         try {
             const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/entry/${entryId}`;
@@ -36,7 +29,6 @@ export default function DeleteEntry({ entryId, onDeleted }: DeleteEntryProps) {
 
             if (!response.ok) {
                 throw new Error("Failed to delete entry");
-
             }
 
             onDeleted?.(entryId);
@@ -61,43 +53,36 @@ export default function DeleteEntry({ entryId, onDeleted }: DeleteEntryProps) {
                 <Trash2 className="w-5 h-5" />
             </Button>
 
-            <ConfirmDeleteModal
-            open={showModal}
-            onClose={() => setShowModal(false)}
-            onConfirm={handleDelete}
-            />
-      </>
+            <ConfirmDeleteModal open={showModal} onClose={() => setShowModal(false)} onConfirm={handleDelete} />
+        </>
     );
 }
 
 interface ConfirmDeleteModalProps {
-  open: boolean;
-  onClose: () => void;
-  onConfirm: () => void;
+    open: boolean;
+    onClose: () => void;
+    onConfirm: () => void;
 }
 
 export function ConfirmDeleteModal({ open, onClose, onConfirm }: ConfirmDeleteModalProps) {
-  return (
-    <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="bg-white sm:max-w-md w-[90vw] max-w-[400px] rounded-xl shadow-xl z-50">
-        <DialogHeader>
-          <DialogTitle className="text-lg font-semibold">Are you sure?</DialogTitle>
-        </DialogHeader>
-        <div className="text-sm text-gray-700">
-          This action cannot be undone. The entry will be permanently deleted.
-        </div>
-        <DialogFooter className="mt-4 flex justify-end space-x-2">
-          <Button variant="outline" onClick={onClose}>
-            Cancel
-          </Button>
-          <Button
-            onClick={onConfirm}
-            className="bg-red-600 hover:bg-red-700 text-white"
-          >
-            Delete
-          </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
-  );
+    return (
+        <Dialog open={open} onOpenChange={onClose}>
+            <DialogContent className="bg-white sm:max-w-md w-[90vw] max-w-[400px] rounded-xl shadow-xl z-50">
+                <DialogHeader>
+                    <DialogTitle className="text-lg font-semibold">Are you sure?</DialogTitle>
+                </DialogHeader>
+                <div className="text-sm text-gray-700">
+                    This action cannot be undone. The entry will be permanently deleted.
+                </div>
+                <DialogFooter className="mt-4 flex justify-end space-x-2">
+                    <Button variant="outline" onClick={onClose}>
+                        Cancel
+                    </Button>
+                    <Button onClick={onConfirm} className="bg-red-600 hover:bg-red-700 text-white">
+                        Delete
+                    </Button>
+                </DialogFooter>
+            </DialogContent>
+        </Dialog>
+    );
 }

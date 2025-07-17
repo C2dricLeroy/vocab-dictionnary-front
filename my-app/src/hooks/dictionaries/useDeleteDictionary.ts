@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export function useDeleteDictionary(session: any) {
     const queryClient = useQueryClient();
@@ -6,7 +6,7 @@ export function useDeleteDictionary(session: any) {
     return useMutation({
         mutationFn: async (dictionaryId: number) => {
             const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/dictionary/${dictionaryId}`, {
-                method: 'DELETE',
+                method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${session?.accessToken}`,
                 },
@@ -15,8 +15,8 @@ export function useDeleteDictionary(session: any) {
             return dictionaryId;
         },
         onSuccess: (deletedId) => {
-            queryClient.setQueryData<any[]>(['dictionaries', session.accessToken], (old = []) =>
-                old ? old.filter(dict => dict.id !== deletedId) : []
+            queryClient.setQueryData<any[]>(["dictionaries", session.accessToken], (old = []) =>
+                old ? old.filter((dict) => dict.id !== deletedId) : []
             );
         },
         onError: (error) => {

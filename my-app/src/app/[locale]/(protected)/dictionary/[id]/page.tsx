@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useParams, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
@@ -20,12 +20,7 @@ export default function DictionaryClientPage() {
 
     const dictionaryId = Array.isArray(id) ? id[0] : id;
 
-    const {
-        data: dictionary,
-        isLoading,
-        isError,
-        refetch
-    } = useOneDictionary(session, dictionaryId);
+    const { data: dictionary, isLoading, isError, refetch } = useOneDictionary(session, dictionaryId);
 
     if (isLoading) {
         return <p className="text-center text-gray-500 mt-10">Chargement du dictionnaire...</p>;
@@ -41,21 +36,14 @@ export default function DictionaryClientPage() {
 
             <main className="flex-grow max-w-6xl w-full mx-auto px-4 py-8 space-y-8">
                 <div className="text-sm text-muted-foreground mb-2">
-                    <button
-                        onClick={() => router.push('/dashboard')}
-                        className="hover:underline"
-                    >
+                    <button onClick={() => router.push("/dashboard")} className="hover:underline">
                         ← Retour au tableau de bord
                     </button>
                 </div>
 
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">
-                        📘 {dictionary.name}
-                    </h1>
-                    {dictionary.description && (
-                        <p className="text-muted-foreground mt-1">{dictionary.description}</p>
-                    )}
+                    <h1 className="text-3xl font-bold tracking-tight">📘 {dictionary.name}</h1>
+                    {dictionary.description && <p className="text-muted-foreground mt-1">{dictionary.description}</p>}
                 </div>
 
                 <DictionaryOverview dictionary={dictionary} />
@@ -72,10 +60,7 @@ export default function DictionaryClientPage() {
                             }}
                         />
                         <QuickAddEntry dictionaryId={dictionary.id} />
-                        <DeleteDictionary
-                            dictionaryId={dictionary.id}
-                            onDeleted={() => router.push("/dashboard")}
-                        />
+                        <DeleteDictionary dictionaryId={dictionary.id} onDeleted={() => router.push("/dashboard")} />
                     </div>
                     <DictionaryTable dictionaryId={dictionary.id} />
                 </section>

@@ -3,12 +3,7 @@ import Footer from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import WelcomeHeader from "@/components/WelcomeHeader";
 import { useTranslations } from "next-intl";
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export default function Home() {
     const t = useTranslations("HomePage");
@@ -17,17 +12,23 @@ export default function Home() {
         {
             icon: "book",
             title: t("Your personal dictionaries"),
-            description: t("Create your own word lists in several languages, adapted to your objectives and level of proficiency"),
+            description: t(
+                "Create your own word lists in several languages, adapted to your objectives and level of proficiency"
+            ),
         },
         {
             icon: "globe",
             title: t("Interactive exercises"),
-            description: t("Test and reinforce your knowledge with a variety of fun exercises designed to make learning stimulating"),
+            description: t(
+                "Test and reinforce your knowledge with a variety of fun exercises designed to make learning stimulating"
+            ),
         },
         {
             icon: "brain",
             title: t("Smart progress tracking"),
-            description: t("Analyze your progress with detailed statistics, identify your strengths and focus on areas for improvement"),
+            description: t(
+                "Analyze your progress with detailed statistics, identify your strengths and focus on areas for improvement"
+            ),
         },
         {
             icon: "trophy",
@@ -37,12 +38,16 @@ export default function Home() {
         {
             icon: "users",
             title: t("Spacing-based revisions (SRS)"),
-            description: t("Benefit from a spaced repetition system to memorize each new word added to your vocabulary"),
+            description: t(
+                "Benefit from a spaced repetition system to memorize each new word added to your vocabulary"
+            ),
         },
         {
             icon: "rocket",
             title: t("Sharing and community"),
-            description: t("Share your progress and discover new approaches by interacting with a community of passionate learners"),
+            description: t(
+                "Share your progress and discover new approaches by interacting with a community of passionate learners"
+            ),
         },
     ];
 
@@ -56,21 +61,15 @@ export default function Home() {
                 <section className="relative py-20 overflow-hidden">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center space-y-8">
-                            <h1
-                                className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-gray-100"
-                            >
+                            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-gray-100">
                                 {t("Welcome on Lexit")}
                             </h1>
-                            <p
-                                className="max-w-2xl mx-auto text-xl text-gray-500 dark:text-gray-400"
-                            >
+                            <p className="max-w-2xl mx-auto text-xl text-gray-500 dark:text-gray-400">
                                 {t(
                                     "Ready to transform your language learning? Join Lexit today and master the vocabulary that will make all the difference!"
                                 )}
                             </p>
-                            <div
-                                className="flex justify-center space-x-4"
-                            >
+                            <div className="flex justify-center space-x-4">
                                 {/* @ts-expect-error on Link href*/}
                                 <Button size="lg" href="/signin">
                                     {t("Join Lexit")}
@@ -110,13 +109,17 @@ export default function Home() {
                             <AccordionItem value="item-1">
                                 <AccordionTrigger>{t("What is Lexit and how does it work?")}</AccordionTrigger>
                                 <AccordionContent>
-                                    {t("Lexit is a language-learning application designed to help you expand and master your vocabulary in multiple languages You can build personalized vocabulary lists, track your progress with intelligent revision tools, and access interactive quizzes to reinforce your learning")}
+                                    {t(
+                                        "Lexit is a language-learning application designed to help you expand and master your vocabulary in multiple languages You can build personalized vocabulary lists, track your progress with intelligent revision tools, and access interactive quizzes to reinforce your learning"
+                                    )}
                                 </AccordionContent>
                             </AccordionItem>
                             <AccordionItem value="item-2">
                                 <AccordionTrigger>{t("Is Lexit suitable for beginners")}</AccordionTrigger>
                                 <AccordionContent>
-                                    {t("Absolutely! Lexit caters to all levels, from beginners to advanced learners You can start with basic vocabulary and progress at your own pace, leveraging features like customizable study plans and contextual examples")}
+                                    {t(
+                                        "Absolutely! Lexit caters to all levels, from beginners to advanced learners You can start with basic vocabulary and progress at your own pace, leveraging features like customizable study plans and contextual examples"
+                                    )}
                                 </AccordionContent>
                             </AccordionItem>
                             <AccordionItem value="item-3">

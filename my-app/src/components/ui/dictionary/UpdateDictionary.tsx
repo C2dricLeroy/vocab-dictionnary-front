@@ -1,19 +1,13 @@
-'use client';
+"use client";
 
-import { Pencil } from 'lucide-react';
-import { useSession } from 'next-auth/react';
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import {
-    Dialog,
-    DialogContent,
-    DialogHeader,
-    DialogFooter,
-    DialogTitle,
-} from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { useUpdateDictionary } from '@/hooks/dictionaries/useUpdateDictionary';
+import { Pencil } from "lucide-react";
+import { useSession } from "next-auth/react";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogFooter, DialogTitle } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useUpdateDictionary } from "@/hooks/dictionaries/useUpdateDictionary";
 
 interface UpdateDictionaryProps {
     dictionaryId: number;
@@ -36,15 +30,16 @@ export default function UpdateDictionary({
     const updateMutation = useUpdateDictionary(session, dictionaryId);
 
     const handleUpdate = async () => {
-        updateMutation.mutate({ name, description },
+        updateMutation.mutate(
+            { name, description },
             {
                 onSuccess: () => {
                     onUpdated?.(dictionaryId, name, description);
                     setShowModal(false);
-                }
+                },
             }
         );
-    }
+    };
 
     return (
         <>
@@ -64,9 +59,7 @@ export default function UpdateDictionary({
                     </DialogHeader>
 
                     <div className="space-y-4">
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                            Name
-                        </label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
                         <Input
                             value={name}
                             onChange={(e) => setName(e.target.value)}
@@ -87,10 +80,7 @@ export default function UpdateDictionary({
                         <Button variant="outline" onClick={() => setShowModal(false)}>
                             Cancel
                         </Button>
-                        <Button
-                            onClick={handleUpdate}
-                            className="bg-blue-600 hover:bg-blue-700 text-white"
-                        >
+                        <Button onClick={handleUpdate} className="bg-blue-600 hover:bg-blue-700 text-white">
                             Save
                         </Button>
                     </DialogFooter>

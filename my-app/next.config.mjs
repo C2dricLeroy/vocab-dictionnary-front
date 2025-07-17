@@ -1,6 +1,6 @@
-import createNextIntlPlugin from 'next-intl/plugin';
+import createNextIntlPlugin from "next-intl/plugin";
 
-const nextConfig = {}
+const nextConfig = {};
 
 const withNextIntl = createNextIntlPlugin();
 export default withNextIntl(nextConfig);

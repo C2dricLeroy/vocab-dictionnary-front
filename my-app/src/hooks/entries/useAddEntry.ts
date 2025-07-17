@@ -1,4 +1,4 @@
-import { useMutation, UseMutationResult, useQueryClient } from '@tanstack/react-query';
+import { useMutation, UseMutationResult, useQueryClient } from "@tanstack/react-query";
 
 interface CreateEntryPayload {
     original_name: string;
@@ -13,22 +13,25 @@ export function useCreateEntry(session: any): UseMutationResult<any, Error, Crea
 
     return useMutation({
         mutationFn: async (newEntry: CreateEntryPayload) => {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/entry`, {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${session?.accessToken}`,
-            },
-            body: JSON.stringify(newEntry),
-        });
-        if (!res.ok) {
-            const errorData = await res.json();
-            throw new Error(errorData.detail || 'Failed to add entry');
-        }
-        return res.json();
+            const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/entry`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${session?.accessToken}`,
+                },
+                body: JSON.stringify(newEntry),
+            });
+            if (!res.ok) {
+                const errorData = await res.json();
+                throw new Error(errorData.detail || "Failed to add entry");
+            }
+            return res.json();
         },
         onSuccess: (data) => {
-            queryClient.setQueryData(['entries', session?.accessToken,  data.dictionary_id], (old: any[] = []) => [...old, data]);
+            queryClient.setQueryData(["entries", session?.accessToken, data.dictionary_id], (old: any[] = []) => [
+                ...old,
+                data,
+            ]);
         },
     });
 }

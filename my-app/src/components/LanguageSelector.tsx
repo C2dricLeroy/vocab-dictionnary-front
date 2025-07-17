@@ -1,16 +1,9 @@
 "use client";
 
-import { FC, useState} from "react";
+import { FC, useState } from "react";
 import { Check, ChevronsUpDown, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-    Command,
-    CommandEmpty,
-    CommandGroup,
-    CommandInput,
-    CommandItem,
-    CommandList,
-} from "@/components/ui/command";
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { Language } from "@/models/Language";
@@ -18,7 +11,7 @@ import { useLanguages } from "@/hooks/languages/useLanguages";
 
 interface LanguageSelectorProps {
     selected?: Language | null;
-    onChange: (language: Language | null) => void;  // eslint-disable-line
+    onChange: (language: Language | null) => void; // eslint-disable-line
     placeholder?: string;
 }
 
@@ -28,12 +21,7 @@ export const LanguageSelector: FC<LanguageSelectorProps> = ({
     placeholder = "Select language",
 }) => {
     const [open, setOpen] = useState(false);
-    const {
-        data: languages = [],
-        isLoading,
-        isError,
-        error,
-    } = useLanguages();
+    const { data: languages = [], isLoading, isError, error } = useLanguages();
 
     if (isLoading) {
         return <div className="text-sm text-gray-500">Loading languages...</div>;

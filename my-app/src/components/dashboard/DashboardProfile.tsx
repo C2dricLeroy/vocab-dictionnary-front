@@ -3,12 +3,11 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
-import { Link } from '@/i18n/navigation';
+import { Link } from "@/i18n/navigation";
 import { useSession } from "next-auth/react";
 import { FC } from "react";
 
 export const DashboardProfile: FC = () => {
-
     const t = useTranslations("Dashboard");
 
     const { data: session } = useSession();
@@ -20,8 +19,12 @@ export const DashboardProfile: FC = () => {
             </CardHeader>
             <CardContent>
                 <div className="space-y-4">
-                    <p className="text-gray-800 dark:text-white">{t('Name')} : {session?.user?.name ?? "Inconnu"}</p>
-                    <p className="text-gray-800 dark:text-white">{t('Email')} : {session?.user?.email ?? "Inconnu"}</p>
+                    <p className="text-gray-800 dark:text-white">
+                        {t("Name")} : {session?.user?.name ?? "Inconnu"}
+                    </p>
+                    <p className="text-gray-800 dark:text-white">
+                        {t("Email")} : {session?.user?.email ?? "Inconnu"}
+                    </p>
                     <Button variant="default">
                         <Link href="/profile">{t("Modify Profile")}</Link>
                     </Button>

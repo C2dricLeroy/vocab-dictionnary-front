@@ -1,37 +1,32 @@
-'use client';
+"use client";
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Slot } from "@radix-ui/react-slot";
-import {Link} from '@/i18n/navigation';
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 
-const logoVariants = cva(
-    "flex items-center justify-center",
-    {
-        variants: {
-            variant: {
-                default: "",
-                plainBackground: ""
-            },
-            variantSize: {
-                default: "h-9 w-auto px-4 py-2",
-                sm: "h-8 rounded-md px-3 text-xs",
-                lg: "h-10 rounded-md px-8",
-                icon: "h-9 w-9",
-            },
+const logoVariants = cva("flex items-center justify-center", {
+    variants: {
+        variant: {
+            default: "",
+            plainBackground: "",
         },
-        defaultVariants: {
-            variant: "default",
-            variantSize: "default",
+        variantSize: {
+            default: "h-9 w-auto px-4 py-2",
+            sm: "h-8 rounded-md px-3 text-xs",
+            lg: "h-10 rounded-md px-8",
+            icon: "h-9 w-9",
         },
-    }
-);
+    },
+    defaultVariants: {
+        variant: "default",
+        variantSize: "default",
+    },
+});
 
-export interface LogoProps
-    extends React.HTMLAttributes<HTMLDivElement>,
-        VariantProps<typeof logoVariants> {
+export interface LogoProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof logoVariants> {
     asChild?: boolean;
     logoSrc: string;
     altText?: string;
@@ -51,15 +46,9 @@ const Logo = React.forwardRef<HTMLDivElement, LogoProps>(
                     ref={ref}
                     {...props}
                     onClick={handleLogoClick}
-                    style={{ cursor: 'pointer' }}
+                    style={{ cursor: "pointer" }}
                 >
-                    <Image
-                        src={logoSrc}
-                        alt={altText}
-                        className="h-full w-auto max-w-full"
-                        width={100}
-                        height={100}
-                    />
+                    <Image src={logoSrc} alt={altText} className="h-full w-auto max-w-full" width={100} height={100} />
                 </Comp>
             </Link>
         );
