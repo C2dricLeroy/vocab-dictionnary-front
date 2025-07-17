@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import QuickAddEntry from "@/components/ui/dictionary/QuickAddEntry";
@@ -11,49 +10,28 @@ import DictionaryOverview from "@/components/dictionary/DictionaryOverview";
 import DeleteDictionary from "@/components/ui/dictionary/DeleteDictionary";
 import UpdateDictionary from "@/components/ui/dictionary/UpdateDictionary";
 import { useTranslations } from "next-intl";
+import { useOneDictionary } from "@/hooks/useDictionaries";
 
 export default function DictionaryClientPage() {
     const { id } = useParams();
     const router = useRouter();
     const { data: session } = useSession();
-    const [dictionary, setDictionary] = useState<any>(null);
-    const [error, setError] = useState(false);
-
     const t = useTranslations("Dashboard");
 
+    const dictionaryId = Array.isArray(id) ? id[0] : id;
 
-    useEffect(() => {
-        if (!id || !session?.accessToken) return;
+    const {
+        data: dictionary,
+        isLoading,
+        isError,
+    } = useOneDictionary(session, dictionaryId);
 
-        const fetchDictionary = async () => {
-            try {
-                const res = await fetch(
-                    `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/dictionary/${Number(id)}`,
-                    {
-                        headers: {
-                        Authorization: `Bearer ${session.accessToken}`,
-                        "Content-Type": "application/json",
-                        },
-                    }
-                );
-
-                if (!res.ok) throw new Error("Not found");
-
-                const data = await res.json();
-                setDictionary(data);
-            } catch (err) {
-                setError(true);
-            }
-        };
-    fetchDictionary();
-    }, [id, session]);
-
-    if (error) {
-        return <p className="text-center text-red-500 mt-10">Dictionnaire introuvable.</p>;
+    if (isLoading) {
+        return <p className="text-center text-gray-500 mt-10">Chargement du dictionnaire...</p>;
     }
 
-    if (!dictionary) {
-        return <p className="text-center text-gray-500 mt-10">Chargement du dictionnaire...</p>;
+    if (isError || !dictionary) {
+        return <p className="text-center text-red-500 mt-10">Dictionnaire introuvable.</p>;
     }
 
     return (
@@ -81,23 +59,17 @@ export default function DictionaryClientPage() {
 
                 <DictionaryOverview dictionary={dictionary} />
 
-
                 <section className="space-y-4">
-                    <div className="flex items-center justify-content">
+                    <div className="flex items-center justify-between flex-wrap gap-4">
                         <UpdateDictionary
                             dictionaryId={dictionary.id}
                             initialName={dictionary.name}
                             initialDescription={dictionary.description}
-                            onUpdated={(id, name, description) => {
-                                setDictionary(prev =>
-                                    prev.map(d => d.id === id ? { ...d, name, description } : d)
-                                );
-                            }}
                         />
                         <QuickAddEntry dictionaryId={dictionary.id} />
                         <DeleteDictionary
                             dictionaryId={dictionary.id}
-                            onDeleted={(id) => setDictionary(prev => prev.filter(d => d.id !== id))}
+                            onDeleted={() => router.push("/dashboard")}
                         />
                     </div>
                     <DictionaryTable dictionaryId={dictionary.id} />
@@ -108,8 +80,6 @@ export default function DictionaryClientPage() {
                         📖 Réviser ce dictionnaire (bientôt)
                     </button>
                 </div>
-
-
             </main>
 
             <footer className="bg-gray-100 dark:bg-gray-800">
