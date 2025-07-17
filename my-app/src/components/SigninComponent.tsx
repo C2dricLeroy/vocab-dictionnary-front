@@ -53,7 +53,7 @@ export default function SigninComponent() {
                         {t('Email')}
                     </label>
                     <Input
-                        variant="neumorphism"
+                        variant="default"
                         type="text"
                         id="email"
                         placeholder={t('Enter your email')}
@@ -67,7 +67,7 @@ export default function SigninComponent() {
                         {t('Password')}
                     </label>
                     <Input
-                        variant="neumorphism"
+                        variant="default"
                         type="password"
                         id="password"
                         placeholder={t('Enter your password')}

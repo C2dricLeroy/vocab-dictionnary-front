@@ -22,22 +22,19 @@ export default function Footer() {
                 <Link href="/" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">{t('Home')}</Link>
               </li>
               <li className="mb-2">
-                {/* @ts-expect-error on Link href*/}
                 <Link href="/about" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">{t('About')}</Link>
               </li>
               <li className="mb-2">
-                {/* @ts-expect-error on Link href*/}
                 <Link href="/pricing" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">{t('Pricing')}</Link>
               </li>
               <li className="mb-2">
-                {/* @ts-expect-error on Link href*/}
                 <Link href="/contact" className="hover:underline hover:text-gray-800 dark:hover:text-gray-300">{t('Contact')}</Link>
               </li>
             </ul>
           </div>
 
           <div className="w-full sm:w-1/2 lg:w-1/3 mb-6">
-            <h2 className="text-lg font-semibold mb-4">{t('Contact us')}</h2>
+            <Link href="/contact" className="text-lg font-semibold mb-4">{t('Contact us')}</Link>
             <p className="text-gray-600 dark:text-gray-400">Email: cedric.lexoy@lexit.icu</p>
             <div className="flex space-x-4 mt-4">
               <a href="my-app/src/app/[locale]/components#" className="hover:text-gray-800 dark:hover:text-gray-300">

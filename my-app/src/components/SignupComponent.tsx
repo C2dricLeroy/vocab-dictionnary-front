@@ -86,7 +86,7 @@ export default function SignupComponent() {
                         </span>
                     </label>
                     <Input
-                        variant="neumorphism"
+                        variant="default"
                         type="text"
                         id="username"
                         placeholder={t('Enter your username')}
@@ -101,7 +101,7 @@ export default function SignupComponent() {
                         {t('Email')}
                     </label>
                     <Input
-                        variant="neumorphism"
+                        variant="default"
                         type="email"
                         id="email"
                         placeholder={t('Enter your email')}
@@ -115,7 +115,7 @@ export default function SignupComponent() {
                         {t('Password')}
                     </label>
                     <Input
-                        variant="neumorphism"
+                        variant="default"
                         type="password"
                         id="password"
                         placeholder={t('Enter your password')}
@@ -126,7 +126,7 @@ export default function SignupComponent() {
                 </div>
                 <div className="mb-6">
                     <Input
-                        variant="neumorphism"
+                        variant="default"
                         type="password"
                         id="passwordConfirm"
                         placeholder={t('Confirm your password')}

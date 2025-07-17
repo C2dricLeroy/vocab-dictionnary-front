@@ -100,11 +100,6 @@
     "Sorry, the page you are looking for does not exist": "Sorry, the page you are looking for does not exist.",
     "Go back home": "Go back home"
   },
-  "LanguageFilter": {
-    "Select language": "Select a language...",
-    "Search language": "Search a language...",
-    "No language found": "No language found"
-  },
   "Dashboard": {
     "Select a language to view dictionary data": "Select a language to view dictionary data.",
     "No data found for this language": "No data found for this language.",

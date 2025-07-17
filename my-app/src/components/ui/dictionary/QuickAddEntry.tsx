@@ -104,6 +104,7 @@ export default function QuickAddEntry({ dictionaryId }: QuickAddEntryProps) {
                         value={originalName}
                         onChange={(e) => setOriginalName(e.target.value)}
                         placeholder="e.g., Bonjour"
+                        variant="default"
                     />
                 </div>
 
@@ -115,6 +116,7 @@ export default function QuickAddEntry({ dictionaryId }: QuickAddEntryProps) {
                         value={translation}
                         onChange={(e) => setTranslation(e.target.value)}
                         placeholder="e.g., Hello"
+                        variant="default"
                     />
                 </div>
 

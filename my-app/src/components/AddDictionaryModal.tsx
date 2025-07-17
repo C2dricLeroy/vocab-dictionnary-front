@@ -10,6 +10,7 @@ import { Language } from "@/models/Language";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { FormEvent, useState } from "react";
 import { AddDictionaryFormData } from "@/models/AddDictionaryFormType";
+import { Input } from "./ui/input";
 
 interface AddDictionaryModalProps {
   open: boolean;
@@ -48,11 +49,11 @@ export function AddDictionaryModal({
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Name
             </label>
-            <input
+            <Input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="mt-1 w-full border border-gray-300 dark:border-gray-700 rounded px-3 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+              variant="default"
               required
             />
           </div>
@@ -61,11 +62,11 @@ export function AddDictionaryModal({
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Description
             </label>
-            <input
+            <Input
               type="text"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="mt-1 w-full border border-gray-300 dark:border-gray-700 rounded px-3 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+              variant="default"
             />
           </div>
 
