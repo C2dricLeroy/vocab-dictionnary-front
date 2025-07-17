@@ -2,7 +2,7 @@
 
 import { Pencil } from 'lucide-react';
 import { useSession } from 'next-auth/react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
     Dialog,

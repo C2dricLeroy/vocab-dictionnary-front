@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
 export function useEntries(session: any, dictionaryId: number) {
     return useQuery({

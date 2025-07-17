@@ -9,7 +9,7 @@ export class Dictionary {
         user_id?: number | undefined,
         created_at?: Date | undefined,
         updated_at?: Date | undefined,
-        entry_count?: number | undefined,
+        entry_count?: number | undefined
     ) {
         this.id = id;
         this.name = name;
@@ -30,5 +30,4 @@ export class Dictionary {
     created_at?: Date | undefined;
     updated_at?: Date | undefined;
     entry_count?: number | undefined;
-
 }

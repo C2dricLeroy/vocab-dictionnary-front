@@ -66,6 +66,7 @@ export default function DictionaryClientPage() {
                             dictionaryId={dictionary.id}
                             initialName={dictionary.name}
                             initialDescription={dictionary.description}
+                            // eslint-disable-next-line no-unused-vars
                             onUpdated={(id, name, description) => {
                                 refetch();
                             }}

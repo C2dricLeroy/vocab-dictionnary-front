@@ -7,10 +7,11 @@ import {
   SidebarInset,
   SidebarProvider,
 } from "@/components/ui/sidebar"
+import * as React from "react"
 
 import data from "./data.json"
 
-export default function Page() {
+export default     function Page() {
   return (
     <SidebarProvider
       style={

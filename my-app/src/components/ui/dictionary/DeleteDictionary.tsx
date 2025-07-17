@@ -15,6 +15,7 @@ import { useDeleteDictionary } from "@/hooks/dictionaries/useDeleteDictionary";
 
 interface DeleteDictionaryProps {
     dictionaryId: number;
+    // eslint-disable-next-line no-unused-vars
     onDeleted?: (id: number) => void;
 }
 

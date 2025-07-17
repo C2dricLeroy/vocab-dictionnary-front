@@ -17,6 +17,7 @@ import { useCreateEntry } from "@/hooks/entries/useAddEntry";
 
 interface QuickAddEntryProps {
     dictionaryId: number;
+    // eslint-disable-next-line no-unused-vars
     onAdded?: (id: number) => void;
 }
 
