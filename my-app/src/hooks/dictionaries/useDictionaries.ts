@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
 export function useDictionaries(session: any) {
-    useQuery(["todos"], () => fetch("/api/todos"));
     return useQuery({
         queryKey: ["dictionaries", session?.accessToken],
         queryFn: async () => {
