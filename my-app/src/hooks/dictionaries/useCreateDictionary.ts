@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 interface CreateDictionaryPayload {
-  name: string;
-  description?: string;
-  source_language_id: number;
-  target_language_id: number;
+    name: string;
+    description?: string;
+    source_language_id: number;
+    target_language_id: number;
 }
 
 export function useCreateDictionary(session: any) {

@@ -2,7 +2,7 @@
 
 import { Pencil } from 'lucide-react';
 import { useSession } from 'next-auth/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
     Dialog,
@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { useUpdateDictionary } from '@/hooks/dictionaries/useUpdateDictionary';
 
 interface UpdateDictionaryProps {
     dictionaryId: number;
@@ -29,37 +30,21 @@ export default function UpdateDictionary({
 }: UpdateDictionaryProps) {
     const { data: session } = useSession();
     const [showModal, setShowModal] = useState(false);
-    const [loading, setLoading] = useState(false);
-
     const [name, setName] = useState(initialName);
     const [description, setDescription] = useState(initialDescription);
 
+    const updateMutation = useUpdateDictionary(session, dictionaryId);
+
     const handleUpdate = async () => {
-        setLoading(true);
-        try {
-            const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/dictionary/${dictionaryId}`;
-            const response = await fetch(url, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${session?.accessToken}`,
-                },
-                body: JSON.stringify({ name, description }),
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to update dictionary');
+        updateMutation.mutate({ name, description },
+            {
+                onSuccess: () => {
+                    onUpdated?.(dictionaryId, name, description);
+                    setShowModal(false);
+                }
             }
-
-            onUpdated?.(dictionaryId, name, description);
-            setShowModal(false);
-        } catch (err) {
-            console.error(err);
-            alert('Could not update dictionary.');
-        } finally {
-            setLoading(false);
-        }
-    };
+        );
+    }
 
     return (
         <>
@@ -67,7 +52,6 @@ export default function UpdateDictionary({
                 variant="ghost"
                 size="icon"
                 onClick={() => setShowModal(true)}
-                disabled={loading}
                 className="text-black hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
             >
                 <Pencil className="w-5 h-5" />
@@ -106,7 +90,6 @@ export default function UpdateDictionary({
                         <Button
                             onClick={handleUpdate}
                             className="bg-blue-600 hover:bg-blue-700 text-white"
-                            disabled={loading}
                         >
                             Save
                         </Button>
