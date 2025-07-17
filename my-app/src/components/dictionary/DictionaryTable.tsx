@@ -36,7 +36,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Skeleton } from "@/components/ui/skeleton";
 import { BookOpenText, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, LayoutGrid } from "lucide-react";
 import DeleteEntry from "@/components/ui/entry/DeleteEntry";
-import { useEntries } from "@/hooks/useEntries";
+import { useEntries } from "@/hooks/entries/useEntries";
 
 import { useQueryClient } from "@tanstack/react-query";
 

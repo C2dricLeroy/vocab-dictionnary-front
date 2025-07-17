@@ -11,41 +11,26 @@ import {
     DialogFooter,
     DialogTitle,
 } from "@/components/ui/dialog";
+import { useDeleteDictionary } from "@/hooks/dictionaries/useDeletedictionary";
 
 interface DeleteDictionaryProps {
     dictionaryId: number;
-    onDeleted?: (id: number) => void;  // eslint-disable-line
+    onDeleted?: (id: number) => void;
 }
 
 export default function DeleteDictionary({ dictionaryId, onDeleted }: DeleteDictionaryProps) {
     const { data: session } = useSession();
-    const [loading, setLoading] = useState(false);
     const [showModal, setShowModal] = useState(false);
 
+    const deleteMutation = useDeleteDictionary(session);
+
     const handleDelete = async () => {
-
-        setLoading(true);
-        try {
-            const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/dictionary/${dictionaryId}`;
-            const response = await fetch(url, {
-                method: "DELETE",
-                headers: {
-                    Authorization: `Bearer ${session?.accessToken}`,
-                },
-            });
-
-            if (!response.ok) {
-                throw new Error("Failed to delete dictionary");
+        deleteMutation.mutate(dictionaryId, {
+            onSuccess: () => {
+                onDeleted?.(dictionaryId);
+                setShowModal(false);
             }
-
-            onDeleted?.(dictionaryId);
-            setShowModal(false);
-        } catch (err) {
-            console.error(err);
-            alert("Could not delete dictionary.");
-        } finally {
-            setLoading(false);
-        }
+        });
     };
 
     return (
@@ -54,18 +39,18 @@ export default function DeleteDictionary({ dictionaryId, onDeleted }: DeleteDict
                 variant="ghost"
                 size="icon"
                 onClick={() => setShowModal(true)}
-                disabled={loading}
+                disabled={deleteMutation.isPending}
                 className="text-black hover:text-red-600 dark:text-white dark:hover:text-red-400"
             >
                 <Trash2 className="w-5 h-5" />
             </Button>
 
             <ConfirmDeleteModal
-            open={showModal}
-            onClose={() => setShowModal(false)}
-            onConfirm={handleDelete}
+                open={showModal}
+                onClose={() => setShowModal(false)}
+                onConfirm={handleDelete}
             />
-      </>
+        </>
     );
 }
 

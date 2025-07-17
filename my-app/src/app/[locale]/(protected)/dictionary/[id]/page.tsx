@@ -10,7 +10,7 @@ import DictionaryOverview from "@/components/dictionary/DictionaryOverview";
 import DeleteDictionary from "@/components/ui/dictionary/DeleteDictionary";
 import UpdateDictionary from "@/components/ui/dictionary/UpdateDictionary";
 import { useTranslations } from "next-intl";
-import { useOneDictionary } from "@/hooks/useDictionaries";
+import { useOneDictionary } from "@/hooks/dictionaries/useDictionaries";
 
 export default function DictionaryClientPage() {
     const { id } = useParams();

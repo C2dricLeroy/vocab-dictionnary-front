@@ -14,7 +14,7 @@ import {
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { Language } from "@/models/Language";
-import { useLanguages } from "@/hooks/useLanguages";
+import { useLanguages } from "@/hooks/languages/useLanguages";
 
 interface LanguageSelectorProps {
     selected?: Language | null;

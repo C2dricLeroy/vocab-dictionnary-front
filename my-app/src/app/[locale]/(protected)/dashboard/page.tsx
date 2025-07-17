@@ -8,8 +8,8 @@ import { DashboardStatistics } from "@/components/dashboard/DashboardStatistics"
 import { DashboardFavorites } from "@/components/dashboard/DashboardFavorites";
 import { DashboardActivities } from "@/components/dashboard/DashboardActivities";
 import { useSession } from "next-auth/react";
-import { useDictionaries } from "@/hooks/useDictionaries";
-import { useCreateDictionary } from "@/hooks/useCreateDictionary";
+import { useDictionaries } from "@/hooks/dictionaries/useDictionaries";
+import { useCreateDictionary } from "@/hooks/dictionaries/useCreateDictionary";
 
 export default function DashboardClient() {
     const { data: session } = useSession();
