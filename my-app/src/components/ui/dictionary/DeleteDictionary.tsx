@@ -11,7 +11,7 @@ import {
     DialogFooter,
     DialogTitle,
 } from "@/components/ui/dialog";
-import { useDeleteDictionary } from "@/hooks/dictionaries/useDeletedictionary";
+import { useDeleteDictionary } from "@/hooks/dictionaries/useDeleteDictionary";
 
 interface DeleteDictionaryProps {
     dictionaryId: number;

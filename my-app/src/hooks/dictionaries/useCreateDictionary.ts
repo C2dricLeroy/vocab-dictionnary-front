@@ -1,10 +1,17 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
+interface CreateDictionaryPayload {
+  name: string;
+  description?: string;
+  source_language_id: number;
+  target_language_id: number;
+}
+
 export function useCreateDictionary(session: any) {
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: async (newDict: { name: string; language_code: string }) => {
+        mutationFn: async (newDict: CreateDictionaryPayload) => {
         const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/dictionary`, {
             method: 'POST',
             headers: {
