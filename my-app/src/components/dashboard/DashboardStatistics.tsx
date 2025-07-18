@@ -50,10 +50,10 @@ export const DashboardStatistics: React.FC = () => {
             </CardHeader>
             <CardContent>
                 <div className="space-y-4">
-                    <p>
+                    <p className="text-gray-800 dark:text-white">
                         {t("total words added")} : <span className="font-bold">{statistics?.totalWordsAdded}</span>
                     </p>
-                    <p>
+                    <p className="text-gray-800 dark:text-white">
                         {t("total dictionaries")} : <span className="font-bold">{statistics?.totalDictionaries}</span>
                     </p>
                     {/* <p>{t("words added this month")} : <span className="font-bold">{statistics?.wordsAddedThisMonth}</span></p> */}

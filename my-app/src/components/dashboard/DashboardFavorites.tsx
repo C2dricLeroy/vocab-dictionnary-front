@@ -9,8 +9,8 @@ export const DashboardFavorites: React.FC = () => {
             </CardHeader>
             <CardContent>
                 <ul>
-                    <li>Dictionnaire favori 1</li>
-                    <li>Dictionnaire favori 2</li>
+                    <li className="text-gray-800 dark:text-white">Dictionnaire favori 1</li>
+                    <li className="text-gray-800 dark:text-white">Dictionnaire favori 2</li>
                 </ul>
             </CardContent>
         </Card>
