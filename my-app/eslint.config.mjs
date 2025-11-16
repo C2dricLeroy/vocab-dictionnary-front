@@ -1,3 +1,6 @@
+import nextTypescript from "eslint-config-next/typescript";
+import next from "eslint-config-next";
+import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
 import react from "eslint-plugin-react";
@@ -12,11 +15,11 @@ const compat = new FlatCompat({
 });
 
 export default [
+    ...nextTypescript,
     js.configs.recommended,
-
-    ...compat.extends("next", "next/core-web-vitals"),
+    ...next,
+    ...nextCoreWebVitals,
     ...pluginQuery.configs["flat/recommended"],
-
     {
         ignores: [".next/**"],
         files: ["**/*.ts", "**/*.tsx"],
@@ -30,8 +33,6 @@ export default [
         plugins: {
             "@typescript-eslint": ts,
             react,
-            "react-hooks": reactHooks,
-            "jsx-a11y": jsxA11y,
         },
         rules: {
             "@typescript-eslint/no-explicit-any": "off",
@@ -57,7 +58,6 @@ export default [
             },
         },
     },
-
     {
         files: ["**/*.js", "**/*.jsx"],
         languageOptions: {
@@ -66,8 +66,6 @@ export default [
         },
         plugins: {
             react,
-            "react-hooks": reactHooks,
-            "jsx-a11y": jsxA11y,
         },
         rules: {
             "react/react-in-jsx-scope": "off",
@@ -78,5 +76,5 @@ export default [
             },
         },
     },
-    ...compat.extends("prettier"),
+    ...compat.extends("prettier")
 ];
