@@ -57,7 +57,7 @@ export default function Home() {
                 <WelcomeHeader />
             </header>
 
-            <main className="flex-grow">
+            <main className="grow">
                 <section className="relative py-20 overflow-hidden">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center space-y-8">

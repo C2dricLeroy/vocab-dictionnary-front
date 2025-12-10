@@ -14,7 +14,7 @@ export default function Signup() {
                 </div>
             </header>
 
-            <main className="flex-grow flex flex-col items-center justify-center px-4">
+            <main className="grow flex flex-col items-center justify-center px-4">
                 <SignupComponent />
             </main>
 

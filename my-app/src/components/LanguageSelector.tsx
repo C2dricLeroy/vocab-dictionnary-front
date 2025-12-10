@@ -54,7 +54,7 @@ export const LanguageSelector: FC<LanguageSelectorProps> = ({
                     <ChevronsUpDown className="h-4 w-4 shrink-0 opacity-50" />
                 </Button>
             </PopoverTrigger>
-            <PopoverContent className="z-50 bg-white w-[--radix-popover-trigger-width] p-0">
+            <PopoverContent className="z-50 bg-white w-(--radix-popover-trigger-width) p-0">
                 <Command>
                     <CommandInput placeholder="Search language" />
                     <CommandEmpty>No language found</CommandEmpty>

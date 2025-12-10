@@ -34,7 +34,7 @@ export default function DictionaryClientPage() {
         <div className="flex flex-col min-h-screen bg-muted/40">
             <AppHeader />
 
-            <main className="flex-grow max-w-6xl w-full mx-auto px-4 py-8 space-y-8">
+            <main className="grow max-w-6xl w-full mx-auto px-4 py-8 space-y-8">
                 <div className="text-sm text-muted-foreground mb-2">
                     <button onClick={() => router.push("/dashboard")} className="hover:underline">
                         ← Retour au tableau de bord

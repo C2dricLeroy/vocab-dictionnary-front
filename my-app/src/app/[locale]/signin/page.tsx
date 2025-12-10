@@ -13,7 +13,7 @@ export default function Signin() {
                 </div>
             </header>
 
-            <main className="flex-grow flex flex-col items-center justify-center px-4">
+            <main className="grow flex flex-col items-center justify-center px-4">
                 <SigninComponent />
             </main>
 

@@ -8,7 +8,7 @@ export default function About() {
                 <WelcomeHeader />
             </header>
 
-            <main className="flex-grow flex flex-col items-center justify-center px-4">
+            <main className="grow flex flex-col items-center justify-center px-4">
                 <p>About</p>
             </main>
 

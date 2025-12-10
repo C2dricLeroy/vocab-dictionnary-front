@@ -13,6 +13,7 @@ import QuickAddEntry from "@/components/ui/dictionary/QuickAddEntry";
 import { useSession } from "next-auth/react";
 import { useDictionaries } from "@/hooks/dictionaries/useDictionaries";
 import { useCreateDictionary } from "@/hooks/dictionaries/useCreateDictionary";
+import toast, { Toaster } from 'react-hot-toast';
 
 interface Dictionary {
     id: number;
@@ -29,6 +30,8 @@ export const DashboardDictionaries: React.FC = () => {
 
     const { mutate: createDictionary } = useCreateDictionary(session);
 
+    const show_toast = (data: AddDictionaryFormData) => { toast.success(`Le dictionnaire "${String(data.name)}" a été créé !`); }
+
     const handleModalSubmit = (data: AddDictionaryFormData) => {
         if (!data.name || !data.sourceLanguage || !data.targetLanguage) return;
 
@@ -42,6 +45,7 @@ export const DashboardDictionaries: React.FC = () => {
             {
                 onSuccess: () => {
                     refetch();
+                    show_toast(data);
                 },
             }
         );

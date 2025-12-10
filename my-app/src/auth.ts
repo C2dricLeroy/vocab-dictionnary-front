@@ -1,10 +1,13 @@
 import NextAuth from "next-auth";
-import Google from "next-auth/providers/google";
+import GoogleProvider from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
     providers: [
-        Google,
+        GoogleProvider({
+            clientId: process.env.AUTH_GOOGLE_ID as string,
+            clientSecret: process.env.AUTH_GOOGLE_SECRET as string,
+            }),
         Credentials({
             name: "Credentials",
             credentials: {
@@ -16,8 +19,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
-                        email: credentials.email,
-                        password: credentials.password,
+                        email: credentials?.email,
+                        password: credentials?.password,
                     }),
                 });
 
