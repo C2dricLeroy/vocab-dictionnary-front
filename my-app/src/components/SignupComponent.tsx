@@ -52,7 +52,7 @@ export default function SignupComponent() {
                 throw new Error(`Signup error: ${response.status}`);
             }
 
-            router.push("/signin" as any);
+            router.push("/signin?signupSuccess=true" as any);
         } catch (error) {
             console.error("Signup error:", error);
         }

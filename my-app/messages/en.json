@@ -53,7 +53,8 @@
         "Sign up": "Sign up",
         "Invalid username or password": "Invalid username or password",
         "An error occurred, Please try again": "An error occurred, Please try again",
-        "Network error, Please try again": "Network error, Please try again"
+        "Network error, Please try again": "Network error, Please try again",
+        "Your account has been created": "Your account has been created"
     },
     "Signup": {
         "Enter your email": "Enter your email",

@@ -3,17 +3,28 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import GoogleButton from "@/components/ui/googleButton";
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { signIn } from "next-auth/react";
+import { useSearchParams } from "next/navigation";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function SigninComponent() {
     const t = useTranslations("Signin");
+    const searchParams = useSearchParams();
     const [password, setPassword] = useState<string>("");
     const [email, setEmail] = useState<string>("");
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+
+    useEffect(() => {
+        if (searchParams.get('signupSuccess') === 'true') {
+            const successMessage = t("Your account has been created");
+            toast.success(successMessage);
+        }
+    }, [searchParams, t]);
 
     const router = useRouter();
     const signinSubmit = async (e: FormEvent) => {
@@ -33,7 +44,9 @@ export default function SigninComponent() {
     };
 
     return (
-        <div className="max-w-md mx-auto mt-10 my-10 p-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
+        <>
+            <Toaster position="top-right"/>
+            <div className="max-w-md mx-auto mt-10 my-10 p-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
             <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-6">{t("Sign in")}</h2>
             <GoogleButton />
             <br />
@@ -80,5 +93,6 @@ export default function SigninComponent() {
                 </div>
             </form>
         </div>
+    </>
     );
 }
