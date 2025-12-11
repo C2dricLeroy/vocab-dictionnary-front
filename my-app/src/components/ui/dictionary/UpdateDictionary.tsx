@@ -8,6 +8,8 @@ import { Dialog, DialogContent, DialogHeader, DialogFooter, DialogTitle } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useUpdateDictionary } from "@/hooks/dictionaries/useUpdateDictionary";
+import { useTranslations } from "next-intl";
+import toast, { Toaster } from "react-hot-toast";
 
 interface UpdateDictionaryProps {
     dictionaryId: number;
@@ -22,6 +24,7 @@ export default function UpdateDictionary({
     initialDescription,
     onUpdated,
 }: UpdateDictionaryProps) {
+    const t = useTranslations("Dashboard")
     const { data: session } = useSession();
     const [showModal, setShowModal] = useState(false);
     const [name, setName] = useState(initialName);
@@ -36,13 +39,18 @@ export default function UpdateDictionary({
                 onSuccess: () => {
                     onUpdated?.(dictionaryId, name, description);
                     setShowModal(false);
+                    toast.success(t("Dictionary Updated"))
                 },
+                onError: () => {
+                    toast.error(t("Error during dictionary update"))
+                }
             }
         );
     };
 
     return (
         <>
+            <Toaster position="top-right"/>
             <Button
                 variant="ghost"
                 size="icon"

@@ -28,7 +28,6 @@ export function useCreateDictionary(session: any) {
         },
         onError: (error) => {
             console.error("Error during dictionary creation:", error);
-            alert(error.message);
         },
     });
 }

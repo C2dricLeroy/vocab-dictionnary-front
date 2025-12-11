@@ -5,6 +5,8 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogFooter, DialogTitle } from "@/components/ui/dialog";
+import { useTranslations } from "next-intl";
+import toast, { Toaster } from "react-hot-toast";
 
 interface DeleteEntryProps {
     entryId: number;
@@ -12,6 +14,7 @@ interface DeleteEntryProps {
 }
 
 export default function DeleteEntry({ entryId, onDeleted }: DeleteEntryProps) {
+    const t = useTranslations("Dashboard");
     const { data: session } = useSession();
     const [loading, setLoading] = useState(false);
     const [showModal, setShowModal] = useState(false);
@@ -33,9 +36,10 @@ export default function DeleteEntry({ entryId, onDeleted }: DeleteEntryProps) {
 
             onDeleted?.(entryId);
             setShowModal(false);
+            toast.success("Entry deleted")
         } catch (err) {
             console.error(err);
-            alert("Could not delete entry.");
+            toast.error(t("Error during entry deletion"))
         } finally {
             setLoading(false);
         }
@@ -43,6 +47,7 @@ export default function DeleteEntry({ entryId, onDeleted }: DeleteEntryProps) {
 
     return (
         <>
+            <Toaster position="top-right"/>
             <Button
                 variant="ghost"
                 size="icon"

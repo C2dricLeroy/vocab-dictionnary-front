@@ -2,7 +2,6 @@
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useMemo, useState } from "react";
-import type { VisibilityState } from "@tanstack/react-table";
 import { useSession } from "next-auth/react";
 import {
     useReactTable,
@@ -27,8 +26,10 @@ import DeleteEntry from "@/components/ui/entry/DeleteEntry";
 import { useEntries } from "@/hooks/entries/useEntries";
 
 import { useQueryClient } from "@tanstack/react-query";
+import { useTranslations } from "next-intl";
 
 export default function DictionaryTable({ dictionaryId }: { dictionaryId: number }) {
+    const t = useTranslations("Dashboard");
     const { data: session } = useSession();
     const queryClient = useQueryClient();
 
@@ -70,17 +71,17 @@ export default function DictionaryTable({ dictionaryId }: { dictionaryId: number
             <div className="flex items-center justify-between px-4 lg:px-6">
                 <div className="flex items-center gap-2">
                     <BookOpenText className="text-primary" />
-                    <h3 className="text-lg font-semibold">Entrées du dictionnaire</h3>
+                    <h3 className="text-lg font-semibold">{t("Dictionary entries")}</h3>
                 </div>
                 <TabsList className="hidden @4xl/main:flex">
-                    <TabsTrigger value="entries">Entrées</TabsTrigger>
+                    <TabsTrigger value="entries">{t("entries")}</TabsTrigger>
                 </TabsList>
                 <div className="flex items-center gap-2">
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button variant="outline" size="sm">
                                 <LayoutGrid className="mr-2 h-4 w-4" />
-                                Colonnes
+                                {t("columns")}
                             </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end" className="w-56">
@@ -110,7 +111,7 @@ export default function DictionaryTable({ dictionaryId }: { dictionaryId: number
                         <Skeleton className="h-8 w-full" />
                     </div>
                 ) : table.getRowModel().rows.length === 0 ? (
-                    <div className="text-muted-foreground text-sm">Loading ...</div>
+                    <div className="text-muted-foreground text-sm">{t("Loading")}</div>
                 ) : (
                     <div className="rounded-lg border overflow-hidden">
                         <Table>
@@ -151,7 +152,6 @@ export default function DictionaryTable({ dictionaryId }: { dictionaryId: number
                     </div>
                 )}
 
-                {/* Pagination */}
                 {!isLoading && (
                     <div className="flex items-center justify-between px-2">
                         <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -196,7 +196,6 @@ export default function DictionaryTable({ dictionaryId }: { dictionaryId: number
                                 <ChevronsRight className="h-4 w-4" />
                             </Button>
 
-                            {/* Toujours afficher le select */}
                             <Select
                                 value={String(table.getState().pagination.pageSize)}
                                 onValueChange={(value) => table.setPageSize(Number(value))}

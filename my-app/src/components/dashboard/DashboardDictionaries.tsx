@@ -30,7 +30,7 @@ export const DashboardDictionaries: React.FC = () => {
 
     const { mutate: createDictionary } = useCreateDictionary(session);
 
-    const show_toast = (data: AddDictionaryFormData) => { toast.success(`Le dictionnaire "${String(data.name)}" a été créé !`); }
+    const show_toast = (data: AddDictionaryFormData) => { toast.success(t("Dictionary created")); }
 
     const handleModalSubmit = (data: AddDictionaryFormData) => {
         if (!data.name || !data.sourceLanguage || !data.targetLanguage) return;
@@ -62,6 +62,7 @@ export const DashboardDictionaries: React.FC = () => {
 
     return (
         <>
+            <Toaster position="top-right"/>
             <Card className="bg-white dark:bg-gray-800 h-full">
                 <CardHeader className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
                     <div className="text-xl font-bold text-gray-800 dark:text-white">{t("My dictionaries")}</div>

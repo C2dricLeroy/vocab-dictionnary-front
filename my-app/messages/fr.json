@@ -109,6 +109,18 @@
         "No dictionary available": "Aucun dictionnaire disponible",
         "Add dictionary": "Ajouter un dictionnaire",
         "Name": "Nom",
-        "Email": "Email"
+        "Email": "Email",
+        "Dictionary created": "Dictionnaire créé",
+        "Dictionary entries": "Entrées du dictionnaire",
+        "entries": "Entrées",
+        "columns": "Colonnes",
+        "Entry created": "Entrée crée",
+        "Failed to create entry": "Erreur à la création de l'entrée",
+        "Error during dictionary creation": "Erreur lors de la création du dictionnaire",
+        "Error during dictionary deletion": "Erreur durant la suppression du dictionnaire",
+        "Dictionary deleted": "Dictionnaire supprimé",
+        "Loading": "Chargement ...",
+        "Entry deleted" : "Entrée supprimée",
+        "Error during entry deletion": "Erreur durant la suppression de l'entrée"
     }
 }

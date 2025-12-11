@@ -8,6 +8,8 @@ import { Dialog, DialogContent, DialogHeader, DialogFooter, DialogTitle } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useCreateEntry } from "@/hooks/entries/useAddEntry";
+import { useTranslations } from "next-intl";
+import toast, { Toaster } from "react-hot-toast";
 
 interface QuickAddEntryProps {
     dictionaryId: number;
@@ -16,6 +18,7 @@ interface QuickAddEntryProps {
 }
 
 export default function QuickAddEntry({ dictionaryId, onAdded }: QuickAddEntryProps) {
+    const t = useTranslations("Dashboard");
     const { data: session } = useSession();
     const [open, setOpen] = useState(false);
 
@@ -52,9 +55,10 @@ export default function QuickAddEntry({ dictionaryId, onAdded }: QuickAddEntryPr
                     resetForm();
                     setOpen(false);
                     onAdded?.(dictionaryId);
+                    toast.success(t("Entry created"))
                 },
                 onError: (error: Error) => {
-                    alert(`Failed to add entry: ${error.message}`);
+                    toast.error(t("Failed to create entry"))
                 },
             }
         );
@@ -62,6 +66,7 @@ export default function QuickAddEntry({ dictionaryId, onAdded }: QuickAddEntryPr
 
     return (
         <>
+            <Toaster position="top-right"/>
             <Button
                 variant="ghost"
                 size="icon"

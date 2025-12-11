@@ -109,6 +109,19 @@
         "Name": "Name",
         "Email": "Email",
         "total dictionaries": "Total dictionaries",
-        "Add dictionary": "Add dictionary"
+        "Add dictionary": "Add dictionary",
+        "Dictionary created": "Dictionary created",
+        "Dictionary entries": "Dictionary entries",
+        "entries": "Entries",
+        "columns": "Columns",
+        "Entry created": "Entry created",
+        "Failed to create entry": "Failed to create entry",
+        "Error during dictionary update": "Error during dictionary update",
+        "Dictionary Updated": "Dictionary Updated",
+        "Dictionary deleted": "Dictionary deleted",
+        "Error during dictionary deletion": "Error during dictionary deletion",
+        "Loading": "Loading ...",
+        "Entry deleted": "Entry deleted",
+        "Error during entry deletion": "Error during entry deletion"
     }
 }

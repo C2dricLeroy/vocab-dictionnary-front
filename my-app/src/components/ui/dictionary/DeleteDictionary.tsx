@@ -6,6 +6,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogFooter, DialogTitle } from "@/components/ui/dialog";
 import { useDeleteDictionary } from "@/hooks/dictionaries/useDeleteDictionary";
+import { useTranslations } from "next-intl";
+import toast, { Toaster } from "react-hot-toast";
 
 interface DeleteDictionaryProps {
     dictionaryId: number;
@@ -14,6 +16,7 @@ interface DeleteDictionaryProps {
 }
 
 export default function DeleteDictionary({ dictionaryId, onDeleted }: DeleteDictionaryProps) {
+    const t = useTranslations("Dashboard");
     const { data: session } = useSession();
     const [showModal, setShowModal] = useState(false);
 
@@ -24,12 +27,17 @@ export default function DeleteDictionary({ dictionaryId, onDeleted }: DeleteDict
             onSuccess: () => {
                 onDeleted?.(dictionaryId);
                 setShowModal(false);
+                toast.success(t("Dictionary deleted"))
             },
+            onError: () => {
+                toast.error(t("Error during dictionary deletion"))
+            }
         });
     };
 
     return (
         <>
+            <Toaster position="top-right"/>
             <Button
                 variant="ghost"
                 size="icon"
