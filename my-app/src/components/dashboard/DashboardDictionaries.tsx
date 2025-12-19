@@ -83,7 +83,7 @@ export const DashboardDictionaries: React.FC = () => {
                                 {dictionaries.map((dictionary: Dictionary) => (
                                     <div
                                         key={dictionary.id}
-                                        className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition-shadow bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800"
+                                        className="border border-gray-200 dark:border-gray-700 rounded-lg p-8 m-2 hover:shadow-md transition-shadow bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800"
                                     >
                                         <div className="flex justify-between items-center mb-2">
                                             <Link href={`/dictionary/${dictionary.id}`}>
