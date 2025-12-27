@@ -16,6 +16,7 @@ const buttonVariants = cva(
                 outline:
                     "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground active:scale-95 active:shadow-inner transition-transform",
                 filter: "border border-input bg-background shadow-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700",
+                entry: "flex items-center gap-2 px-6 py-5 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 text-white shadow-md hover:from-green-400 hover:to-emerald-500 hover:shadow-lg transition-all",
                 secondary:
                     "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 active:scale-95 active:shadow-inner transition-transform",
                 ghost: "hover:bg-accent hover:text-accent-foreground active:scale-95 active:shadow-inner transition-transform",

@@ -123,6 +123,9 @@
         "Error during dictionary deletion": "Error during dictionary deletion",
         "Loading": "Loading ...",
         "Entry deleted": "Entry deleted",
-        "Error during entry deletion": "Error during entry deletion"
+        "Error during entry deletion": "Error during entry deletion",
+        "Created on": "Created on",
+        "Language": "Language",
+        "Words": "Words"
     }
 }

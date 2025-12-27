@@ -123,6 +123,9 @@
         "Loading": "Chargement ...",
         "Entry deleted" : "Entrée supprimée",
         "Error during entry deletion": "Erreur durant la suppression de l'entrée",
-        "Statistics": "Statistiques"
+        "Statistics": "Statistiques",
+        "Created on": "Créé le",
+        "Language": "Langue",
+        "Words": "Mots"
     }
 }

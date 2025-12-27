@@ -48,22 +48,38 @@ export default function DictionaryClientPage() {
 
                 <DictionaryOverview dictionary={dictionary} />
 
-                <section className="space-y-4">
-                    <div className="flex items-center justify-between flex-wrap gap-4">
-                        <UpdateDictionary
-                            dictionaryId={dictionary.id}
-                            initialName={dictionary.name}
-                            initialDescription={dictionary.description}
-                            // eslint-disable-next-line no-unused-vars
-                            onUpdated={(id, name, description) => {
-                                refetch();
-                            }}
-                        />
-                        <QuickAddEntry dictionaryId={dictionary.id} />
-                        <DeleteDictionary dictionaryId={dictionary.id} onDeleted={() => router.push("/dashboard")} />
+                <section className="space-y-6">
+                    {/* Action bar */}
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                        
+                        {/* Primary actions */}
+                        <div className="flex items-center gap-3 ml-4">
+                            <QuickAddEntry dictionaryId={dictionary.id} />
+                        </div>
+
+                        {/* Secondary & danger actions */}
+                        <div className="flex items-center gap-2 mr-4">
+                            <UpdateDictionary
+                                dictionaryId={dictionary.id}
+                                initialName={dictionary.name}
+                                initialDescription={dictionary.description}
+                                onUpdated={() => refetch()}
+                            />
+                            <DeleteDictionary
+                                dictionaryId={dictionary.id}
+                                onDeleted={() => router.push("/dashboard")}
+                            />
+                        </div>
+                        
                     </div>
+
+                    {/* Divider */}
+                    <div className="border-t border-muted" />
+
+                    {/* Table */}
                     <DictionaryTable dictionaryId={dictionary.id} />
                 </section>
+
 
                 <div className="text-center pt-6">
                     <button disabled className="text-sm text-gray-400 hover:text-gray-500">

@@ -67,12 +67,11 @@ export default function QuickAddEntry({ dictionaryId, onAdded }: QuickAddEntryPr
     return (
         <>
             <Toaster position="top-right"/>
-            <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setOpen(true)}
-                className="text-black hover:text-green-600 dark:text-white dark:hover:text-green-400"
-            >
+                <Button
+                    onClick={() => setOpen(true)}
+                    variant="entry"
+                    className="px-6"
+                >
                 <Plus className="w-5 h-5" />
             </Button>
 
