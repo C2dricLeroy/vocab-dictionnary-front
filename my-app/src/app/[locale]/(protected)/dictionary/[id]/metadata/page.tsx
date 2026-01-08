@@ -46,47 +46,17 @@ export default function DictionaryClientPage() {
                     {dictionary.description && <p className="text-muted-foreground mt-1">{dictionary.description}</p>}
                 </div>
 
-                <DictionaryOverview dictionary={dictionary} />
 
                 <section className="space-y-6">
-                    {/* Action bar */}
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                        
-                        {/* Primary actions */}
-                        <div className="flex items-center gap-3 ml-4">
-                            <QuickAddEntry dictionaryId={dictionary.id} />
+                    <h2 className="text-2xl font-bold tracking-tight">Métadonnées du dictionnaire</h2>
+                    <div className="flex flex-col gap-4">
+                        <div className="flex flex-col gap-2">
+                            <h3 className="text-lg font-bold tracking-tight">Nom du dictionnaire</h3>
+                            <p className="text-muted-foreground">{dictionary.name}</p>
                         </div>
-
-                        {/* Secondary & danger actions */}
-                        <div className="flex items-center gap-2 mr-4">
-                            {/* <UpdateDictionary
-                                dictionaryId={dictionary.id}
-                                initialName={dictionary.name}
-                                initialDescription={dictionary.description}
-                                onUpdated={() => refetch()}
-                            /> */}
-                            <DictionaryMetadata dictionaryId={dictionary.id}/>
-                            <DeleteDictionary
-                                dictionaryId={dictionary.id}
-                                onDeleted={() => router.push("/dashboard")}
-                            />
-                        </div>
-                        
                     </div>
-
-                    {/* Divider */}
-                    <div className="border-t border-muted" />
-
-                    {/* Table */}
-                    <DictionaryTable dictionaryId={dictionary.id} />
                 </section>
 
-
-                <div className="text-center pt-6">
-                    <button disabled className="text-sm text-gray-400 hover:text-gray-500">
-                        📖 Réviser ce dictionnaire (bientôt)
-                    </button>
-                </div>
             </main>
 
             <footer className="bg-gray-100 dark:bg-gray-800">

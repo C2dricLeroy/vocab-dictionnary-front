@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { AddDictionaryFormData } from "@/models/AddDictionaryFormType";
 import DeleteDictionary from "@/components/ui/dictionary/DeleteDictionary";
 import UpdateDictionary from "@/components/ui/dictionary/UpdateDictionary";
-import QuickAddEntry from "@/components/ui/dictionary/QuickAddEntry";
+import DashboardQuickAddEntry from "@/components/ui/dictionary/DashboardQuickAddEntry";
 import { useSession } from "next-auth/react";
 import { useDictionaries } from "@/hooks/dictionaries/useDictionaries";
 import { useCreateDictionary } from "@/hooks/dictionaries/useCreateDictionary";
@@ -101,7 +101,7 @@ export const DashboardDictionaries: React.FC = () => {
                                                         refetch();
                                                     }}
                                                 />
-                                                <QuickAddEntry dictionaryId={dictionary.id} />
+                                                <DashboardQuickAddEntry dictionaryId={dictionary.id} />
                                                 <DeleteDictionary
                                                     dictionaryId={dictionary.id}
                                                     onDeleted={() => {
